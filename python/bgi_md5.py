@@ -21,3 +21,4 @@ for root,ds,fs in os.walk(indir):
 				md5file = '_'.join(md5path.split("/")[-1].split("_")[2:])
 				md5cat.write("%s  Rawdata/%s/%s\n" % (md5code, md5path.split("/")[-1].split("_")[2], md5file))
 md5cat.close()
+#修改
