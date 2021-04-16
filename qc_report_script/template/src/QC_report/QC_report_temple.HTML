@@ -1,0 +1,733 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="zh_CN" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>{{XM}} 质控报告</title>
+    <meta charset="UTF-8"></meta>
+    <!--[if lt IE 9]>
+<script src="files/js/html5shiv.min.js"></script><script src="files/js/respond.min.js"></script>
+<![endif]-->
+    <meta author="HaploX bioinformatics team"></meta>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"></meta>
+    <meta content="width=device-width, initial-scale=1" name="viewport"></meta>
+    <link href="files/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+    <link href="files/css/style.css" type="text/css" rel="stylesheet" />
+    <link href="files/js/fancyBox/jquery.fancybox.css" type="text/css" rel="stylesheet" />
+    <link href="files/css/menu.css" type="text/css" rel="stylesheet" />
+    <link href="files/css/raxus.css" type="text/css" rel="stylesheet" />
+    <script src="files/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="files/js/nav.js" type="text/javascript"></script>
+    <script src="files/js/raxus-slider.min.js" type="text/javascript"></script>
+    <script src="files/js/fancyBox/jquery.fancybox.pack.js" type="text/javascript"></script>
+    <script src="files/js/fancyBox/jquery.mousewheel-3.0.6.pack.js" type="text/javascript"></script>
+    <script src="files/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="files/js/ready.js" type="text/javascript"></script>
+    <script src="files/js/scrolltop.js" type="text/javascript"></script>
+    <script src="files/js/plotly-1.2.0.min.js" type="text/javascript"></script>
+    <link id="style" href="files/js/table/classic.css" rel="stylesheet" media="screen">
+    <style type="text/css">
+    @import url(http://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Droid+Serif);
+    @media all {
+        html {
+            margin: 0;
+            font: 300 .9em/1.6em "Droid Serif", Cambria, Georgia, "DejaVu Serif", serif;
+        }
+        body {
+            font-size: 12pt;
+            line-height: 24pt;
+            color: black;
+            margin-top: 0;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: justify;
+        }
+        body #content {
+            padding-top: 0px;
+            /* margin-left: 20px; */
+            background-color: white;
+            padding: 2em;
+            min-width: 600px;
+            max-width: 70%;
+            margin: auto;
+            font-weight: normal;
+            font-family: "Arial", "Times New Roman";
+        }
+        body .title {
+            margin-left: 0px;
+            font-size: 22pt;
+        }
+        span[class*='section-number-'] {
+            margin-right: 10px;
+        }
+        #license {
+            background-color: #eeeeee;
+        }
+        .caption {
+            font-style: italic;
+            text-align: center;
+            margin-top: 2px;
+            margin-bottom: 25px;
+            font-size: 11pt;
+        }
+        h1 {
+            font-family: sans-serif;
+            font-size: 2.1em;
+            padding: 30px 20px 20px 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            line-height: 110%;
+            color: black;
+            text-align: center;
+        }
+        h2 {
+            font-family: sans-serif;
+            font-size: 1.45em;
+            line-height: 16px;
+            padding: 10px 0 10px 0;
+            color: #1881c2;
+            border-bottom: 1px solid #ddd;
+        }
+        .outline-text-2 {
+            margin-left: 0.1em
+        }
+        h3 {
+            font-family: sans-serif;
+            font-size: 1.3em;
+            color: #1881c2;
+            margin-left: 0.6em;
+            border-bottom: 1px solid #ddd;
+        }
+        .outline-text-3 {
+            margin-left: 0.9em;
+        }
+        h4 {
+            font-family: sans-serif;
+            font-size: 1.2em;
+            /*margin-left: 1.2em;*/
+            color: #1881c2;
+            /*border-bottom: 1px solid #ddd;*/
+        }
+        .outline-text-4 {
+            margin-left: 1.45em;
+        }
+        h5 {
+            font-family: sans-serif;
+            font-size: 0.9em;
+            /*margin-left: 1.2em;*/
+            color: #1881c2;
+            /*border-bottom: 1px solid #ddd;*/
+        }
+        .outline-text-5 {
+            margin-left: 1.45em;
+        }
+
+        a {
+            text-decoration: none;
+            font-weight: 400;
+            color: #35817D
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .todo {
+            color: #CA0000;
+        }
+        .done {
+            color: #006666;
+        }
+        .timestamp-kwd {
+            color: #444;
+        }
+        .tag {}
+        li {
+            margin: .4em;
+        }
+        table {
+            border: none;
+        }
+        td {
+            border: none;
+        }
+        th {
+            border: none;
+        }
+        /*tr {
+        border-bottom:1px solid #CCCCCC  ;
+    }*/
+        pre {
+            font-family: Droid Sans Mono, Monaco, Consolas, "Lucida Console", monospace;
+            color: black;
+            font-size: 90%;
+            background-color: #ffffff;
+            padding: 1.2em;
+            border: 2px solid #dddddd;
+            overflow: auto;
+        }
+        .org-info-box {
+            clear: both;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0.7em;
+        }
+        .org-info-box img {
+            float: left;
+            margin: 0em 0.5em 0em 0em;
+        }
+        .org-info-box p {
+            margin: 0em;
+            padding: 0em;
+        }
+        .builtin {
+            color: #f4a460;
+        }
+        .comment {
+            color: #737373;
+        }
+        .comment-delimiter {
+            color: #666666;
+        }
+        .constant {
+            color: #db7093;
+        }
+        .doc {
+            color: #b3b3b3;
+        }
+        .function-name {
+            color: #5f9ea0;
+        }
+        .headline {
+            color: #ffffff;
+            background-color: #000000;
+            font-weight: bold;
+        }
+        .keyword {
+            color: #4682b4;
+        }
+        .negation-char {}
+        .regexp-grouping-backslash {}
+        .regexp-grouping-construct {}
+        .string {
+            color: #ccc79a;
+        }
+        .todo-comment {
+            color: #ffffff;
+            background-color: #000000;
+            font-weight: bold;
+        }
+        .variable-name {
+            color: #ff6a6a;
+        }
+        .warning {
+            color: #ffffff;
+            background-color: #cd5c5c;
+            font-weight: bold;
+        }
+        pre.a {
+            color: inherit;
+            background-color: inherit;
+            font: inherit;
+            text-decoration: inherit;
+        }
+        pre.a:hover {
+            text-decoration: underline;
+        }
+        /* Styles for org-info.js */
+        .org-info-js_info-navigation {
+            border-style: none;
+        }
+        #org-info-js_console-label {
+            font-size: 10px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .org-info-js_search-highlight {
+            background-color: #ffff00;
+            color: #000000;
+            font-weight: bold;
+        }
+        #org-info-js-window {
+            border-bottom: 1px solid black;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        .org-info-search-highlight {
+            background-color: #adefef;
+            /* same color as emacs default */
+            color: #000000;
+            font-weight: bold;
+        }
+        /* knitr */
+        .knitr.inline {
+            background-color: #f7f7f7;
+            border: solid 1px #B0B0B0;
+        }
+        .error {
+            font-weight: bold;
+            color: #FF0000;
+        }
+        ,
+        .warning {
+            font-weight: bold;
+        }
+        .message {
+            font-style: italic;
+        }
+        .source,
+        .output,
+        .warning,
+        . error,
+        .message {
+            padding: 0em 1em;
+            border: solid 1px #F7F7F7;
+        }
+        .source {
+            background-color: #f5f5f5;
+        }
+        .rimage.left {
+            text-align: left;
+        }
+        .rimage.right {
+            text-align: right;
+        }
+        .rimage.center {
+            text-align: center;
+        }
+        .hl.num {
+            color: #AF0F91;
+        }
+        .hl.str {
+            color: #317ECC;
+        }
+        .hl.com {
+            color: #AD95AF;
+            font-style: italic;
+        }
+        .hl.opt {
+            color: #000000;
+        }
+        .hl.std {
+            color: #585858;
+        }
+        .hl.kwa {
+            color: #295F94;
+        }
+        .hl.kwb {
+            color: #B05A65;
+        }
+        .hl.kwc {
+            color: #55aa55;
+        }
+        .hl.kwd {
+            color: #BC5A65;
+        }
+        dt {
+            font-style: italic;
+        }
+        .figure {
+            margin-left: auto;
+            margin-right: auto;
+            align: center;
+            font-style: italic;
+        }
+        #show_source {
+            margin: 0;
+            padding: 0;
+        }
+        #postamble {
+            font-size: 75%;
+            min-width: 700px;
+            max-width: 80%;
+            margin-left: 20px;
+            margin-top: 10px;
+            padding: .2em;
+            border: 1px solid gray;
+            background-color: #ffffff;
+            z-index: -1000;
+        }
+        [type="application/octet-stream"] {
+            visibility: hidden;
+            display: none;
+        }
+        #denglu * {
+            vertical-align: middle;
+            font-size: 14px;
+        }
+        .leftHeight,
+        .rightHeight {
+            padding: 10px;
+            display: table-cell;
+        }
+
+        div.metagenome_info {
+            width: 70%;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .metagenome_info ul li.odd {
+            background: white;
+        }
+
+        .metagenome_info ul li {
+            background: #F7F7F7;
+            border-bottom: 1px dashed #D2DADA;
+            color: #273E53;
+            clear: left;
+            display: block;
+            font-size: 12px;
+            height: 20px;
+            line-height: 12px;
+            list-style-position: outside;
+            margin: 0 auto;
+            padding: 10px 5px 5px;
+        }
+
+        .metagenome_info ul li label {
+            color: black;
+            font-style: italic;
+            float: left;
+            margin: 0 10px 0 0;
+            width: 100px;
+        }
+
+        .metagenome_info ul li span {
+            display: block;
+            font-weight: bold;
+            float: left;
+            width: 160px;
+        }
+        .ui-columns-table {
+            overflow-y: auto;
+        }
+    }
+
+    @media screen {
+        #table-of-contents {
+            font-size: 10pt;
+            position: fixed;
+            left: 0em;
+            top: 0em;
+            background: white;
+            line-height: 12pt;
+            text-align: right;
+            box-shadow: 0 0 1em #777777;
+            -webkit-box-shadow: 0 0 1em #777777;
+            -moz-box-shadow: 0 0 1em #777777;
+            -webkit-border-bottom-left-radius: 5px;
+            -moz-border-radius-bottomleft: 5px;
+            max-height: 80%;
+            overflow: auto;
+        }
+        #table-of-contents {
+            float: right;
+            border: 1px solid #CCC;
+            max-width: 50%;
+            overflow: auto;
+        }
+        #table-of-contents h2 {
+            font-size: 13pt;
+            max-width: 9em;
+            border: 0;
+            font-weight: normal;
+            padding-left: 0.5em;
+            padding-right: 0.5em;
+            padding-top: 0.05em;
+            padding-bottom: 0.05em;
+        }
+        #table-of-contents #text-table-of-contents {
+            display: none;
+            text-align: left;
+        }
+        #table-of-contents:hover #text-table-of-contents {
+            display: block;
+            padding: 0.5em;
+            margin-top: -1.5em;
+        }
+    }
+
+    @media print {}
+    </style>
+</head>
+<a id="_top"></a>
+<style type="text/css">
+#form_top {
+    display: block;
+    bottom: 30px;
+    right: 30px;
+    position: fixed;
+}
+
+.top_img {
+    background-image: url("files/image/top.png");
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+</style>
+
+<body>
+    <style>
+    table {
+        width: 100%;
+        max-width: 100%;
+        border: 1px solid #ddd;
+        border-spacing: 0;
+        border-collapse: collapse;
+    }
+
+    table>thead {
+        background-color: #d0e9fd;
+    }
+
+    table>tbody>tr:nth-of-type(odd) {
+        background-color: #f9f9f9;
+    }
+
+    table>thead>tr>th,
+    table>tbody>tr>td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        line-height: 1.5;
+        text-align: left;
+    }
+
+    table>tbody>tr:nth-of-type(odd).nobgcolor {
+        background-color: #fff;
+    }
+    </style>
+    <title>{{XM}} 质控报告</title>
+    <div class="container shadow">
+        <header>
+            <img src="files/image/logo.png" class="pull-right" />
+        </header>
+        <div class="row">
+            <div role="main" class="col-md-9" style="width:90%">
+                <header>
+                    <h2 id="title" class="text-center">{{XM}} 质控报告</h2>
+                </header>
+                <div id="table-of-contents">
+                    <h2 style="text-align: left"><b>分析目录</b></h2>
+                    <div id="text-table-of-contents">
+                        <ul>
+                            <li><a href="#menu1">1 样品信息</a></li>
+                            <li><a href="#menu2">2 数据说明</a></li>
+                            <ul>
+                                <li><a href="#menu21">2.1 原始测序数据</a></li>
+                                <li><a href="#menu22">2.2 有效数据</a></li>
+                            </ul>
+                            <li><a href="#menu3">3 数据过滤方法</a></li>
+                            <ul>
+                            </ul>
+                            <li><a href="#menu4">4 质控结果</a></li>
+                            <ul>
+                                <li><a href="#menu41">4.1 测序数据产出统计</a></li>
+                                <li><a href="#menu42">4.2 碱基质量分布 & 碱基含量分布</a></li>
+                                <ul>
+                                    <li><a href="#menu421">4.2.1 碱基质量分布 </a></li>
+                                    <li><a href="#menu422">4.2.2 碱基含量分布</a></li>
+                                </ul>
+                            </ul>
+                            <li><a href="#menu5">5 附录</a></li>
+                            <ul>
+                    </div>
+                </div>
+                <h2 id="menu1"><span class="section-number-2">1</span> 样品信息</h2>
+                <section>
+                    <div id="a1c" class="contentblock">
+                        <table style='border:1px solid #eeeeee;width:400px;margin-left:60px;padding:10px'>
+                            <tr>
+                                <td>项目</td>
+                                <td>{{XM}}</td>
+                            </tr>
+                            <tr>
+                                <td>样本类型</td>
+                                <td>{{sampletype}}</td>
+                            </tr>
+                            <tr>
+                                <td>样本数目</td>
+                                <td>{{samplenum}}</td>
+                            </tr>
+                            <tr>
+                                <td>合同要求数据量 (G) </td>
+                                <td>{{sampleg}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </section>
+                <section>
+                    <div class='majorblock'>
+                        <h2 id="menu2"><span class="section-number-2">2</span> 数据说明</h2>
+                        <div id="content-menu21" class="outline-3">
+                            <h3 id="menu21"><span class="section-number-3">2.1</span> 原始序列数据</h3>
+                        </div>
+                        <div style="text-indent:2em" ＞ <p class="paragraph">测序数据的产生是经过了 DNA 提取、建库、测序多个步骤的，然而，这些步骤中产生的无效数据会对生物信息数据高级分析带来严重的干扰，比如建库阶段会出现建库长度的偏差，测序阶段会出现测序错误的情况。我们必须通过一些手段将这些无效数据过滤排除掉，以保证生物信息分析的正常进行。</p>
+                            <p>高通量测序 (如 Illumina Hiseq 测序平台) 测序得到的原始图像数据文件经碱基识别 (Base Calling) 分析转化为原始测序序列 (Sequenced Reads)，我们称之为 Raw Data 或 Raw Reads ，结果以 FASTQ (简称为fq) 文件格式存储，其中包含测序序列 (reads) 的序列信息以及其对应的测序质量信息。</p>
+                            <p><b>FASTQ 格式文件中每个read由四行描述，如下：</b></p>
+                            <ol>
+                                <p>@EAS139:136:FC706VJ:2:2104:15343:197393 1:Y:18:ATCACG</p>
+                                <p>GCTCTTTGCCCTTCTCGTCGAAAATTGTCTCCTCATTCGAAACTTCTCTGT</p>
+                                <p>+</p>
+                                <p>@@CFFFDEHHHHFIJJJ@FHGIIIEHIIJBHHHIJJEGIIJJIGHIGHCCF</p>
+                            </ol>
+                            <p><b>每个序列共有 4 行信息：</b></p>
+                            <ol>
+                                <p>第 1 行是序列名称，由测序仪产生，包含 index 序列及 read1 或 read2 标志；</p>
+                                <p>第 2 行是序列,由大写 “ACGTN” 组成；</p>
+                                <p>第 3 行是序列 ID ，也有省略了 ID 名称后直接用 “+” 表示；</p>
+                                <p>第 4 行是序列的测序质量，每个字符对应第 2 行每个碱基；</p>
+                            </ol>
+                            <p><b>Solexa 测序碱基质量值的表示方法:</b></p>
+                            <ol>
+                                <p>碱基的质量都是以 ASCII 值表示的，根据测序时采用的质量方案的不同，计算十进制的质量值的方法也有所区别，常见的计算方法如下所示：</p>
+                                <ol>
+                                    <p>（1）质量值 = 字符的 ASCII 值 - 64</p>
+                                    <p>（2）质量值 = 字符的 ASCII 值 - 33</p>
+                                </ol>
+                                <p>Solexa测序碱基质量值的范围是[0,40]，即 ASCII 值表示为[B,h] 或 [#,I]。</p>
+                            </ol>
+                            <p>Solexa 测序错误率与测序质量值简明对应关系。具体地，如果测序错误率用 e 表示，Solexa 碱基质量值用 Q 表示，则有如下关系 ：</p>
+                            <div style="text-align:center">
+                                <P><b>Q =-10 log10(e)</b></p>
+                            </div>
+                            </ol>
+                            <div style="margin: 0 auto;" align="center" id="example0"></div>
+                            <script src="files/js/table/jquery.min.js"></script>
+                            <script src="files/js/table/gotopage.js"></script>
+                            <script src="files/js/table/ajaxpaging.js"></script>
+                            <script src="files/js/table/jquery.columns.min.js"></script>
+                            <script>
+                            var columns1 = $('#example0').columns({
+                                data: [
+                                    { 'Phred分值': 10, '不正确的碱基识别 ': '1/10', '碱基正确识别率 ': '90%', 'Q-sorce': 'Q10', },
+                                    { 'Phred分值': 20, '不正确的碱基识别 ': '1/100', '碱基正确识别率 ': '99%', 'Q-sorce': 'Q20', },
+                                    { 'Phred分值': 30, '不正确的碱基识别 ': '1/1000', '碱基正确识别率 ': '99.9%', 'Q-sorce': 'Q30', },
+                                    { 'Phred分值': 40, '不正确的碱基识别 ': '1/10000', '碱基正确识别率 ': '99.99%', 'Q-sorce': 'Q40', },
+
+                                ]
+                            });
+                            </script>
+                        </div>
+                        <div id="content-menu21" class="outline-3">
+                            <h3 id="menu22"><span class="section-number-3">2.2</span> 有效数据</h3>
+                        </div>
+                        <div style="text-indent:2em" ＞ <p class="paragraph">原始测序数据中会包含接头信息，低质量碱基，未测出的碱基（以 N 表示），这些信息会对后续的信息分析造成很大的干扰，通过精细的过滤方法将这些干扰信息去除掉，最终得到的数据即为有效数据，我们称之为 Clean Data 或 Clean reads ，该文件的数据格式与 Raw Data 完全一样。</p>
+                        </div>
+                    </div>
+                    <div id="content-menu21" class="outline-3">
+                        <h2 id="menu3"><span class="section-number-2">3</span> 数据过滤方法</h2>
+                    </div>
+                    <div style="text-indent:2em" ＞ <p class="paragraph">具体处理步骤如下：</p>
+                        <p>1)&nbsp;去除 Reads 中的接头序列；</br>
+                        </p>
+                        <p>2)&nbsp;去除 N 碱基 ( N 表示无法确定碱基信息)达到一定比例的 reads（默认 5bp）； </br>
+                        </p>
+                        <p>3)&nbsp;去除所含低质量碱基（质量值 ≤15）超过一定比例（默认 40%）的 reads； </br>
+                        </p>
+                        <p>4)&nbsp;滑窗质量剪裁：以一定大小 (默认 4bp) 为滑动窗大小，平均质量低于特定值 (默认 15) 的进行剪裁； </br>
+                        </p>
+                    </div>
+                    <div id="content-menu21" class="outline-3">
+                        <h2 id="menu4"><span class="section-number-2">4</span> 质控结果</h2>
+                    </div>
+                    <div id="content-menu21" class="outline-3">
+                        <h3 id="menu41"><span class="section-number-3">4.1</span> 测序数据产出统计</h3>
+                    </div>
+                    <div style="text-align:center">
+                        <p class="img-mark text-center small">表 4.1 数据预处理统计表</p>
+                    </div>
+                    <div style="margin: 0 auto;" align="center" id="example1"></div>
+                    <script src="files/js/table/jquery.min.js"></script>
+                    <script src="files/js/table/gotopage.js"></script>
+                    <script src="files/js/table/ajaxpaging.js"></script>
+                    <script src="files/js/table/jquery.columns.min.js"></script>
+                    <script>
+                    var columns1 = $('#example1').columns({ data:[
+				{{qcinfo}}
+				]});
+                    </script>
+                     <p class="tremark"><font size="2">说明：<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1) Sample：样本名称；<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2) Raw Data(G)：下机原始数据；<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3) Clean Data(G): 过滤得到的有效数据;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(4) Effective(%)：有效数据 (Clean Data) 与原始数据 (Raw Data) 的百分比；<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(5) Clean Q20 , Clean Q30：分别计算 Clean 数据 Phred 数值大于 20、30 的碱基占总体碱基的百分比；如果有需求可展示 Raw 数据的Raw Q20 , Raw Q30；<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(6) Error rate(%)：样本的错误率；<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(7) GC Content(%)：Clean Data 中碱基的 GC 含量；<br /></font>
+    </p>
+                    <div id="content-menu42" class="outline-3">
+                        <h3 id="menu42"><span class="section-number-3">4.2</span> 碱基质量分布 & 碱基含量分布</h3>
+                        <p class="paragraph">为了更完整地查看数据质量，本报告给出了每个 cycle 数据过滤前后的碱基质量和分布图，相应的信息由海普洛斯自主研发的数据质控软件 fastp 生成。</p>
+                    </div>
+                    <div id="content-menu42" class="outline-3">
+                        <h3 id="menu421"><span class="section-number-3">4.2.1</span> 碱基质量分布 </h3>
+                    </div>
+                    <div style="text-indent:2em" ＞ <p class="paragraph">测序碱基质量受测序仪本身、测序试剂、样品等多个因素共同影响。对于高通量测序技术，测序碱基质量分布具有以下特点：</p>
+                    </div>
+                    <div style="text-indent:2em" ＞ <p class="paragraph">测序质量会随着测序的进行而降低，这是由于测序过程中随着DNA模版被激发光照射的次数增加导致 DNA 模版损伤增加，因而导致测序质量的降低，这是 Illumina 高通量测序平台都具有的特征。点击下表所列样本名可查看每个样本的详细信息。</p>
+                    </div>
+                    <!--div style="width:80%;margin:auto">
+                        <table>
+                            <tr>
+                            {{samplehtml}}
+                        </tr>
+                        </table>
+                    </div-->
+                    <div style="text-indent:2em" ＞ <p class="paragraph">下面展示过滤后数据为碱基质量分布图：</p>
+                    </div>
+                    <div id="a212c" class="contentblock">
+                        <table>
+                            {{base1}}
+                        </table>
+                        <p class="paragraph">
+                            <font size="2">注：上面左右图分别是样本 R1 R2 过滤后的质量分布曲线，每幅图共5条曲线，分别是 A/T/C/G 和 mean 。</p>
+                        </font>
+                    </div>
+                    <div id="content-menu42" class="outline-3">
+                        <h3 id="menu422"><span class="section-number-3">4.2.2</span> 碱基含量分布 </h3>
+                    </div>
+                    <div id="a213c" class="contentblock">
+                        <p class='paragraph'>下面展示过滤后样本的碱基含量分布图：</p>
+                        <table>{{base2}}</table>
+                        <p class="paragraph">
+                            <font size="2">注：上面左右分别是样本 R1 R2 过滤后的碱基分布曲线，每幅图共 5 条曲线，A/T/C/G/ 显示了每一个位置的比例，GC 曲线显示了每一个位置 G+C 所占的总比例。</p>
+                        </font>
+                    </div>
+			<div style="width:80%;margin:auto">
+                        <table>
+                            <tr>
+                            {{samplehtml}}
+                        </tr>
+                        </table>
+                    </div>
+                    <h2 id="menu5"><span class="section-number-2">5</span> 附录</h2>
+                    <ol>
+                        <p><b>深圳市海普洛斯生物科技有限公司</b></p>
+                        <p>电话：400-999-8450</p>
+                        <p>邮箱：info@haplox.com</p>
+                        <p>Website：<a href="https://www.haplox.cn/" target="_blank">https://www.haplox.cn/</a></p>
+                        <p>地址：深圳市南山区高新北区松坪山路奥特迅电力大厦 8 层</p>
+                    </ol>
+                    <script type="text/javascript">
+                    function form_top() {
+                        document.write('<div id="form_top"><a href="#_top" title="回到顶部"><div class="top_img"></div></a></div>')
+                    }
+                    form_top();
+                    </script>
+                    <div id="form_top">
+                        <a href="#_top" title="回到顶部">
+                            <div class="top_img"></div>
+                        </a>
+                    </div>
+            </div>
+            </section>
+        </div>
+    </div>
+    </div>
+    <footer>
+        <div class="text-center">
+            <p>Copyright © 2014-2018 HaploX-海普洛斯</p>
+        </div>
+    </footer>
+    </div>
+</body>
+
+</html>

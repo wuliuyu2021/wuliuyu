@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>template</title>
+    <script src="src/js/echarts.js"></script>
+    <script src="src/js/westeros.js"></script>
+    <script src="src/js/shine.js"></script>
+    <link rel="short icon" href="images/bf.ico">
+    <script src="src/js/jquery.min.js"></script>
+    <script src="src/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="src/css/slider-pro.min.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="src/css/jquery.fancybox.css" media="screen" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="src/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="src/js/jquery.sliderPro.min.js"></script>
+    <script type="text/javascript" src="src/js/jquery.fancybox.pack.js"></script>
+    <link id="style" href="src/js/table/classic.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" type="text/css" href="src/css/buttons.css" media="screen" />
+    <style type="text/css">
+    @import url(http://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Droid+Serif);
+    @media all {
+        html {
+            margin: 0;
+            font: 300 .9em/1.6em "Droid Serif", Cambria, Georgia, "DejaVu Serif", serif;
+        }
+        body {
+            font-size: 12pt;
+            line-height: 24pt;
+            color: black;
+            margin-top: 0;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: justify;
+        }
+        body #content {
+            padding-top: 0px;
+            /* margin-left: 20px; */
+            background-color: white;
+            padding: 2em;
+            min-width: 600px;
+            max-width: 70%;
+            margin: auto;
+            font-family: "Arial", "Times New Roman";
+            font-weight: normal;
+        }
+        body .title {
+            margin-left: 0px;
+            font-size: 22pt;
+        }
+        span[class*='section-number-'] {
+            margin-right: 10px;
+        }
+        #license {
+            background-color: #eeeeee;
+        }
+        .caption {
+            font-style: italic;
+            text-align: center;
+            margin-top: 2px;
+            margin-bottom: 25px;
+            font-size: 11pt;
+        }
+        h1 {
+            /*font-family:sans-serif;*/
+            font-family: "Arial", "Times New Roman";
+            font-size: 2.1em;
+            padding: 30px 20px 20px 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            line-height: 110%;
+            color: #1881c2;
+            text-align: center;
+        }
+        h2 {
+            font-family: "Arial", "Times New Roman";
+            font-size: 1.45em;
+            line-height: 16px;
+            padding: 10px 0 10px 0;
+            color: #1881c2;
+            border-bottom: 1px solid #ddd;
+        }
+        .outline-text-2 {
+            margin-left: 0.1em;
+            font-family: "Arial", "Times New Roman";
+            /*font-weight: bold*/
+        }
+        h3 {
+            font-family: "Arial", "Times New Roman";
+            font-size: 1.3em;
+            color: #1881c2;
+            margin-left: 0.6em;
+            border-bottom: 1px solid #ddd;
+        }
+        .outline-text-3 {
+            margin-left: 0.9em;
+            font-family: "Arial", "Times New Roman";
+            /*font-weight: bold*/
+        }
+        h4 {
+            font-family: "Arial", "Times New Roman";
+            font-size: 1.2em;
+            margin-left: 1.2em;
+            color: #1881c2;
+            /*border-bottom: 1px solid #ddd;*/
+        }
+        .outline-text-4 {
+            margin-left: 1.45em;
+            font-family: "Arial", "Times New Roman"
+        }
+        h5 {
+            font-family: "Arial", "Times New Roman";
+            font-size: 0.9em;
+            /*margin-left: 1.2em;*/
+            color: #1881c2;
+            /*border-bottom: 1px solid #ddd;*/
+        }
+        .outline-text-5 {
+            margin-left: 1.45em;
+        }
+
+        a {
+            text-decoration: none;
+            font-weight: 400;
+            color: #35817D
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .todo {
+            color: #CA0000;
+        }
+        .done {
+            color: #006666;
+        }
+        .timestamp-kwd {
+            color: #444;
+        }
+        .tag {}
+        li {
+            margin: .4em;
+        }
+        table {
+            border: none;
+        }
+        td {
+            border: none;
+        }
+        th {
+            border: none;
+        }
+        p {
+            font-family: "Arial", "Times New Roman"
+        }
+        p.dl {
+            text-indent: 2em;
+            font-family: "Arial", "Times New Roman";
+            font-weight: normal;
+        }
+        li.dl {
+            text-indent: 2em;
+            font-family: "Arial", "Times New Roman";
+            font-weight: normal;
+        }
+        /*tr {
+        border-bottom:1px solid #CCCCCC  ;
+    }*/
+        pre {
+            font-family: Droid Sans Mono, Monaco, Consolas, "Lucida Console", monospace;
+            color: black;
+            font-size: 90%;
+            background-color: #ffffff;
+            padding: 1.2em;
+            border: 2px solid #dddddd;
+            overflow: auto;
+        }
+        .org-info-box {
+            clear: both;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0.7em;
+        }
+        .org-info-box img {
+            float: left;
+            margin: 0em 0.5em 0em 0em;
+        }
+        .org-info-box p {
+            margin: 0em;
+            padding: 0em;
+        }
+        .builtin {
+            color: #f4a460;
+        }
+        .comment {
+            color: #737373;
+        }
+        .comment-delimiter {
+            color: #666666;
+        }
+        .constant {
+            color: #db7093;
+        }
+        .doc {
+            color: #b3b3b3;
+        }
+        .function-name {
+            color: #5f9ea0;
+        }
+        .headline {
+            color: #ffffff;
+            background-color: #000000;
+            font-weight: bold;
+        }
+        .keyword {
+            color: #4682b4;
+        }
+        .negation-char {}
+        .regexp-grouping-backslash {}
+        .regexp-grouping-construct {}
+        .string {
+            color: #ccc79a;
+        }
+        .todo-comment {
+            color: #ffffff;
+            background-color: #000000;
+            font-weight: bold;
+        }
+        .variable-name {
+            color: #ff6a6a;
+        }
+        .warning {
+            color: #ffffff;
+            background-color: #cd5c5c;
+            font-weight: bold;
+        }
+        pre.a {
+            color: inherit;
+            background-color: inherit;
+            font: inherit;
+            text-decoration: inherit;
+        }
+        pre.a:hover {
+            text-decoration: underline;
+        }
+        /* Styles for org-info.js */
+        .org-info-js_info-navigation {
+            border-style: none;
+        }
+        #org-info-js_console-label {
+            font-size: 10px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .org-info-js_search-highlight {
+            background-color: #ffff00;
+            color: #000000;
+            font-weight: bold;
+        }
+        #org-info-js-window {
+            border-bottom: 1px solid black;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        .org-info-search-highlight {
+            background-color: #adefef;
+            /* same color as emacs default */
+            color: #000000;
+            font-weight: bold;
+        }
+        /* knitr */
+        .knitr.inline {
+            background-color: #f7f7f7;
+            border: solid 1px #B0B0B0;
+        }
+        .error {
+            font-weight: bold;
+            color: #FF0000;
+        }
+        ,
+        .warning {
+            font-weight: bold;
+        }
+        .message {
+            font-style: italic;
+        }
+        .source,
+        .output,
+        .warning,
+        .error,
+        .message {
+            padding: 0em 1em;
+            border: solid 1px #F7F7F7;
+        }
+        .source {
+            background-color: #f5f5f5;
+        }
+        .rimage.left {
+            text-align: left;
+        }
+        .rimage.right {
+            text-align: right;
+        }
+        .rimage.center {
+            text-align: center;
+        }
+        .hl.num {
+            color: #AF0F91;
+        }
+        .hl.str {
+            color: #317ECC;
+        }
+        .hl.com {
+            color: #AD95AF;
+            font-style: italic;
+        }
+        .hl.opt {
+            color: #000000;
+        }
+        .hl.std {
+            color: #585858;
+        }
+        .hl.kwa {
+            color: #295F94;
+        }
+        .hl.kwb {
+            color: #B05A65;
+        }
+        .hl.kwc {
+            color: #55aa55;
+        }
+        .hl.kwd {
+            color: #BC5A65;
+        }
+        dt {
+            font-style: italic;
+        }
+        .figure {
+            margin-left: auto;
+            margin-right: auto;
+            align: center;
+            font-style: italic;
+        }
+        #show_source {
+            margin: 0;
+            padding: 0;
+        }
+        #postamble {
+            font-size: 75%;
+            min-width: 700px;
+            max-width: 80%;
+            margin-left: 20px;
+            margin-top: 10px;
+            padding: .2em;
+            border: 1px solid gray;
+            background-color: #ffffff;
+            z-index: -1000;
+        }
+        [type="application/octet-stream"] {
+            visibility: hidden;
+            display: none;
+        }
+        #denglu * {
+            vertical-align: middle;
+            font-size: 14px;
+        }
+        .leftHeight,
+        .rightHeight {
+            padding: 10px;
+            display: table-cell;
+        }
+
+        div.metagenome_info {
+            width: 70%;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .metagenome_info ul li.odd {
+            background: white;
+        }
+
+        .metagenome_info ul li {
+            background: #F7F7F7;
+            border-bottom: 1px dashed #D2DADA;
+            color: #273E53;
+            clear: left;
+            display: block;
+            font-size: 12px;
+            height: 20px;
+            line-height: 12px;
+            list-style-position: outside;
+            margin: 0 auto;
+            padding: 10px 5px 5px;
+        }
+
+        .metagenome_info ul li label {
+            color: black;
+            font-style: italic;
+            float: left;
+            margin: 0 10px 0 0;
+            width: 100px;
+        }
+
+        .metagenome_info ul li span {
+            display: block;
+            font-weight: bold;
+            float: left;
+            width: 160px;
+        }
+        .ui-columns-table {
+            overflow-y: auto;
+        }
+        .form-control {
+            color: #555555;
+            background-color: #ffffff;
+            background-image: none;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+        }
+    }
+
+    @media screen {
+        #table-of-contents {
+            font-size: 10pt;
+            position: fixed;
+            left: 0em;
+            top: 0em;
+            background: white;
+            line-height: 12pt;
+            text-align: right;
+            box-shadow: 0 0 1em #777777;
+            -webkit-box-shadow: 0 0 1em #777777;
+            -moz-box-shadow: 0 0 1em #777777;
+            -webkit-border-bottom-left-radius: 5px;
+            -moz-border-radius-bottomleft: 5px;
+            max-height: 80%;
+            overflow: auto;
+        }
+        #table-of-contents {
+            float: right;
+            border: 1px solid #CCC;
+            max-width: 50%;
+            overflow: auto;
+        }
+        #table-of-contents h2 {
+            font-size: 13pt;
+            max-width: 9em;
+            border: 0;
+            font-weight: normal;
+            padding-left: 0.5em;
+            padding-right: 0.5em;
+            padding-top: 0.05em;
+            padding-bottom: 0.05em;
+        }
+        #table-of-contents #text-table-of-contents {
+            display: none;
+            text-align: left;
+        }
+        #table-of-contents:hover #text-table-of-contents {
+            display: block;
+            padding: 0.5em;
+            margin-top: -1.5em;
+        }
+    }
+
+    @media print {}
+    </style>
+</head>
+
+<body>
+    <a id="_top"></a>
+    <style type="text/css">
+    #form_top {
+        display: block;
+        bottom: 30px;
+        right: 30px;
+        position: fixed;
+    }
+
+    .top_img {
+        background-image: url("src/images/top.png");
+        width: 26px;
+        height: 26px;
+        cursor: pointer;
+    }
+    </style>
+    <style type="text/css">
+    #form_logo {
+        display: block;
+        top: 10px;
+        right: 50px;
+        position: absolute;
+    }
+
+    .logo_img {
+        background: url("src/images/newlogo.png") no-repeat center center;
+        background-size: contain;
+        width: 427px;
+        height: 128px;
+        cursor: pointer;
+    }
+    </style>
+    <style type="text/css">
+    table.tacl {
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin-right: auto;
+        margin-left: auto;
+        width: 100%;
+    }
+
+    th.thcl {
+        /*border: 1px solid #b5d6e6;*/
+        font-size: 90%;
+        font-weight: normal;
+        text-align: center;
+        vertical-align: middle;
+        height: 20px;
+        /*background-color: Gray;*/
+    }
+
+    td.tdc1 {
+        /*border: 1px solid #b5d6e6;*/
+        font-size: 90%;
+        font-weight: normal;
+        text-align: center;
+        vertical-align: middle;
+        height: 20px;
+    }
+
+    tr:hover.trcl {
+        background-color: #CCCCCC;
+    }
+
+    tr.l {
+        border-bottom: 1px solid #CCCCCC;
+    }
+    </style>
+    <!--轮播-->
+    <script type="text/javascript">
+    $(document).ready(function($) {
+        $('#lunbo').sliderPro({
+            width: 600,
+            height: 500,
+            fade: true,
+            arrows: true,
+            imageScaleMode: 'exact',
+            buttons: true,
+            fullScreen: true,
+            shuffle: true,
+            smallSize: 500,
+            mediumSize: 1000,
+            largeSize: 3000,
+            thumbnailArrows: true,
+            autoplay: false,
+
+        });
+        $('#lunbo .sp-image').parent('a').on('click', function(event) {
+            event.preventDefault();
+
+            if ($('#lunbo').hasClass('sp-swiping') === false) {
+                $.fancybox.open($('#lunbo .sp-image').parent('a'), { index: $(this).parents('.sp-slide').index() });
+            }
+        });
+    });
+    </script>
+    <!--轮播2-->
+    <script type="text/javascript">
+    $(document).ready(function($) {
+        $('#lunbo2').sliderPro({
+            width: 700,
+            height: 500,
+            fade: true,
+            arrows: true,
+            imageScaleMode: 'exact',
+            buttons: true,
+            fullScreen: true,
+            shuffle: true,
+            smallSize: 500,
+            mediumSize: 1000,
+            largeSize: 3000,
+            thumbnailArrows: true,
+            autoplay: false,
+
+        });
+        $('#lunbo2 .sp-image').parent('a').on('click', function(event) {
+            event.preventDefault();
+
+            if ($('#lunbo2').hasClass('sp-swiping') === false) {
+                $.fancybox.open($('#lunbo2 .sp-image').parent('a'), { index: $(this).parents('.sp-slide').index() });
+            }
+        });
+    });
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function($) {
+        $('#lunbo3').sliderPro({
+            width: 700,
+            height: 500,
+            fade: true,
+            arrows: true,
+            imageScaleMode: 'exact',
+            buttons: true,
+            fullScreen: true,
+            shuffle: true,
+            smallSize: 500,
+            mediumSize: 1000,
+            largeSize: 3000,
+            thumbnailArrows: true,
+            autoplay: false,
+
+        });
+        $('#lunbo3 .sp-image').parent('a').on('click', function(event) {
+            event.preventDefault();
+
+            if ($('#lunbo3').hasClass('sp-swiping') === false) {
+                $.fancybox.open($('#lunbo3 .sp-image').parent('a'), { index: $(this).parents('.sp-slide').index() });
+            }
+        });
+    });
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function($) {
+        $('#lunbo4').sliderPro({
+            width: 700,
+            height: 500,
+            fade: true,
+            arrows: true,
+            imageScaleMode: 'exact',
+            buttons: true,
+            fullScreen: true,
+            shuffle: true,
+            smallSize: 500,
+            mediumSize: 1000,
+            largeSize: 3000,
+            thumbnailArrows: true,
+            autoplay: false,
+
+        });
+        $('#lunbo4 .sp-image').parent('a').on('click', function(event) {
+            event.preventDefault();
+
+            if ($('#lunbo4').hasClass('sp-swiping') === false) {
+                $.fancybox.open($('#lunbo4 .sp-image').parent('a'), { index: $(this).parents('.sp-slide').index() });
+            }
+        });
+    });
+    </script>
+
+    <script type="text/javascript">
+    $(document).ready(function($) {
+        $('#lunbo5').sliderPro({
+            width: 700,
+            height: 500,
+            fade: true,
+            arrows: true,
+            imageScaleMode: 'exact',
+            buttons: true,
+            fullScreen: true,
+            shuffle: false,
+            smallSize: 500,
+            mediumSize: 1000,
+            largeSize: 3000,
+            thumbnailArrows: true,
+            autoplay: false,
+
+        });
+        $('#lunbo5 .sp-image').parent('a').on('click', function(event) {
+            event.preventDefault();
+
+            if ($('#lunbo5').hasClass('sp-swiping') === false) {
+                $.fancybox.open($('#lunbo5 .sp-image').parent('a'), { index: $(this).parents('.sp-slide').index() });
+            }
+        });
+    });
+    </script>
+
+    <script type="text/javascript">
+    $(document).ready(function($) {
+        $('#lunbo6').sliderPro({
+            width: 700,
+            height: 500,
+            fade: true,
+            arrows: true,
+            imageScaleMode: 'exact',
+            buttons: true,
+            fullScreen: true,
+            shuffle: false,
+            smallSize: 500,
+            mediumSize: 1000,
+            largeSize: 3000,
+            thumbnailArrows: true,
+            autoplay: false,
+
+        });
+        $('#lunbo6 .sp-image').parent('a').on('click', function(event) {
+            event.preventDefault();
+
+            if ($('#lunbo6').hasClass('sp-swiping') === false) {
+                $.fancybox.open($('#lunbo6 .sp-image').parent('a'), { index: $(this).parents('.sp-slide').index() });
+            }
+        });
+    });
+    </script>
+
+    <script type="text/javascript">
+    $(document).ready(function($) {
+        $('#lunbo7').sliderPro({
+            width: 600,
+            height: 600,
+            fade: true,
+            arrows: true,
+            imageScaleMode: 'exact',
+            buttons: true,
+            fullScreen: true,
+            shuffle: false,
+            smallSize: 500,
+            mediumSize: 1000,
+            largeSize: 3000,
+            thumbnailArrows: true,
+            autoplay: false,
+
+        });
+        $('#lunbo7 .sp-image').parent('a').on('click', function(event) {
+            event.preventDefault();
+
+            if ($('#lunbo7').hasClass('sp-swiping') === false) {
+                $.fancybox.open($('#lunbo7 .sp-image').parent('a'), { index: $(this).parents('.sp-slide').index() });
+            }
+        });
+    });
+    </script>
+
+    <script type="text/javascript">
+    function show() {
+        var mychar = document.getElementById("show");
+        if (mychar.style.display == "block") {
+            mychar.style.display = 'none';
+        } else {
+            mychar.style.display = 'block';
+        }
+    }
+    </script>
+    <div id="content">
+        <div id="form_logo">
+            <div class="logo_img"></div>
+        </div>
+        <!--img src="src/images/newlogo.png" style="width:40%;height: 40px;float:right" /-->
+        <h1 class="title" style="margin-top: 40px">转录组分析结题报告模板</h1>
+        <!--目录-->
+        <div id="table-of-contents" style="z-index: 1">
+            <h2 style="text-align: center"><b>分析目录</b></h2>
+            <div id="text-table-of-contents">
+                <ul>
+                    <li><a href="#menu1">1. 概述</a></li>
+                    <li><a href="#menu2">2. 项目流程</a></li>
+                    <ul>
+                        <li><a href="#menu21">2.1. 建库测序流程</a></li>
+                        <li><a href="#menu22">2.2. 信息分析流程</a></li>
+                    </ul>
+                    <li><a href="#menu3">3. 分析结果</a></li>
+                    <ul>
+                        <li><a a href="#menu31">3.1. 测序数据预处理</a></li>
+                        <ul>
+                            <li><a href="#menu311">3.1.1. 测序数据统计汇总</a></li>
+                            <li><a href="#menu312">3.1.2. 测序错误率与碱基分布</a></li>
+                        </ul>
+                        <li><a href="#menu32">3.2. 参考序列比对分析</a></li>
+                        <ul>
+                            <li><a href="#menu321">3.2.1. 比对结果统计分析</a></li>
+                            <li><a href="#menu322">3.2.2. 比对区域分布</a></li>
+                        </ul>
+                        <li><a href="#menu33">3.3. 表达量分析</a></li>
+                        <ul>
+                            <li><a href="#menu331">3.3.1 ReadsCount统计表</a></li>
+                            <li><a href="#menu332">3.3.2 FPKM统计</a></li>
+                            <li><a href="#menu333">3.3.3 样本相关性分析</a></li>
+                        </ul>
+                        <li><a href="#menu34">3.4. 差异基因分析</a></li>
+                        <ul>
+                            <li><a href="#menu341">3.4.1. 差异基因表</a></li>
+                            <li><a href="#menu342">3.4.2. 差异基因火山图</a></li>
+                            <li><a href="#menu343">3.4.3. 差异基因聚类图</a></li>
+                            <li><a href="#menu344">3.4.4. 差异基因韦恩图</a></li>
+                        </ul>
+                        <li><a href="#menu35">3.5. 差异基因功能富集分析</a></li>
+                        <ul>
+                            <li><a href="#menu351">3.5.1. GO功能富集分析</a></li>
+                            <li><a href="#menu352">3.5.2. KEGG功能富集分析</a></li>
+                        </ul>
+						 <li><a href="#menu39">3.6. 差异基因蛋白互作网络分析</a></li>
+                        <li><a href="#menu36">3.7. 差异可变剪接分析</a></li>
+                        <ul>
+                            <li><a href="#menu361">3.7.1. 差异可变剪接统计</a></li>
+                        </ul>
+                        <li><a href="#menu37">3.8. 融合基因分析</a></li>
+                        <ul>
+                            <li><a href="#menu371">3.8.1. 融合基因检测和注释</a></li>
+                            <li><a href="#menu372">3.8.2. 融合基因染色体分布</a></li>                           
+                        </ul>
+                        <li><a href="#menu38">3.9. 变异位点分析</a></li>
+                        <ul>
+                            <li><a href="#menu381">3.9.1. 变异位点检测</a></li>
+                            <li><a href="#menu382">3.9.2. 变异位点统计</a></li>                            
+                        </ul>
+                       
+                    </ul>
+                    <li><a href="#menu4">4. 软件列表</a></li>
+                    <li><a href="#menu5">5. 参考文献</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="outline-text-2">
+            <p>项目编号：007</p>
+            <p>项目名称：人转录组 RNA-seq 结题报告 V1.0</p>
+            <p>报告时间：2017-10-19</p>
+        </div>
+        <!--标题一-->
+        <div id="content-menu1" class="outline-2">
+            <h2 id="menu1"><span class="section-number-2">1</span> 概述</h2>
+            <div class="outline-text-2" id="text-2">
+                <p class="dl">转录组 ( Transcriptome ) 是指在特定环境或生理条件下的一个细胞或一个细胞群中所有RNA分子的集合,包括信使 RNA ( mRNA )、核糖体 RNA ( rRNA )、转运 RNA ( tRNA )及非编码 RNA ( ncRNA )。它有时被用来指所有的 RNA，或仅指 mRNA，指何种 RNA 取决于我们设计的特定的实验，以下转录组分析仅基于 mRNA 分析。转录组不同于正常基因组的稳定性，转录组会随外界环境的变化而变化。转录组可以反映不同实验条件和不同时间里基因表达的变化，但是除了转录衰减等 mRNA 降解现象外，因为无法获取其序列信息。根据实验设计获得不同的实验样本后，提取 mRNA 并通过二代测序获取 RNA 序列信息用于后续信息分析，本报告分析主要以转录组的差异基因分析为重点，并进行功能注释来进一步了解不同的实验设计或环境是如何对样本的各基因功能表达的表达进行影响。</p>
+            </div>
+        </div>
+        <!--标题二-->
+        <div id="content-menu2" class="outline-2">
+            <h2 id="menu2"><span class="section-number-2">2</span> 项目流程</h2>
+            <div id="content-menu21" class="outline-3">
+                <h3 id="menu21"><span class="section-number-3">2.1</span> 建库测序流程</h3>
+            </div>
+            <div class="outline-text-3" id="text-2-1">
+                
+                <img src="src/images/sylct.png" style="width: 100%;height: 10%;margin-top: 10px" />
+                <p style="text-align: center; font-size: 15px">图 2.1 &nbsp;&nbsp;RNA-seq 实验流程图</p>
+                <p><b style="color:#1881c2">2.1.1 RNA 样品</b></p>
+                <p class="dl">海普洛斯对 DNA 样品的检测主要包括以下几点：
+                    <br \>
+                    <li class="dl">1) NanoDrop™ One/OneC : 检测 RNA 纯度 (OD260/280,OD260/230比值 )</li>
+                    <li class="dl">2) Life Invitrogen Qubit® 3.0 荧光定量仪 : 采用 Qubit™ RNA HS Assay Kit 精确定量</li>
+                    <li class="dl">3) Agilent 4200 TapeStation 系统：精确检测 RNA 完整性 ( RIN值 ) </li>
+                </p>
+            </div>
+            <div class="outline-text-3" id="text-1" style="margin-top:25px ">
+                <p><b style="color:#1881c2">2.1.2 文库构建及库检</b></p>
+                <p class="dl">mRNA 捕获建库方案 : 真核生物大部分 mRNA 具有 polyA 的结构，因此我们可以采用带 Oligo ( DT ) 的磁珠将含有 polyA 结构的 mRNA 捕获出来，之后以片段化的mRNA为模版，随机寡核苷酸为引物，在M-MuLV逆转录酶体系中合成cDNA第一条链，随后用RNaseH降解RNA链，并在DNA polymerase I 体系下,以dNTPs为原料合成cDNA第二条链。纯化后的双链cDNA经过末端修复、加A尾并连接测序接头，用AMPure XP beads筛选200bp左右的cDNA，进行PCR扩增并再次使用AMPure XP beads纯化PCR产物，最终获得文库。</p>
+            </div>
+            <div class="outline-text-3" id="text-2-1-1" style="margin-top:25px ">
+                <div text-align="center">
+                    <div style="text-align: center;">
+                        <img src="src/images/zhsy.png" width="40%" height="40%" style="margin-top: 20px;" />
+                    </div>
+                    <p style="text-align: center; font-size: 15px">图 2.1.1 &nbsp;&nbsp;RNA-seq 捕获建库流程图</p>
+                </div>
+            </div>
+            <div class="outline-text-3">
+                <p class="dl">库检主要包括以下几点:
+                    <br />
+                    <li class="dl">1Kapa qPcr 定量试剂盒 : 精确定量文库浓度</li>
+                    <li class="dl">Agilent 4200 TapeStation 系统 : 精确检测文库片段大小。</li>
+                </p>
+            </div>
+
+            <div class="outline-text-3" id="text-1" style="margin-top:25px ">
+                <p><b style="color:#1881c2">2.1.3 上机测序</b></p>
+                <p class="dl">库检合格后，把不同文库按照有效浓度及目标下机数据量的需求 pooling 后进行 Illumina HiSeq 测序。</p>
+            </div>
+
+            <div id="content-menu22" class="outline-3">
+                <h3 id="menu22"><span class="section-number-3">2.2</span> 信息分析流程</h3>
+            </div>
+            <div class="outline-text-3" id="text-2-1-3">
+                <p class="dl">我们的信息分析流程主要包括数据质控，参考基因组比对，基因表达量分析，差异富集分析、变异检测分析、差异变剪切以及差异基因的蛋白互作分析。</p>
+                <p class="dl"> 1）数据质控 ：测序数据的质量是下游信息分析结果是否可靠的重要前提，因此对于下机数据我们需要进行一定的质控来获取高质量的测序数据。</p>
+                <p class="dl"> 2）参考基因组比对 ：从各样品质控后的 Clean Data 出发，将 Clean Data 比对到参考基因组进行比对结果的统计。</p>
+                <p class="dl"> 3）基因表达量分析 ：根据比对结果进行基因定量和差异基因分析，基因定量主要是查看各转录本有多少测序序列覆盖 ( Reads Count )。</p>
+                <p class="dl"> 4）差异基因分析和功能富集分析 ：通过基因定量信息进行样本间差异基因的分析，是下游分析的重点，最后根据在样本间获取的差异基因在通过功能注释库，比如 GO 和 KEGG 等数据库来获取差异基因显著富集的功能信息，以及差异基因的蛋白互作分析。</p>
+                <p class="dl"> 5）变异检测分析 ：基于转录组数据进行 SNP 、Indel 、融合基因的变异检测以及注释，在转录组层面挖掘与疾病相关的变异信息。</p>
+                <p class="dl">本报告信息分析流程具体如下：</p>
+            </div>
+            <div style="text-align: center;">
+                <img src="src/images/lc.png" width="45%" height="40%" style="margin-top: 20px;" />
+                <p style="text-align: center;">图 2.2 &nbsp;&nbsp;信息分析流程</p>
+            </div>
+        </div>
+        <!--标题三-->
+        <div id="content-menu3" class="outline-2">
+            <h2 id="menu3"><span class="section-number-2">3</span> 分析结果</h2>
+            <div id="content-menu31" class="outline-3">
+                <h3 id="menu31"><span class="section-number-3">3.1</span> 测序数据预处理</h3>
+                
+                <div class="outline-text-3" id="text-3-1-1">
+                    <p class="dl">测序获得的原始数据 (Raw Data) 存在一定比例低质量数据，会对后续信息分析造成很大干扰。合格的测序数据是后续信息分析结果是否可靠的前提，因此需要对原始数据进行数据的预处理和评估。我们通过使用自主研发的开源软件 fastp [<a href="#fastp">1</a>]对原始数据进行处理，对低质量序列进行过滤，过滤内容包括如下部分：
+                        <br>
+                        <li class="dl">去除带接头 ( Adapter ) Reads 序列</li>
+                        <li class="dl">去除 N ( N 表示无法确定碱基信息 ) 碱基数达到一定比例的 Reads (默认 5bp) </li>
+                        <li class="dl">去除所含低质量碱基 (质量值 ≤20) 超过一定比例 (默认 40%) 的 Reads</li>
+                       
+                        <p class="dl">上述的处理步骤均是对 Read 1 和 Read 2 进行操作。各样本测序数据预处理统计结果见表 3.1，更多详细信息请点击<a href="src/QC_report/QC_report.html">QC_Report</a>。</p>
+                    </p>
+                </div>
+
+                
+               
+                <div style="position: relative;" class="outline-text-4">
+                    <p style="position: absolute; left: 45%; top: 0; margin: 0; line-height: 53px;text-align: center;">表 3.1 数据预处理统计表 </p>
+                    <div style="margin: 0 auto;" align="center" id="example1">
+                    </div>    
+                </div>
+                
+                <script src="src/js/table/jquery.min.js"></script>
+                <script src="src/js/table/gotopage.js"></script>
+                <script src="src/js/table/ajaxpaging.js"></script>
+                <script src="src/js/table/jquery.columns.min.js"></script>
+                <script>
+                var columns1 = $('#example1').columns({
+                    data: [
+                        { 'Sample': "case1", 'Raw Reads(G)': '5.3', 'Clean Reads(G) ': '5.2', 'Q20(%)': "98.17", 'Q30(%)': "95.092", 'Error rate(%)': '0.002', "GC Content(%)": "47%" },
+                        { 'Sample': "case2", 'Raw Reads(G)': '5.7', 'Clean Reads(G) ': '5.4', 'Q20(%)': "98.27", 'Q30(%)': "95.092", 'Error rate(%)': '0.002', "GC Content(%)": "47%" },
+                        { 'Sample': "case3", 'Raw Reads(G)': '5.9', 'Clean Reads(G) ': '5.8', 'Q20(%)': "98.37", 'Q30(%)': "95.092", 'Error rate(%)': '0.002', "GC Content(%)": "47%" },
+                        { 'Sample': "nc1", 'Raw Reads(G)': '5.3', 'Clean Reads(G) ': '5.2', 'Q20(%)': "98.47", 'Q30(%)': "95.092", 'Error rate(%)': '0.002', "GC Content(%)": "47%" },
+                        { 'Sample': "nc2", 'Raw Reads(G)': '5.6', 'Clean Reads(G) ': '5.4', 'Q20(%)': "98.37", 'Q30(%)': "95.192", 'Error rate(%)': '0.002', "GC Content(%)": "47%" },
+                        { 'Sample': "nc3", 'Raw Reads(G)': '5.9', 'Clean Reads(G) ': '5.8', 'Q20(%)': "98.57", 'Q30(%)': "95.042", 'Error rate(%)': '0.002', "GC Content(%)": "47%" },
+
+                    ],
+                    //size: 10            
+                });
+                </script>
+            </div>
+            <div class="outline-text-4">
+                <p style="font-size: 10px"><b>上表说明：</b>
+                    <br \> (1) Sample ：样品名
+                    <br \> (2) Raw Reads(G) ：统计每个原始数据文件的 Reads 数量
+                    <br \> (3) Clean Reads(G) ：统计每个过滤后的数据文件的 Reads 数量
+                    <br \> (4) Q20、Q30(%) ：分别计算 Phred 数值大于20、30的碱基占总体碱基的百分比
+                    <br \> (5) Error rate(%) ：样本的错误率
+                    <br \> (6) GC Content ：计算碱基 G 和 C 的总数量和占总的碱基数量的百分比
+                    <br \>
+                </p>
+            </div>
+           
+        </div>
+        <!--标题四-->
+        <div id="content-menu32" class="outline-3">
+            <h3 id="menu32"><span class="section-number-3">3.2</span> 参考基因组比对分析</h3>
+
+            <div class="outline-text-4" id="text-3-2">
+                    <p class="dl">测序数据的比对我们选取 HISAT2 软件，全称为 Hierarchical Indexing for Spliced Alignment of Transcripts [<a href="#hisat">3</a>]。HISAT2 是 BWT 算法的改进版，在比对速度上更快，在系统资源占用上更少。Clean Reads 比对到参考基因组上，获取其在参考基因组上的位置信息和序列的特征信息，信息文件以 sam 格式( sequence alignment/map format ) 存储，序列比对格式标准，由sanger制定 [<a href="#sam">4</a>]。再用 Samtools 对 BAM 文件进行排序、创建索引、统计比对结果、过滤重复 reads 等处理，从而得到 bam 格式的最终比对结果。在通过比对的 bam 文件对序列在参考基因组上的比对情况进行统计得到比对信息。
+                    </p>
+                </div>
+
+            <div id="content-menu321" class="outline-3">
+                <h4 id="menu321"><span class="section-number-4">3.2.1</span> 比对结果统计分析</h4>
+                <div class="outline-text-4" id="text-3-2">
+                    <p class="dl">整理所有样本的比对情况如下表所示:</p>
+                </div>
+                <div style="position: relative;" class="outline-text-4">
+                    <p style="position: absolute; left: 45%; top: 0; margin: 0; line-height: 53px;">表 3.2.1 测序样本比对统计表</p>
+                    <div style="margin: 0 auto;" align="center" id="example41"></div>
+                </div>    
+                </div>
+                <div style="margin: 0 auto;" class="outline-text-3"> 
+                    <script src="src/js/table/jquery.min.js"></script>
+                    <script src="src/js/table/gotopage.js"></script>
+                    <script src="src/js/table/ajaxpaging.js"></script>
+                    <script src="src/js/table/jquery.columns.min.js"></script>
+                    <script>
+                    var columns1 = $('#example41').columns({
+                        data: [
+                            { 'Sample': 00001, 'Total reads': '102668356', 'Total mapped ': '98236233(95.68%)', 'Multiple mapped': "2777309(2.71%)", 'Uniquely mapped': '95458924(92.98%)', "Read-1": "48460752(47.20%)", "Read-2": "46998172(45.78%)", "mapped to '+' ": "47720343(46.48%)", "mapped to '-' ": "47738581(46.50%)", "Non-splice reads": "60279761(58.71%)", "Splice reads": "35179163(34.26%)" },
+                            { 'Sample': 00002, 'Total reads': '105978454', 'Total mapped ': '101515855(95.79%)', 'Multiple mapped': "8505100(8.03%)", 'Uniquely mapped': '93010755(87.76%)', "Read-1": "47202146(44.54%)", "Read-2": "45808609(43.22%)", "mapped to '+' ": "46515366(43.89%)", "mapped to '-' ": "46495389(43.87%)", "Non-splice reads": "61317935(57.86%)", "Splice reads": "31692820(29.90%)" },
+                            { 'Sample': 00003, 'Total reads': '105978454', 'Total mapped ': '101515855(95.79%)', 'Multiple mapped': "8505100(8.03%)", 'Uniquely mapped': '93010755(87.76%)', "Read-1": "47202146(44.54%)", "Read-2": "45808609(43.22%)", "mapped to '+' ": "46515366(43.89%)", "mapped to '-' ": "46495389(43.87%)", "Non-splice reads": "61317935(57.86%)", "Splice reads": "31692820(29.90%)" },
+                            { 'Sample': 00004, 'Total reads': '105978454', 'Total mapped ': '101515855(95.79%)', 'Multiple mapped': "8505100(8.03%)", 'Uniquely mapped': '93010755(87.76%)', "Read-1": "47202146(44.54%)", "Read-2": "45808609(43.22%)", "mapped to '+' ": "46515366(43.89%)", "mapped to '-' ": "46495389(43.87%)", "Non-splice reads": "61317935(57.86%)", "Splice reads": "31692820(29.90%)" },
+                            { 'Sample': 00005, 'Total reads': '105978454', 'Total mapped ': '101515855(95.79%)', 'Multiple mapped': "8505100(8.03%)", 'Uniquely mapped': '93010755(87.76%)', "Read-1": "47202146(44.54%)", "Read-2": "45808609(43.22%)", "mapped to '+' ": "46515366(43.89%)", "mapped to '-' ": "46495389(43.87%)", "Non-splice reads": "61317935(57.86%)", "Splice reads": "31692820(29.90%)" },
+                            { 'Sample': 00006, 'Total reads': '105978454', 'Total mapped ': '101515855(95.79%)', 'Multiple mapped': "8505100(8.03%)", 'Uniquely mapped': '93010755(87.76%)', "Read-1": "47202146(44.54%)", "Read-2": "45808609(43.22%)", "mapped to '+' ": "46515366(43.89%)", "mapped to '-' ": "46495389(43.87%)", "Non-splice reads": "61317935(57.86%)", "Splice reads": "31692820(29.90%)" },
+
+                        ]
+                    });
+                    </script>
+                </div>
+                <div class="outline-text-4">
+                    <p style="font-size: 10px"><b>上表说明：</b>
+                        <br \> (1) Total reads ：测序序列经过测序数据过滤后的数量统计 ( Clean data )
+                        <br \> (2) Total mapped ：能定位到基因组上的测序序列的数量的统计
+                        <br \> (3) Multiple mapped ：在参考序列上有多个比对位置的测序序列的数量统计
+                        <br \> (4) Uniquely mapped ：在参考序列上有唯一比对位置的测序序列的数量统计
+                        <br \> (5) Read-1 ：测序序列 Read-1 比对到基因组上的数量统计
+                        <br \> (6) Read-2 ：含义与 Read-1 类似
+                        <br \> (7) mapped to '+' ：测序序列比对到基因组上正链的统计
+                        <br \> (8) mapped to '-' ：测序序列比对到基因组上负链的统计
+                        <br \> (9) Non-splice reads ：完全比对到外显子区域的测序 Read 的统计
+                        <br \> (10) Splice reads ：分段比对到两个外显子上的测序 Read 的统计
+                        <br \>
+                    </p>
+                </div>
+            </div>
+            <!--/table-->
+            <div id="content-menu322" class="outline-3">
+                <h4 id="menu322"><span class="section-number-4">3.2.2</span> 比对区域分布</h4>
+                <div class="outline-text-4" id="text-4-2">
+                    <p class="dl">因为模式生物的基因注释较为完善，所以我们可以根据序列比对结果在参考基因组上的位置和人的基因组注释信息进行比较，分别统计 Reads 在基因组 UTR 区域，外显子区域 ( ExonALL,CDS )，转录起始 ( Tss )和终止 ( Tes ) 上下1500 bp 区域，内含子区域 ( Intron ) 以及基因间区 ( InterGenic ) 所占的比例。各样本的区域比对情况如下显示：</p>
+                </div>
+                <div style="margin-top:10px">
+                    <div id="lunbo" class="slider-pro">
+                        <div class="sp-slides">
+                            <div class="sp-slide" title="first">
+                                <img class="sp-image" src="src/images/blank.gif" data-src="src/sample/S056.png" />
+                            </div>
+                            <div class="sp-slide">
+                                <img class="sp-image" src="src/images/blank.gif" data-src="src/sample/S055.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        <!--标题五-->
+        <div id="content-menu33" class="outline-2">
+            <h3 id="menu5"><span class="section-number-3">3.3</span> 表达量分析</h3>
+            
+            <div class="outline-text-4" id="text-3-3">
+                    <p class="dl">表达量分析是差异分析的前提，表达量分析的实质是根据各样本的比对结果统计不同基因的 Reads count 值，即比对到该基因的 Reads 数有多少,也是后续差异基因分析的基础信息，如果基因的表达量高，则其 Reads 覆盖数也会高。我们采用 featurecounts [<a href="#featurecount">5</a>] 进行 Reads Cunt 计算,featurecounts 的统计特征值主要分为 features 和 meta-features，在图3.3中以实线表示。features 通常是对应着注释文件 ( GTF ) 的 Exon 区域，meta-features 通常是对应于注释文件的 Gene 区域。在 RNA-seq 的情况下，每个基因指其所有外显子的总和。
+                    </p>
+                    <p class="dl">该软件根据每个染色体的 features 的起始位置进行排序分为128 kb 的 bins。将连续的 features 中数量相等的分类成相同的模块 ( Blocks ) ，每一个 bin 中 Blocks 的数量与 bins 中 features 的数目的平方根相等。比对的 Read 先与基因组的 bins 进行比较，再与 bins 中的 Blocks 比较，最后与 Blocks 中的 features 进行比较，最终的 Read 的定位结果是定位到了第 i 个 bin 中的第一个 Blocks 中，fenturecounts 还有一个主要特点，对于一个配对的 Reads，如果配对 Reads 其中一条 Read 比对到 A 基因与两个 Reads 都比对到 B 基因，最后会将该 Reads 计入 B 基因中，而其他软件如htseq-count会将该种 Reads 过滤。另外，为了避免基因长度对 Reads 数的影响，后面可以采用FPKM值进行基因的定量比较。我们首先采用 featurecounts [<a href="#featurecount">5</a>] 和基因组注释文件对各样本统计其基因的 Reads 支持数，并转化为相应的 FPKM 值用于分析样本间相关性分析和不同基因表达水平变化。</p>
+            </div>
+            <div style="text-align: center;">
+                <img src="src/images/fc.png" style="width:60%;height: 10%" />
+                <p>图 3.3 featurecouns 模式</p>
+            </div>
+
+            <div id="content-menu331" class="outline-3">
+                <h4 id="menu331"><span class="section-number-4">3.3.1</span> ReadsCount统计表</h4>
+                <div class="outline-text-4" id="text-5-1">
+                    <p class="dl"> 以下是对每个样本分别进行基因水平定量统计的原始 Reads Count 值,统计信息如下表:</p>
+                </div>
+                    <div style="margin: 0 auto;" class="outline-text-3">
+
+                    <div style="position: relative;" class="outline-text-4" class="outline-text-4">
+                    <p style="position: absolute; left: 45%; top: 0; margin: 0; line-height: 53px;">表 3.3.1 测序样本 Reads Count 统计表 </p>
+                    <div style="margin: 0 auto;text-align: center;" align="center" id="example51"></div>    
+                    </div>
+                    <script src="src/js/table/jquery.min.js"></script>
+                    <script src="src/js/table/gotopage.js"></script>
+                    <script src="src/js/table/ajaxpaging.js"></script>
+                    <script src="src/js/table/jquery.columns.min.js"></script>
+                    <script>
+                    var columns1 = $('#example51').columns({
+                        data: [
+                            { 'GENEID': "ENSG00000170345", 'case1': '102', 'case2 ': '982', 'case3': "277", 'nc1': '102', 'nc2 ': '982', 'nc3': "277",},
+                            { 'GENEID': "ENSG00000182809", 'case1': '125', 'case2 ': '141', 'case3': "830", 'nc1': '105', 'nc2 ': '101', 'nc3': "850",},
+                            { 'GENEID': "ENSG00000182346", 'case1': '135', 'case2 ': '131', 'case3': "950", 'nc1': '123', 'nc2 ': '145', 'nc3': "456",},
+                            { 'GENEID': "ENSG00000182567", 'case1': '145', 'case2 ': '151', 'case3': "820", 'nc1': '344', 'nc2 ': '178', 'nc3': "356",},
+                            { 'GENEID': "ENSG00000182743", 'case1': '155', 'case2 ': '171', 'case3': "456", 'nc1': '568', 'nc2 ': '124', 'nc3': "366",},
+                            { 'GENEID': "ENSG00000182235", 'case1': '125', 'case2 ': '181', 'case3': "465", 'nc1': '167', 'nc2 ': '456', 'nc3': "678",},
+
+                        ]
+                    });
+                    </script>
+                </div>
+                <div class="outline-text-4">
+                    <p style="font-size: 10px"><b>上表说明：</b>
+                        <br \> (1)GENEID 列 ：测序样本 ID
+                        <br \> (2)GENEID 行 ：统计的基因 Read Count 数
+                        <br \>
+                    </p>
+                </div>
+            </div>
+            <div id="content-menu332" class="outline-3">
+                <h4 id="menu332"><span class="section-number-4">3.3.2</span> FPKM 统计</h4>
+                <div style="padding: 0" class="outline-text-4">
+                    <p class="dl">FPKM ( fragments per kilobaseof exon per million fragments mapped ) 是指每1百万个 Map 上的 Reads 中 Map 到外显子的每1 K 个碱基上的 Reads 个数，是 RNA-Seq 的双端测序的基因表达值的表示方式，是对基因的测序深度和基因的长度进行校正后得到的校正值，我们对 Read Count 进行 FPKM 值转换，并绘制 FPKM 箱线图,通过图形可以观察不同实验条件下的基因表达水平的变化。</p>
+                    <p>箱线图 ：横坐标为样品名称，纵坐标为 log10(FPKM+1)，是对五个统计量(至上而下分别为最大值，上四分位数，中值，下四分位数和最小值)的绘制。</p>
+                   
+                </div>
+                <div style="width:100%;">
+                    <div style="margin-top:10px">
+                        <div id="lunbo2" class="slider-pro">
+                            <div class="sp-slides">
+                                <div class="sp-slide" title="first">
+                                    <img class="sp-image" src="src/images/blank.gif" data-src="src/sample/FPKM1.png" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="content-menu333" class="outline-3">
+                <h4 id="menu333"><span class="section-number-3">3.3.3</span> 样本相关性</h4>
+                <div style="padding: 0" class="outline-text-4">
+                    <p class="dl">统计学上相关性分析 ( Correlation Analysis ) 是指对两个或多个具备相关性的变量元素进行分析，从而衡量两个变量因素的相关密切程度。对于 RNA-Seq 实验来说，生物学重复的实验样本可以通过相关性分析查看生物学实验操作的变动不大，非生物学重复关系的样本可以通过相关性分析观察不同实验条件间相似性和差异程度。通过各样本的基因定量关系，绘制样本相关性热图，观察各样本间的关系。相关系数越接近1，说明样品间表达的模式相似度越高。在下图中颜色越深的表名相关性越强。</p>
+                </div>
+                <div style="text-align: center;" class="outline-text-4">
+                    <img src="src/sample/ybxg.png" width="50%" height="400px" style="margin-top: 20px ;" />
+                </div>
+            </div>
+            <!--标题六-->
+            <div id="content-menu34" class="outline-2">
+                <h3 id="menu34"><span class="section-number-2">3.4</span> 差异基因分析</h3>
+                <div class="outline-text-4" id="text-8-1">
+                        <p class="dl">差异分析 ( Difference analysis ) 是在一组样本中找出产生差异的原因以及其对造成差异的影响程度。差异基因分析就是寻找跟实验处理相关的功能基因或转录本。我们根据基因的定量分析信息进行差异基因分析。差异基因的分析可以帮助我们在不同的实验条件下对功能基因的筛选。对于有重复实验样本间的分析使用 DESeq2 [<a href="#DESeq2">6</a>] 软件进行分析，该软件是基于负二项分布，对 Reads Count 使用DESeq标准化后，通过估计样品的测序深度和分布离差来计算每个基因的 pvalue 值，根据 Benjamini-Hochberg (BH) 来计算 FDR。对于无重复的实验样本使用EdgeR [<a href="#EdgeR">7</a>]，该软件基于负二项分布理论，使用 TMM 标准化 Reads Count ，用经验Bayes估计和精确检验确定差异表达式计算每个基因的 pvalue 值，根据 Benjamini-Hochberg (BH) 来计算 FDR。对差异分析结果的过滤按照 pvalue 值小于0.05，FoldChange (根据软件模型进行计算得到的)绝对值大于2的标准。软件的分析步骤是首先对样本的 Read Count 进行标准化，在根据模型进行假设检验获取 pvalue 值以及 FoldChange，最后进行多重校正获取 FDR 值。</p>
+                    </div>
+                <div id="content-menu34" class="outline-3">
+                    <h4 id="menu341"><span class="section-number-4">3.4.1</span> 差异基因表</h4>
+                    <div class="outline-text-4" id="text-8-1">
+                        <p class="dl">所有样本分析得到的差异基因如下表：</p>
+                    </div>
+
+                    <div style="position: relative;" class="outline-text-4" class="outline-text-4">
+                    <p style="position: absolute; left: 45%;; top: 0; margin: 0; line-height: 53px;">表 3.4.1 测序样本差异基因统计表 </p>
+                     <div style="margin: 0 auto;" align="center" id="example61"></div>    
+                    </div>
+
+                    <div style="margin: 0 auto;" class="outline-text-3">
+                        <script src="src/js/table/jquery.min.js"></script>
+                        <script src="src/js/table/gotopage.js"></script>
+                        <script src="src/js/table/ajaxpaging.js"></script>
+                        <script src="src/js/table/jquery.columns.min.js"></script>
+                        <script>
+                        var columns1 = $('#example61').columns({
+                            data: [
+                                { 'GENEID': "ENSG00000170345", 'case': '1347.3934561', 'nc': '2314.153645', 'log2FoldChange': "2.6", "Pvalue": "0.05234", "FDR": "0.00234", },
+                                { 'GENEID': "ENSG00000182809", 'case': '1332.131334', 'nc': '2514.28744', 'log2FoldChange': "-1.4", "Pvalue": "0.0345", "FDR": "0.00347", },
+
+                            ]
+                        });
+                        </script>
+                    </div>
+                    <div>
+                        <p style="font-size: 10px" class="outline-text-4"><b>上表说明：</b>
+                            <br \> (1) GENEID ：差异基因的ID
+                            <br \> (2) case,nc ：样本校正后的 Reads Count 值
+                            <br \> (3) log2FoldChange ：FoldChange 的 log2 值
+                            <br \> (4) Pvalue ：显著性检验的 pvalue 值
+                            <br \> (5) FDR ：多重假设检验校正后的 pvalue 值
+                        </p>
+                    </div>
+                </div>
+
+                <div id="content-menu342" class="outline-4">
+                    <h4 id="menu342"><span class="section-number-4">3.4.2</span> 差异基因火山图</h4>
+                
+                <div class="outline-text-4">
+                    <p class="dl">火山 ( Volcano Plot ) 图是一种展示 FoldChange 和 pvalue 这两个重要指标的一种统计图,可以非常直观的查看在两样本间发生差异表达的基因整体分布情况。我们根据设定的阈值: |log2(FoldChange)| > 2 且 Pvalue
+                        < 0.05，对样本间的差异基因进行筛选获取上调和下调基因相对应的 FoldChange 和 pvalue 值。绘制下图，图中蓝色表示为下调基因，红色表示为上调基因。</p>
+                </div>
+                <div style="text-align: center;">
+                    <img src="src/sample/DE_N_VS_T.huo.png" width="40%" height="400px" style="margin-top: 20px" />
+                </div>
+                </div>
+
+                <div id="content-menu343" class="outline-4">
+                    <h4 id="menu343"><span class="section-number-4">3.4.3</span> 差异基因聚类图</h4>
+                    <div  class="outline-text-4">
+                        <p class="dl">聚类分析 ( Cluster Analysis ) 是一种研究样品间分类问题的统计分析方法,可以实现对样本以及基因进行分组的目的，通过差异基因的聚类图可以展示不同样本间基因的表达模式的相似性，聚在同一个簇的基因可能具有类似的生物学功能，可据此预测未知基因的功能。下图根据差异基因的 FPKM 值绘制样本间的热图。图中绿色表示基因表达量低，红色表示基因表达量高，连线代表聚类结果。</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <img src="src/sample/cyjyrt.png" width="50%" height="500px" style="margin-top: 20px" />
+                    </div>
+                </div>
+
+                 <div id="content-menu344" class="outline-4">
+                    <h4 id="menu344"><span class="section-number-4">3.4.4</span> 差异基因韦恩图</h4>
+                    <div  class="outline-text-4">
+                        <p class="dl">韦恩图展示不同组合间差异表达基因的重叠情况,对于只有两个分组的情况，则展示两组之间共同表达与特异表达的基因的情况。</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <img src="src/sample/ve.png" width="30%" height="30%" style="margin-top: 20px" />
+                    </div>
+                </div>
+
+            </div>
+
+            <!--标题七-->
+            <div id="content-menu35" class="outline-2">
+                <h3 id="menu35"><span class="section-number-3">3.5</span> 差异基因功能富集分析</h3>
+
+                <div id="content-menu35" class="outline-3">
+                    <h4 id="menu351"><span class="section-number-4">3.5.1</span> GO功能富集分析</h4>
+                    <div class="outline-text-4" id="text-3-5-1">
+                         <p class="dl">GO ( Gene Ontology ) 是描述基因功能的综合性数据库。可分为分子功能 ( Molecular Function )，生物过程 ( biological process ) 和细胞组成 ( cellular component ) 三个部分。生物过程是由分子功能有序地组成的，具有多个步骤的一个过程。分子功能描述在分子生物学上的活性，如催化活性或结合活性。细胞组成指基因产物位于何种细胞器或基因产物组中。对挑选出的差异基因应用超几何分布算法分析差异基因的有富集的GO功能,根据算法返回的 pvalue 判断其富集的 GO 功能。通过差异基因的 GO 注释分析，寻找差异基因的GO分类的富集条目以及发现不同样品的差异基因与哪些基因功能的改变有关。</p> 
+                        <p class="dl">各样本的 GO 功能富集结果如下表所示：</p></div>
+                    
+                        <div style="position: relative;" class="outline-text-4" class="outline-text-4">
+                            <p style="position: absolute; left: 45%;; top: 0; margin: 0; line-height: 53px;" class="outline-text-4">表 3.5.1 测序样本差异基因 GO 注释统计表 </p>
+                         <div style="margin-left:0.6em " align="center" id="example2" class="outline-text-4"></div>   
+                        </div>
+                        
+                        <div style="padding: 0;">
+                       
+                        <script src="src/js/table/jquery.min.js"></script>
+                        <script src="src/js/table/gotopage.js"></script>
+                        <script src="src/js/table/ajaxpaging.js"></script>
+                        <script src="src/js/table/jquery.columns.min.js"></script>
+                        <script>
+                        var columns1 = $('#example2').columns({
+                            data: [
+                                { 'GOID': "GO:0016072", 'ONTOLOGY': 'BP', 'Description': 'rRNA metabolic process', 'pvalue ': '1.6967314893923e-19', 'qvalue': '7.30700068760897e-16', 'GeneNAME ': 'WDR3/EXOSC10/MT...', 'counts ': '234', },
+                                { 'GOID': "GO:0034470", 'ONTOLOGY': 'BP', 'Description': 'ncRNA processing', 'pvalue ': '1.6967314893923e-19', 'qvalue': '7.30700068760897e-16', 'GeneNAME ': 'WDR3/EXOSC10/AG...', 'counts ': '306', },
+                                { 'GOID': "GO:0006364", 'ONTOLOGY': 'BP', 'Description': 'rRNA processing', 'pvalue ': '5.78116642453919e-19', 'qvalue': '6.30700068760897e-16', 'GeneNAME ': 'WDR3/EXOSC10/AG...', 'counts ': '209', },
+
+                            ]
+                        });
+                        </script>
+                    </div>
+                    <div class="outline-text-3">
+                        <p style="font-size: 10px"><b>上表说明：</b>
+                            <br \> 1) GOID ：富集到 GO 的 ID 名称
+                            <br \> 2) DONTOLOGY ：富集到 GO 的类型
+                            <br \> 3) Description ：富集到 GO 的名称
+                            <br \> 4) pvalue ：统计学差异显著性检验指标，一般为0.01或0.05
+                            <br \> 5) qvalue ：使用 hochberg 与 bonferroni 校正后的 pvalue 值
+                            <br \> 6) GeneNAME ：输入的差异基因富集到该 GO 的基因
+                            <br \> 7) counts ：输入的差异基因富集到该 GO 的基因数目
+                            <br \>
+                        </p>
+                    </div>
+                    <div class="outline-text-4" id="text-7-1-2">
+                        <p class="dl">对差异基因 GO 功能富集的结果进行可视化，选取 pvalue 小于0.05并且 counts 数排列前10的结果，富集结果如下表所示：</p>
+                    </div>
+                    <div style="text-align:center">
+                        <a href="src/sample/DE_N_VS_T_go.png" target="blank"><img src="src/sample/DE_N_VS_T_go.png" width="40%" height="400px" style="margin-top: 20px" ></a>
+                    </div>
+
+                    <div class="outline-text-4" id="text-7-1-2">
+                        <p class="dl">下图是差异基因 GO 富集分析结果的有向无环图(Directed Acyclic Graph，DAG)展示方式。分支代表包含关系，从上至下所定义的功能范围变小，我们选取 GO 分析的前10个富集分析的结果作为图的主节点，通过包含关系将相关联的 GO Term 共展示，颜色的越深代表富集程度越高。我们分别绘制分子功能、生物过程和细胞组分的有向无环图。</p>
+                    </div>
+                    <div style="width:100%;">
+                    <div style="margin-top:10px">
+                        <div id="lunbo5" class="slider-pro">
+                            <div class="sp-slides">
+                                <div class="sp-slide" title="first">
+                                    <img class="sp-image" src="src/images/blank.gif" data-src="src/sample/DE_N_VS_T.BP.DAG.svg" />
+                                </div>
+                                <div class="sp-slide" >
+                                    <img class="sp-image" src="src/images/blank.gif" data-src="src/sample/DE_N_VS_T.MF.DAG.svg" />
+                                </div>
+                                <div class="sp-slide" >
+                                    <img class="sp-image" src="src/images/blank.gif" data-src="src/sample/DE_N_VS_T.CC.DAG.svg" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                <div id="content-menu352" class="outline-3">
+                    <h4 id="menu352"><span class="section-number-4">3.5.2</span> KEGG功能富集分析</h4>
+                    <div class="outline-text-4" id="text-7-2">
+                         <p class="dl">KEGG ( Kyoto Encyclopedia of Genes and Genomes ) 是高级功能和生物系统 (如细胞、 生物和生态系统) 的公用数据库资源,整合了基因组、化学和系统功能信息，KEGG 的类目以 pathway 表示。KEGG 的富集分析同 GO 分析相似，同样采用超几何分布算法对差异基因的富集 pathway 返回一个 pvalue 值。KEGG 富集分析主要是为了查看差异基因集显著的集中在哪些 pathway 上面。下表是样本差异基因的 KEGG 富集分析结果展示。</p>
+                        <p class="dl">各样本的 KEGG pathway 功能富集结果如下表所示：</p>
+                    </div>
+
+                     <div style="position: relative;" class="outline-text-4" class="outline-text-4">
+                            <p style="position: absolute; left: 45%;; top: 0; margin: 0; line-height: 53px;">表 3.5.2 测序样本差异基因 KEGG 注释统计表 </p>
+                        <div style="margin-left:0.6em " align="center" id="exampleK"></div>
+                        </div>
+
+                    <div style="padding: 0;">
+                       
+                        <script src="src/js/table/jquery.min.js"></script>
+                        <script src="src/js/table/gotopage.js"></script>
+                        <script src="src/js/table/ajaxpaging.js"></script>
+                        <script src="src/js/table/jquery.columns.min.js"></script>
+                        <script>
+                        var columnsK = $('#exampleK').columns({
+                            data: [
+                                { 'KEGGID': "hsa03040", 'Description': 'Spliceosome', 'pvalue ': '1.6967314893923e-19', 'qvalue': '7.30700068760897e-16', 'GeneID ': '6429/10772/2594...', 'counts ': '103', },
+                                { 'KEGGID': "hsa03060", 'Description': 'Protein export', 'pvalue ': '1.6967314893923e-19', 'qvalue': '7.30700068760897e-16', 'GeneID ': '6726/28972/2992...', 'counts ': '22', },
+                                { 'KEGGID': "hsa04510", 'Description': 'Focal adhesion', 'pvalue ': '5.78116642453919e-19', 'qvalue': '7.3070002334597e-16', 'GeneID': '5906/63923/4660...', 'counts ': '136', },
+
+                            ]
+                        });
+                        </script>
+                    </div>
+                    <div class="outline-text-3">
+                        <p style="font-size: 10px"><b>上表说明：</b>
+                            <br \> 1) KEGGID ： 富集到 KEGG 的 ID 名称
+                            <br \> 2) Description ：富集到 KEGG 的名称
+                            <br \> 3) pvalue ：统计学差异显著性检验指标，一般为0.01或0.05
+                            <br \> 4) qvalue ：使用 hochberg 与 bonferroni 校正后的p值
+                            <br \> 5) GeneID ：输入的差异基因富集到该 KEGG 的 ID
+                            <br \> 6) Count ：输入的差异基因富集到该 KEGG 的基因数目
+                            <br \>
+                        </p>
+                    </div>
+                    <div class="outline-text-3" id="text-7-2-1">
+                        <p class="dl">对差异基因 KEGG 富集 pathway 进行可视化，选取 pvalue 小于0.05并且 counts 数排列前20个，圆点大小表示富集到该 pathway 的差异基因数，圆点颜色越红表示越显著，富集结果如下图所示：</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <img src="src/sample/keggp.png" width="50%" height="400px" style="margin-top: 20px" />
+                    </div>
+
+                     <div class="outline-text-4" id="text-7-1-2">
+                        <p class="dl">下图是差异基因在 KEGG 富集结果中，选取显著的通路图展示，标记显著差异的上调和下调基因，分别对应红色和绿色标记。</p>
+                    </div>
+                    <div style="width:100%;">
+                    <div style="margin-top:10px">
+                        <div id="lunbo6" class="slider-pro">
+                            <div class="sp-slides">
+                                <div class="sp-slide" title="first" >
+                                    <a href="src/sample/hsa03040.pathview.png"><img class="sp-image" src="src/images/blank.gif" data-src="src/sample/hsa03040.pathview.png" /></a>
+                                </div>
+                                <div class="sp-slide" >
+                                    <img class="sp-image" src="src/images/blank.gif" data-src="src/sample/hsa03060.pathview.png" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+
+                <div id="content-menu39" class="outline-2">
+                <h3 id="menu39"><span class="section-number-3">3.6</span> 差异基因蛋白互作网络分析</h3>
+
+                <div class="outline-text-3" id="text-3-5-1">
+                <p class="dl">蛋白互作网络 ( Protein-Protein Interaction Networks ，PPI ) 是蛋白通过彼此之间的相互作用构成，参与基因表达调节、生物信号传递、细胞周期调控及能量物质代谢等生命过程的各个环节。我们使用 STRING ( https://string-db.org/cgi/input.pl ) 蛋白质互作数据库中的互作关系进行差异基因的 PPI 分析，对结果文件可使用老师可使用 Cytoscape 进行可视化展示 [<a href="db">14</a>] 针对性作图。</p>
+                </div>
+                </div>
+
+                
+                <div id="content-menu36" class="outline-2">
+                <h3 id="menu36"><span class="section-number-3">3.7</span> 差异可变剪接分析</h3>
+                    <div  class="outline-text-4">
+                        <p class="dl">可变剪接 ( Alternative Splicing ) 一个 mRNA 前体通过不同的剪接方式 ( 选择不同的剪接位点 ) 产生不同的 mRNA 剪接异构体，是真核生物基因和蛋白质数量有较大差异的重要原因。可变剪接可分为 Skipped exon, Mutually exclusive exon， Alternative 5' splice site, Alternative 3' splice site, Alternative first exon, Alternative last exon 和 Retained intron 等7种类型。我们使用 ASD ( Alternative Splicing Detector ) [<a href="#ASD">9</a>] 软件进行分析样本间的差异可变剪接，可变剪接形式和软件检测流程原理如下图所示，主要根据 altered junction reads 和 altered coverage of AS-exons 计算可变剪接的差异显著性。</p>
+                    </div>         
+                    <div style="text-align: center">
+                        <img src="src/images/cykbjj.png"  style="width: 60%;height: 30%" />
+                       <p>图 3.7 ASD 检测流程 </p>
+                    </div>       
+                
+                    <div id="content-menu361" class="outline-4">
+                    <h4 id="menu361"><span class="section-number-4">3.7.1</span> 差异可变剪接统计</h4>
+                    <div  class="outline-text-4">
+                        <p class="dl">样本间差异可变剪接统计如下表：</p>
+                    </div>
+                    
+                        <div style="position: relative;" class="outline-text-4" class="outline-text-4">
+                            <p style="position: absolute; left:45%; top: 0; margin: 0; line-height: 53px;" class="outline-text-4">表 3.7.1 差异可变剪接统计表 </p>
+                         <div style="margin-left:0.6em " align="center" id="example361" class="outline-text-4"></div>   
+                        </div>
+                        
+                        <div style="padding: 0;">
+                       
+                        <script src="src/js/table/jquery.min.js"></script>
+                        <script src="src/js/table/gotopage.js"></script>
+                        <script src="src/js/table/ajaxpaging.js"></script>
+                        <script src="src/js/table/jquery.columns.min.js"></script>
+                        <script>
+                        var columns1 = $('#example361').columns({
+                            data: [
+                                { 'AccID': "pco106297a", 'Location': 'chr1:3915843-3915673', 'ExonNumbers': '4', 'case::Inclusive::Exclusive': '16::156', 'nc::Inclusive::Exclusive': '35::67', 'case_EXP': '209::26', 'nc_Exp ': '345::234',  "Pvalue-Arithmetic" : "1.59E-07","Pvalue-Geometric":"5.82E-09","FDR":"0.00045",},
+                                { 'AccID': "SCL25B", 'Location': 'chr7:1734943-1734763', 'ExonNumbers': '6', 'case::Inclusive::Exclusive': '42::1554', 'nc::Inclusive::Exclusive': '112::810', 'case_EXP': '702::28', 'nc_Exp ': '27::306',  "Pvalue-Arithmetic" : "2.181.59E-04","Pvalue-Geometric":"0.00167","FDR":"0.5744",},
+                                { 'AccID': "IDP89", 'Location': 'chr5:2095308-2095876', 'ExonNumbers': '7', 'case::Inclusive::Exclusive': '248::59', 'nc::Inclusive::Exclusive': '10:89', 'case_EXP': '49::14', 'nc_Exp ': '209::125',  "Pvalue-Arithmetic" : "0.0001334","Pvalue-Geometric":"4.13E-04","FDR":"0.57089",},
+
+                            ]
+                        });
+                        </script>
+                    </div>
+                    <div class="outline-text-3">
+                        <p style="font-size: 10px"><b>上表说明：</b>
+                            <br \> 1) AccID ：可变剪接转录本在 NCBI 的 ID 
+                            <br \> 2) Location ：染色体位置信息
+                            <br \> 3) ExonNumbers ：外显子数目
+                            <br \> 4) Inclusive::Exclusive ：没有发生 junction 和 发送 junction 的外显子覆盖度
+                            <br \> 5) Exp ：没发生差异可变剪接和发送差异可变剪接的外显子覆盖度
+                            <br \> 6) Pvalue-Arithmetic ：发生可变剪接的 pvalue (算数平均数) 值
+                            <br \> 7) Pvalue-Geometric ：发生可变剪接的 pvalue (几何平均数) 值
+                            <br \> 8) FDR ：多重假设检验误判率。FDR 越小，误判率越低    
+                        </p>
+                    </div>
+                 </div>
+                </div>
+
+
+                
+                <div id="content-menu37" class="outline-2">
+                <h3 id="menu37"><span class="section-number-3">3.8</span> 融合基因分析</h3>
+                    <div  class="outline-text-4">
+                        <p class="dl"> 融合基因 ( Fusion gene ) 是指两个基因的全部或一部分的序列相互融合为一个新的基因的过程，置于同一套调控序列（包括启动子、增 强子、核糖体结合序列、终止子等）控制之下。对于融合基因的检测我们使用 START-FUSION [<a href="#startfusion">10</a>] 对样本进行融合基因的检测。START-FUSION 对样本的检测包括 SATR [<a href="#start">11</a>] 比对，STAR-Fusion.predict，STAR-Fusionfilter 以及 FusionInspector 校正，此外，STAR-Fusion 会预测融合基因的 CDS 序列，并进行 PFAM (Database of Protein Families) 注释。具体流程如下图3.8所示：</p>
+                    </div>
+                
+                    <div style="text-align: center;"><img src="src/images/startfusion.png" style="width: 40%;height: 40%"><p>图 3.8 STAR-Fusion 检测流程图</p></div>
+
+                    <div id="content-menu371" class="outline-4">
+                    <h4 id="menu371"><span class="section-number-4">3.8.1</span> 融合基因检测和注释</h4>
+                    <div  class="outline-text-4">
+                        <p class="dl">样本融合基因检测信息统计如下表：</p>
+                    </div>
+
+                        <div style="position: relative;" class="outline-text-4" class="outline-text-4">
+                            <p style="position: absolute; left:45%; top: 0; margin: 0; line-height: 53px;" class="outline-text-4">表 3.8.1 融合基因检测统计表 </p>
+                         <div style="margin-left:0.6em " align="center" id="example371" class="outline-text-4"></div>   
+                        </div>
+                        
+                        <div style="padding: 0;">
+                       
+                        <script src="src/js/table/jquery.min.js"></script>
+                        <script src="src/js/table/gotopage.js"></script>
+                        <script src="src/js/table/ajaxpaging.js"></script>
+                        <script src="src/js/table/jquery.columns.min.js"></script>
+                        <script>
+                        var columns1 = $('#example371').columns({
+                            data: [
+                                { 'FusionName': "THRA--AC090627.1", 'JunctionReadCount': '27', 'SpanningFragCount': '94', 'SpliceType': 'ONLY_REF_SPLICE', 'LeftGene': '3THRA^ENSG00000126351.8 ', 'LeftBreakpoint': 'chr17:38243106:+', 'RightGene ': 'AC090627.1^ENSG00000235300.3',  "RightBreakpoint" : "chr17:46371709:+","CDS_LEFT_ID":"ENST00000305657.8","CDS_LEFT_RANGE":"1-2782","CDS_RIGHT_ID":"ENST00000318560.5","CDS_RIGHT_RANGE":"80-3393","PROT_FUSION_TYPE":"INFRAME","FUSION_CDS":"atggtggacccggtgggcttcgcggaggcgtggaaggcgcagttcccggactcagagcccccgcgcatggagctgcgcTACCAATCCCAGAGTTGAGCCTCACAGGAACACTAGTAGAATTCTTGCCATTTATCAAGT","FUSION_TRANSL":"MVDPVGFAEAWKAQFPDSEPPRMELRSVGDIEQELERCKASIRRLEQEVNQERFRMIYLQTL"," PFAM_LEFT":"Bcr-Abl_Oligo","PFAM_RIGHT":"SH3_1-PARTIAL"},
+                                { 'FusionName': "RPS6KB1--SNF8", 'JunctionReadCount': '5', 'SpanningFragCount': '66', 'SpliceType': 'ONLY_REF_SPLICE', 'LeftGene': 'RPS6KB1^ENSG00000108443.9', 'LeftBreakpoint': 'chr17:57970686:+ ', 'RightGene ': '2SNF8^ENSG00000159210.5',  "RightBreakpoint" : "chr17:47021337:-","CDS_LEFT_ID":"ENST00000465877.8","CDS_LEFT_RANGE":"1-459","CDS_RIGHT_ID":"ENSMUST00000015356.5","CDS_RIGHT_RANGE":"326-693","PROT_FUSION_TYPE":"INFRAME","FUSION_CDS":"gaaagcgttacagctcccacagtacgctgagtccttcgtggataatggctacgatgacctggaagtgtgcaagCTCGAGGAAAGATTTGTGTTCATAATTCGGAATTATTAGATGTTCTCTGCTGACACTGAG","FUSION_TRANSL":"EDLEQPERDVATNMDQIRVKLLRKQHRMAIPSGGLTEICRKPLSPGCVASMSDWLISIGLPMYTSTLSDAGFSTLSQVPSLSHSCLQ"," PFAM_LEFT":".","PFAM_RIGHT":"."},
+                                { 'FusionName': "TOB1--SYNRG", 'JunctionReadCount': '12', 'SpanningFragCount': '75', 'SpliceType': 'ONLY_REF_SPLICE', 'LeftGene': 'TOB1^ENSG00000141232.4 ', 'LeftBreakpoint': 'chr17:48943419:-', 'RightGene ': 'SYNRG^ENSG00000006114.11',  "RightBreakpoint" : "chr17:35880751:-","CDS_LEFT_ID":"ENST00000337477.8","CDS_LEFT_RANGE":"1-4378","CDS_RIGHT_ID":"ENSMUST00000015449.5","CDS_RIGHT_RANGE":"136-3693","PROT_FUSION_TYPE":"INFRAME","FUSION_CDS":"atgtgcaccaacatagtttacgagtggctgaaagcgttacagctccGGTAAGACTGAAGTTTCAAAATGTATGCTATTTTAATATGCAGATGAATCTATATATTAAGGTAAGACTGAAGTTTCAAAATGTATGCTATTTTAATATG","FUSION_TRANSL":"LSDAGFSTLSQVPSLSHSCLQEAGITEERHIRKLITAARLFKLP"," PFAM_LEFT":"SAM","PFAM_RIGHT":"SLY"},
+
+                            ]
+                        });
+                        </script>
+                    </div>
+                    <div class="outline-text-3">
+                        <p style="font-size: 10px"><b>上表说明：</b>
+                            <br \> 1) FusionName ：融合基因的名字
+                            <br \> 2) JunctionReadCount ：支持融合事件发生的 JunctionReads 数目
+                            <br \> 3) SpanningFragCount ：支持融合事件发生的 SpanningFrags 数目
+                            <br \> 4) SpliceType ：ONLY_REF_SPLICE：检测到的融合断点发生在与参考的转录本结构的注释信息中的外显子的剪切位点；INCL_NON_REF_SPLICE：检测到的融合断点不是发生在与参考的转录本结构的注释信息中的外显子的剪切位点
+                            <br \> 5) LeftGene ：融合事件的上游基因
+                            <br \> 6) LeftBreakpoint：上游基因在基因序列上的断点位置 
+                            <br \> 7) RightGene ：融合事件的下游基因
+                            <br \> 8) RightBreakpoint ：下游基因在基因序列上的断点位置
+                            <br \> 9) CDS_LEFT_ID ：上游融合基因的具有 CDS 区域的转录本的 ID
+                            <br \> 10) CDS_LEFT_RANGE ：上游融合基因的具有 CDS 区域的转录本的碱基长度范围
+                            <br \> 11) CDS_RIGHT_ID ：下游融合基因的具有 CDS 区域的转录本的 ID
+                            <br \> 12) CDS_RIGHT_RANGE ：下游融合基因的具有 CDS 区域的转录本的碱基长度范围
+                            <br \> 13) PROT_FUSION_TYPE ：蛋白融合的类型,有 FRAMESHIFT ( 阅读框发生移码 ) 和 INFRAME ( 正常的 ORF ) 两种
+                            <br \> 14) FUSION_CDS ：融合基因的 CDS 序列,小写的碱基是上游融合基因的 CDS 序列，大写是碱基是下游融合基因的 CDS 序列
+                            <br \> 15) FUSION_TRANSL ：融合基因的氨基酸序列
+                            <br \> 16) PFAM_LEFT ：上游融合基因的PFAM注释结果
+                            <br \> 17) PFAM_RIGHT ：下游融合基因的PFAM注释结果
+                            
+
+                        </p>
+                    </div>
+                    </div>
+
+
+                    <div id="content-menu372" class="outline-4">
+                    <h4 id="menu372"><span class="section-number-4">3.8.2</span> 融合基因染色体分布</h4>
+                    <div  class="outline-text-4">
+                        <p class="dl">样本融合基因的染色体分布情况如下图，蓝色线表示染色体内发生基因融合，橙色线表示染色体间发生基因融合：</p>
+                    </div>
+                    <div style="margin-top:10px">
+                        <div id="lunbo7" class="slider-pro">
+                            <div class="sp-slides">
+                                <div class="sp-slide" title="first">
+                                    <img class="sp-image" src="src/images/blank.gif" data-src="src/sample/1.GeneFusion.png" />
+                                </div>
+                                <div class="sp-slide" >
+                                    <img class="sp-image" src="src/images/blank.gif" data-src="src/sample/2.GeneFusion.png" />
+                                </div>
+                              
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+
+
+                <div id="content-menu38" class="outline-2">
+                <h3 id="menu38"><span class="section-number-3">3.9</span> 变异位点分析</h3>
+
+                <div  class="outline-text-4">
+                    <p class="dl">变异位点的分析主要是检测样本发生的 SNP ( Single Nucleotide Polymorphisms ) 和 InDel ( Insertion-Deletion ) 变异，分别是指单核苷酸变异和小片段的插入缺失。我们使用 GATK [<a href="GATK">12</a>] 介绍的 Best Practices 进行样本变异分析，分析流程如下图3.8，并使用 Annovar [<a href="Annovar">13</a>] 对结果进行注释。 </p>
+                </div>
+
+                <div style="text-align: center;">
+                    <img src="src/images/bywdjc.png" style="width: 60%;height: 60%">
+                    <p>图 3.9 Rna Data GATK 变异检测</p>
+                </div>
+
+                    
+                        <div  id="content-menu381" class="outline-4">
+                            <h4 id="menu381"><span class="section-number-4">3.9.1</span> 变异位点检测</h4>
+                            <div class="outline-text-4"><p class="dl">样本变异检测统计表如下：</p></div>
+                        <div style="position: relative;" class="outline-text-4" class="outline-text-4">
+                            <p style="position: absolute; left:45%; top: 0; margin: 0; line-height: 53px;" class="outline-text-4">表 3.8.1 变异位点及注释表 </p>
+                         <div style="margin-left:0.6em " align="center" id="example381" class="outline-text-4"></div>   
+                        </div>
+                        
+                        <div style="padding: 0;">
+                       
+                        <script src="src/js/table/jquery.min.js"></script>
+                        <script src="src/js/table/gotopage.js"></script>
+                        <script src="src/js/table/ajaxpaging.js"></script>
+                        <script src="src/js/table/jquery.columns.min.js"></script>
+                        <script>
+                        var columns1 = $('#example381').columns({
+                            data: [
+                                { 'Chr': "chr1", 'POS': '877831', 'REF': 'G', 'ALT': 'C', 'Func.refGene': 'exonic ', 'Gene.refGene': 'SAMD11', 'GeneDetail': 'nonsynonymous SNV ',  "AAChange.refGene" : "NM_001130413:exon8:c.G1031C:p.R344P","cytoBand":"1p36.33","genomicSuperDups":".","AD":"98","GT":"0/1",},
+                                { 'Chr': "chr1", 'POS': '1007203', 'REF': 'G', 'ALT': 'A', 'Func.refGene': 'exonic', 'Gene.refGene': 'RNF223 ', 'GeneDetail': 'nonsynonymous SNV ',  "AAChange.refGene" : "NM_001130413:exon6:c.G468A:p.S156S","cytoBand":"1p36.33","genomicSuperDups":".","AD":"78","GT":"0/1",},
+                                { 'Chr': "chr1", 'POS': '1361641', 'REF': 'C', 'ALT': 'T', 'Func.refGene': 'exonic', 'Gene.refGene': 'TMEM88B', 'GeneDetail': 'nonsynonymous SNV ',  "AAChange.refGene" : "NM_001146685:exon1:c.C134T:p.P45L","cytoBand":"1p36.33","genomicSuperDups":".","AD":"134","GT":"1/1",},
+                            ]
+                        });
+                        </script>
+                     </div>
+
+                      <div class="outline-text-3">
+                        <p style="font-size: 10px"><b>上表说明：</b>
+                            <br \> 1) Chr ：变异位点所在染色体
+                            <br \> 2) POS ：变异位点的位置
+                            <br \> 3) REF ：变异位点的参考碱基
+                            <br \> 4) ALT ：变异位点的变异碱基
+                            <br \> 5) Func.refGene ：变异位点所处区域
+                            <br \> 6) Gene.refGene ：变异位点所在基因 
+                            <br \> 7) GeneDetail：变异的详细信息，包括转录本 ID , 变异在第几个外显子，对氨基酸的改变 
+                            <br \> 8) cytoBand ：变异所在染色体臂
+                            <br \> 9) genomicSuperDups ：是否是在重复区域
+                            <br \> 10) AD ：变异位点 Reads 支持数
+                            <br \> 11) GT ：基因型，非相同数值为杂合变异，相同数值为纯合突变
+                        </p>
+                    </div>
+                     </div>
+
+
+                    <div  id="content-menu382" class="outline-4">
+                            <h4 id="menu382"><span class="section-number-4">3.9.2</span> 变异位点统计</h4>
+                            <div class="outline-text-4"><p class="dl">我们根据注释的结果，对变异位点的变异类型进行统计，主要有同义突变 ( synonymous SNV )，非同义突变 ( nonsynonymous SNV )，启动子突变 ( stopgain )，终止子突变 ( stoploss )，剪接位点突变 ( Splicing ) 等，统计结果如下表所示：</p></div>
+                        <div style="position: relative;" class="outline-text-4" class="outline-text-4">
+                            <p style="position: absolute; left:45%; top: 0; margin: 0; line-height: 53px;" class="outline-text-4">表 3.9.2 变异位点类型统计注释表 </p>
+                         <div style="margin-left:0.6em " align="center" id="example382" class="outline-text-4"></div>   
+                        </div>
+                        
+                        <div style="padding: 0;">
+                       
+                        <script src="src/js/table/jquery.min.js"></script>
+                        <script src="src/js/table/gotopage.js"></script>
+                        <script src="src/js/table/ajaxpaging.js"></script>
+                        <script src="src/js/table/jquery.columns.min.js"></script>
+                        <script>
+                        var columns1 = $('#example382').columns({
+                            data: [
+                                { 'Sample': "case1", 'nonsynonymous SNV': '87', 'synonymous SNV': '45', 'stopgain': '4', 'stoploss': '3 ', 'Splicing': '2', },
+                                { 'Sample': "case2", 'nonsynonymous SNV': '109', 'synonymous SNV': '76', 'stopgain': '3', 'stoploss': '2', 'Splicing': '0 ', },
+                                { 'Sample': "case3", 'nonsynonymous SNV': '64', 'synonymous SNV': '93', 'stopgain': '3', 'stoploss': '0', 'Splicing': '1', },
+                            ]
+                        });
+                        </script>
+                     </div>
+                      <div class="outline-text-3">
+                        <p style="font-size: 10px"><b>上表说明：</b>
+                            <br \> 1) Sample ：样本 ID
+                            <br \> 2) nonsynonymous SNV ：同义突变数
+                            <br \> 3) synonymous SNV ：非同义突变数
+                            <br \> 4) stopgain ：突变成终止子变异数数
+                            <br \> 5) stoploss ：突变成启动子变异数
+                            <br \> 6) splicing ：剪接变异位点数 
+                        </p>
+                    </div>
+                     </div>
+                </div>
+            </div>
+            <!--软件列表-->
+            <div id="content-menu8" class="outline-2">
+                <h2 id="menu8"><span class="section-number-2">4</span> 软件列表</h2>
+                <div align="center">
+                    <table cellspacing="0" class="tacl" bordercolor="#CD9B1D">
+                        <tr>
+                            <th bgcolor="#99CCCC">分析内容</th>
+                            <th bgcolor="#99CCCC">软件</th>
+                            <th bgcolor="#99CCCC">软件版本</th>
+                        </tr>
+                        <tr class="l">
+                            <th>质检</th>
+                            <th>fastp</th>
+                            <th> 0.12.4</th>
+                        </tr>
+                        <tr class="l">
+                            <th>比对</th>
+                            <th>HISAT2</th>
+                            <th>2.1.0</th>
+                        </tr>
+                        <tr class="l">
+                            <th>基因定量</th>
+                            <th>FeatureCounts</th>
+                            <th>1.6.1</th>
+                        </tr>
+                        <tr class="l">
+                            <th rowspan="2">差异分析</th>
+                            <th>DESeq2</th>
+                            <th>1.18.1</th>
+                        </tr>
+                         <tr class="l">
+                            <th>EdegR</th>
+                            <th>3.20.9</th>
+                        </tr>
+                        <tr class="l">
+                            <th>功能富集注释</th>
+                            <th>ClusterProfier</th>
+                            <th>3.6.0</th>
+                        </tr>
+                        <tr class="l">
+                            <th>差异可变剪接</th>
+                            <th>ASD</th>
+                            <th>1.2</th>
+                        </tr>
+                        <tr class="l">
+                            <th rowspan="2">融合基因</th>
+                            <th>STAR</th>
+                            <th>2.5</th>
+                        </tr>
+                         <tr class="l">
+                            <th>STAR-Fusion</th>
+                            <th>0.3.1</th>
+                        </tr>
+                        <tr class="l">
+                            <th>变异检测</th>
+                            <th>GATK</th>
+                            <th>3.6</th>
+                        </tr>
+                        <tr class="l">
+                            <th>变异注释</th>
+                            <th>Annovar</th>
+                            <th>2015-03-22</th>
+                        </tr>
+                         <tr class="l">
+                            <th>蛋白网络</th>
+                            <th>STRINGdb</th>
+                            <th>1.18.0</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <!--引用-->
+            <div id="menu_content9" class="outline-2">
+                <h2 id="menu9"><span class="section-number-2">5</span> 参考文献</h2>
+                <div class="outline-text-2" id="text-7">
+                    <table>
+                        <tr valign="top">
+                            <td align="right" class="bibtexnumber">
+                                [<a name="fastp">1</a>]
+                            </td>
+                            <td class="bibtexitem">
+                                Shifu Chen, Yanqing Zhou, Yaru Chen, Jia Gu. fastp: an ultra-fast all-in-one FASTQ preprocessor. [&nbsp;
+                                <a href="https://github.com/OpenGene/fastp">http</a>&nbsp;]
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td align="right" class="bibtexnumber">
+                                [<a name="GC">2</a>]
+                            </td>
+                            <td class="bibtexitem">
+                                Pozzoli U, et al.Both selective and neutral processes drive GC content evolution in the human genome. [&nbsp;
+                                <a href="https://bmcevolbiol.biomedcentral.com/articles/10.1186/1471-2148-8-99">http</a>&nbsp;]
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td align="right" class="bibtexnumber">
+                                [<a name="hisat">3</a>]
+                            </td>
+                            <td class="bibtexitem">
+                                http://samtools.github.io/hts-specs/SAMv1.pdf [&nbsp;
+                                <a href="http://samtools.github.io/hts-specs/SAMv1.pdf">http</a>&nbsp;]
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td align="right" class="bibtexnumber">
+                                [<a name="sam">4</a>]
+                            </td>
+                            <td class="bibtexitem">
+                                Kim D, Langmead B, Salzberg SL. HISAT: a fast spliced aligner with low memory requirements. [&nbsp;
+                                <a href="https://dl.acm.org/citation.cfm?id=2674828">http</a>&nbsp;]
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td align="right" class="bibtexnumber">
+                                [<a name="featurecount">5</a>]
+                            </td>
+                            <td class="bibtexitem">
+                                Featurecount:http://subread.sourceforge.net .(Featurecount) [&nbsp;
+                                <a href="http://subread.sourceforge.net">http</a>&nbsp;]
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td align="right" class="bibtexnumber">
+                                [<a name="DESeq2">6</a>]
+                            </td>
+                            <td class="bibtexitem">
+                                Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2 [&nbsp;
+                                <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-014-0550-8">http</a>&nbsp;]
+                            </td>
+                        </tr>
+
+                        <tr valign="top">
+                            <td align="right" class="bibtexnumber">
+                                [<a name="EdgeR">7</a>]
+                            </td>
+                            <td class="bibtexitem">
+                                Robinson MD, McCarthy DJ, Smyth GK. edgeR: a Bioconductor package for differential expression analysis of digital gene expression data[&nbsp;
+                                <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term=Robinson+MD%2C+McCarthy+DJ%2C+Smyth+GK.+edgeR%3A+a+Bioconductor+package+for+differential+expression+analysis+of+digital+gene+expression+data%5C">http</a>&nbsp;]
+                            </td>
+                        </tr>
+
+                        <tr valign="top">
+                            <td align="right" class="bibtexnumber">
+                                [<a name="clusterprofier">8</a>]
+                            </td>
+                            <td class="bibtexitem">
+                                clusterProfiler: statistical analysis and visualization of functional profiles for genes and gene clusters[&nbsp;
+                                <a href="https://guangchuangyu.github.io/clusterProfiler/">http</a>&nbsp;]
+                            </td>
+                        </tr>
+
+                        <tr valign="top">
+                            <td align="right" class="bibtexnumber">
+                                [<a name="ASD">9</a>]
+                            </td>
+                            <td class="bibtexitem">
+                                Transcriptome analysis of alternative splicing events regulated by SRSF10 reveals position-dependent splicing modulation[&nbsp;
+                                <a href="https://academic.oup.com/nar/article/42/6/4019/2438282">http</a>&nbsp;]
+                            </td>
+                        </tr>
+
+
+                        <tr valign="top">
+                            <td align="right" class="bibtexnumber">
+                                [<a name="startfusion">10</a>]
+                            </td>
+                            <td class="bibtexitem">
+                               STAR-Fusion: Fast and Accurate Fusion Transcript Detection from RNA-Seq[&nbsp;
+                                <a href="http://biorxiv.org/content/early/2017/03/24/120295">http</a>&nbsp;]
+                            </td>
+                        </tr>
+
+                         <tr valign="top">
+                            <td align="right" class="bibtexnumber">
+                                [<a name="start">11</a>]
+                            </td>
+                            <td class="bibtexitem">
+                               STAR: ultrafast universal RNA-seq aligner.[&nbsp;
+                                <a href="https://www.ncbi.nlm.nih.gov/pubmed/23104886">http</a>&nbsp;]
+                            </td>
+                        </tr>
+
+                       <tr valign="top">
+                            <td align="right" class="bibtexnumber">
+                                [<a name="GATK">12</a>]
+                            </td>
+                            <td class="bibtexitem">
+                               GATK:https://software.broadinstitute.org/gatk/ .(GATK).[&nbsp;
+                                <a href="https://software.broadinstitute.org/gatk/">http</a>&nbsp;]
+                            </td>
+                        </tr>
+
+                        <tr valign="top">
+                            <td align="right" class="bibtexnumber">
+                                [<a name="Annovar">13</a>]
+                            </td>
+                            <td class="bibtexitem">
+                               Annovar:http://annovar.openbioinformatics.org/en/latest/.[&nbsp;
+                                <a href="http://annovar.openbioinformatics.org/en/latest/">http</a>&nbsp;]
+                            </td>
+                        </tr>
+                            
+    
+                        <tr valign="top">
+                            <td align="right" class="bibtexnumber">
+                                [<a name="db">14</a>]
+                            </td>
+                            <td class="bibtexitem">
+                               Cytoscape:http://www.cytoscape.org/documentation_users.html.[&nbsp;
+                                <a href="http://www.cytoscape.org/documentation_users.html">http</a>&nbsp;]
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+        <script src="src/js/sample.js">
+        </script>
+        <script type="text/javascript">
+        function form_top() {
+            document.write('<div id="form_top"><a href="#_top" title="回到顶部"><div class="top_img"></div></a></div>')
+        }
+        form_top();
+        </script>
+        <div id="form_top">
+            <a href="#_top" title="回到顶部">
+                <div class="top_img"></div>
+            </a>
+        </div>
+        <footer>
+            <div style="text-align: center;">
+                <p>Analyse © 2014-2018 HaploX-海普洛斯</p>
+            </div>
+        </footer>
+</body>
+
+</html>
