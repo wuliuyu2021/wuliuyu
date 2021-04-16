@@ -45,15 +45,6 @@ class Fastp(object):
 		self.r2_after_content = data["read2_after_filtering"]["content_curves"]
 		self.r2_after_gc_content = data["read2_after_filtering"]["content_curves"]["GC"]
 
-
-		self.passed_filter_reads=data["filtering_result"]["passed_filter_reads"]
-		self.low_quality_reads=data["filtering_result"]["low_quality_reads"]
-		self.too_many_N_reads=data["filtering_result"]["too_many_N_reads"]
-		self.too_short_reads=data["filtering_result"]["too_short_reads"]
-		self.too_long_reads=data["filtering_result"]["too_long_reads"]
-
-		self.adapter_trimmed_reads=data["adapter_cutting"]["adapter_trimmed_reads"]
-		self.adapter_trimmed_bases=data["adapter_cutting"]["adapter_trimmed_bases"]
 	def percent(self, num):
 		return float(num) * 100
 

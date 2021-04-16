@@ -25,6 +25,7 @@ def table_info(indir):
 
 	return tabs
 
+'''
 def venn_cmd(indir,outdir):
 	if not os.path.exists(outdir):
 		os.makedirs(outdir)
@@ -38,6 +39,7 @@ def venn_cmd(indir,outdir):
 			work_open.write('Rscript venn.R %s, out\n\n' % (os.path.basename(tab).split('.anno.')[0]))
 		if os.path.basename(tab).split('.anno.')[0].endswith("indel"):
 			work_open.write('Rscript venn.R %s, out\n\n' % (os.path.basename(tab).split('.anno.')[0]))
+'''
 
 def read_table(indir):
 	tabs=table_info(indir)
@@ -155,7 +157,7 @@ def main():
 	read_table(indir)
 	genetable_tmp_maker(indir)
 	genetable_merge_maker(indir, outdir)
-	venn_cmd(indir,outdir)
+	#venn_cmd(indir,outdir)
 	time2=time.time()
 	print("Time used: %s" %(str(time2-time1)))
 

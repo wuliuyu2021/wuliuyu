@@ -26,7 +26,7 @@ def get_files(options):
 	dt={}
 	if options.infile:
 		for line in open(options.infile, 'r'):
-			lst = line.strip().split(",")
+			lst = re.split('[,\t]',line.strip())
 			con="%s=%s" % (lst[0], lst[1])
 			lts.append(lst[0])
 			d[lst[1].replace("oss://sz-","/")] = lst[0]

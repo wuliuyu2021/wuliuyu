@@ -13,7 +13,7 @@ def rawfq(rawdir1):
 def seqcsv(csv):
 	d1={}
 	for line in open(csv):
-		lst = line.strip().split(",")
+		lst = re.split('[,\t]',line.strip())
 		d1[lst[0]] = lst[1]
 		
 	return d1

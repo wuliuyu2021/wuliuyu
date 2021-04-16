@@ -111,7 +111,7 @@ def sendlink(projectid, fname, receiver):
     username = 'datadelivery@haplox.com'
     password = 'Srsz2020!'
     sender = 'datadelivery@haplox.com'
-    receiverlst = ['project@haplox.com', 'longrw@haplox.com', 'wuliuyu@haplox.com']
+    receiverlst = ['project@haplox.com', 'longrw@haplox.com', 'wuliuyu@haplox.com', 'yangzx@haplox.com']
     if receiver:
         receiverlst.append(receiver)
     cclst = ['project@haplox.com', 'longrw@haplox.com', 'wuliuyu@haplox.com', 'datadelivery@haplox.com']
