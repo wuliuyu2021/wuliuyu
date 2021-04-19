@@ -3,9 +3,8 @@
 infile=$1
 outdir=$2
 
-rm -rf $outdir/tmp.txt
-for info in `cat $infile`
-#rm -rf $outdir/tmp.txt
+rm -f $outdir/tmp.txt
+
 do
 
 #fq=$(echo $info |awk -F "," '{print $2}')
