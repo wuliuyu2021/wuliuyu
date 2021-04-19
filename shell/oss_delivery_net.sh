@@ -30,8 +30,8 @@ done
 for info2 in `cat $tmp`
 do
 fq=$(echo $info2 |awk -F "," '{print $3}')
-contact2=$(echo $info2 |awk -F "," '{print 3}')
-flag2=$(echo $info2 |awk -F "," '{print 2}')
+contact2=$(echo $info2 |awk -F "," '{print $3}')
+flag2=$(echo $info2 |awk -F "," '{print $2}')
 ossutil cp -ru $fq oss://sz-hapdeliver/${flag2}/$time/${contact2}/
 echo $fq uploaded to oss://sz-hapdeliver/${flag2}/$time/${contact2}/
 done
