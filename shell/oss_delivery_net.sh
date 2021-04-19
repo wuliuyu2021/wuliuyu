@@ -21,7 +21,8 @@ for info in `cat $infile `
 do
 contact=$(echo $info |awk -F "," '{print $1}')
 flag=$(echo $info |awk -F "," '{print $2}')
-ossdir=$(ossutil ls  $info |tail -n 4 |head -n 1 |awk -F "_R1_001.fastq.gz" '{print $1}' |awk -F "oss" '{print "oss"$2}' )
+osspre=$(echo $info |awk -F "," '{print $3}')
+ossdir=$(ossutil ls  $osspre |tail -n 4 |head -n 1 |awk -F "_R1_001.fastq.gz" '{print $1}' |awk -F "oss" '{print "oss"$2}' )
 echo "${contact},${flag},${ossdir}_R1_001.fastq.gz" >> $tmp
 echo "${contact},${flag},${ossdir}_R2_001.fastq.gz" >> $tmp
 done
@@ -41,3 +42,4 @@ do
 flag3=$(echo $info3 |awk -F "," '{print $1}')
 contact3=$(echo $info3 |awk -F "," '{print $2}')
 python /data/users/wuliuyu/wuliuyu/python/dingtalkChatbot.py oss://sz-hapdeliver/$flag3/$time/$contact3 $receiver
+done
