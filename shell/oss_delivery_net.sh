@@ -32,8 +32,8 @@ do
 fq=$(echo $info2 |awk -F "," '{print $3}')
 contact2=$(echo $info2 |awk -F "," '{print $1}')
 flag2=$(echo $info2 |awk -F "," '{print $2}')
-ossutil cp -ru $fq oss://sz-hapdeliver/${flag2}/$time/${contact2}/
-echo $fq uploaded to oss://sz-hapdeliver/${flag2}/$time/${contact2}/
+ossutil cp -ru $fq oss://sz-hapdeliver/${flag2}/$time/${contact2}/$(echo $fq |awk -F"/" '{print $NF}')
+echo $fq uploaded to oss://sz-hapdeliver/${flag2}/$time/${contact2}/$(echo $fq |awk -F"/" '{print $NF}')
 done
 
 un=$(cat $tmp |awk -F"," '{print $2","$1}' |sort |uniq)
