@@ -36,8 +36,7 @@ ossutil cp -ru $fq oss://sz-hapdeliver/${flag2}/$time/${contact2}/$(echo $fq |aw
 echo $fq uploaded to oss://sz-hapdeliver/${flag2}/$time/${contact2}/$(echo $fq |awk -F"/" '{print $NF}')
 done
 
-un=$(cat $tmp |awk -F"," '{print $2","$1}' |sort |uniq)
-for info3 in `cat $un`
+for info3 in `cat $tmp |awk -F"," '{print $2","$1}' |sort |uniq`
 do
 flag3=$(echo $info3 |awk -F "," '{print $1}')
 contact3=$(echo $info3 |awk -F "," '{print $2}')
