@@ -4,7 +4,7 @@ infile=$1
 outdir=$2
 
 rm -f $outdir/tmp.txt
-
+for info in `cat $infile`
 do
 
 #fq=$(echo $info |awk -F "," '{print $2}')
