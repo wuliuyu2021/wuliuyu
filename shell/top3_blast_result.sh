@@ -3,7 +3,7 @@ indir=$1
 
 cd $indir
 header="样本	比对物种Top1	read数	占比(%s)	比对物种Top2	read数	占比(%s)	比对物种Top3	read数	占比(%s)"
-echo "$header" > top3_spe.csv
+echo "$header" > top3_spe.xls
 for spe in `ls *_reads_stat.xls`;
 do
 specie1=$(cat $spe |head -n 2 |tail -n 1 |awk -F " s__" '{print $2}')
@@ -19,5 +19,5 @@ nums3=$(cat $spe |head -n 4 |tail -n 1 |awk -F " s__" '{print $1}')
 lv3=`echo "scale=4; ${nums3}*100/$(cat $spe |head -n 1)" |bc`
 
 prefix=$(echo $spe |awk -F "_reads_stat.xls" '{print $1}')
-echo "$prefix	$specie1	$nums1	$lv1	$specie2	$nums2	$lv2	$specie3	$nums3	$lv3"	>> top3_spe.csv
+echo "$prefix	$specie1	$nums1	$lv1	$specie2	$nums2	$lv2	$specie3	$nums3	$lv3"	>> top3_spe.xls
 done
