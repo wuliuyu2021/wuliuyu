@@ -20,7 +20,7 @@ def main():
 	outdir=sys.argv[2]
 
 	fs = get_files(indir, outdir)
-	print fs
+	print(fs)
 	head=("实验名称"+"\t"+"数据类型"+"\t"+"实验描述"+"\t"+"样本名称"+"\t"+"分组"+"\t"+"描述"+"\t"+"文件名"+"\t"+"md5"+"\t"+"保存路径"+"\n"+
 		"RNA"+"\t"+"RNA-Seq"+"\t"+""+"\t"+""+"\t"+""+"\t"+""+"\t"+""+"\t"+""+"\t"+"\n")
 	csv = os.path.join(outdir, "%s_rna_abspath.xls" % os.path.basename(indir))
