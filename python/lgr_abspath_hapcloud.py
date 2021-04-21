@@ -20,7 +20,8 @@ def main():
 
 	fs = get_files(indir, outdir)
 	print fs
-	head="实验名称\t数据类型\t实验描述\t样本名称\t分组\t描述\t文件名\tmd5\t保存路径\nRNA\tRNA-Seq\t\t\t\t\t\t\t\n"
+	head=("实验名称"+"\t"+"数据类型"+"\t"+"实验描述"+"\t"+"样本名称"+"\t"+"分组"+"\t"+"描述"+"\t"+"文件名"+"\t"+"md5"+"\t"+"保存路径"+"\n"+
+		"RNA"+"\t"+"RNA-Seq"+"\t"+""+"\t"+""+"\t"+""+"\t"+""+"\t"+""+"\t"+""+"\t"+"\n")
 	csv = os.path.join(outdir, "%s_rna_abspath.xls" % os.path.basename(indir))
 	abs_csv = os.path.join(outdir, "data.xls")
 	abs_csv_r1 = os.path.join(outdir, "data_r1.xls")
