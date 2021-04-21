@@ -25,9 +25,9 @@ def main():
 		"RNA"+"\t"+"RNA-Seq"+"\t"+""+"\t"+""+"\t"+""+"\t"+""+"\t"+""+"\t"+""+"\t"+"\n")
 	csv = os.path.join(outdir, "%s_rna_abspath.xls" % os.path.basename(indir))
 	abs_csv = os.path.join(outdir, "data.xls")
-	print("1")
+	
 	abs_csv_r1 = os.path.join(outdir, "data_r1.xls")
-	print("2")
+	
 	abs_csv_open =open(abs_csv, "w")
 	abs_csv_r1_open=open(abs_csv_r1, "w")
 	abs_csv_open.write(head)
@@ -36,10 +36,7 @@ def main():
 		os.makedirs(outdir)
 	if os.path.exists(csv):
 		os.remove(csv)
-	if os.path.exists(abs_csv):
-		os.remove(abs_csv)
-	if os.path.exists(abs_csv_r1):
-		os.remove(abs_csv_r1)
+	
 
 	for r1 in fs:
 		r2 = r1.replace("_R1", "_R2")
