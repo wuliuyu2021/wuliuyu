@@ -46,8 +46,8 @@ def main():
 		with open(csv, "a") as w:
 			w.write("%s\n" % r1path)
 		w.close()
-		abs_csv_open.write("\t\t\t%s\t\t%s/%s\n\t\t\t%s\t\t%s/%s\n" % (r1, indir, r1, r2, indir, r2))
-		abs_csv_r1_open.write("\t\t\t%s\t\t%s/%s\n" % (r1, indir, r1))
+		abs_csv_open.write("\t\t\t\t\t\t%s\t\t%s/%s\n\t\t\t\t\t\t%s\t\t%s/%s\n" % (r1, indir, r1, r2, indir, r2))
+		abs_csv_r1_open.write("\t\t\t\t\t\t%s\t\t%s/%s\n" % (r1, indir, r1))
 	abs_csv_open.close()
 	abs_csv_r1_open.close()
 
