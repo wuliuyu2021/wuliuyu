@@ -20,10 +20,14 @@ def main():
 
 	fs = get_files(indir, outdir)
 	print fs
-
-	csv = os.path.join(outdir, "%s_rna_abspath.csv" % os.path.basename(indir))
-	abs_csv = os.path.join(outdir, "data.csv")
-	abs_csv_r1 = os.path.join(outdir, "data_r1.csv")
+	head="实验名称\t数据类型\t实验描述\t样本名称\t分组\t描述\t文件名\tmd5\t保存路径\nRNA\tRNA-Seq\t\t\t\t\t\t\t\n"
+	csv = os.path.join(outdir, "%s_rna_abspath.xls" % os.path.basename(indir))
+	abs_csv = os.path.join(outdir, "data.xls")
+	abs_csv_r1 = os.path.join(outdir, "data_r1.xls")
+	abs_csv_open =open(abs_csv, "w")
+	abs_csv_r1_open=open(abs_csv_r1, "w")
+	abs_csv_open.write(head)
+	abs_csv_r1_open.write(head)
 	if not os.path.exists(outdir):
 		os.makedirs(outdir)
 	if os.path.exists(csv):
@@ -41,12 +45,10 @@ def main():
 		with open(csv, "a") as w:
 			w.write("%s\n" % r1path)
 		w.close()
-		with open(abs_csv, "a") as f:
-			f.write(",,,%s,,%s/%s\n,,,%s,,%s/%s\n" % (r1, indir, r1, r2, indir, r2))
-		f.close()
-		with open(abs_csv_r1, "a") as r:
-			r.write(",,,%s,,%s/%s\n" % (r1, indir, r1))
-		r.close()
+		abs_csv_open.write("\t\t\t%s\t\t%s/%s\n\t\t\t%s\t\t%s/%s\n" % (r1, indir, r1, r2, indir, r2))
+		abs_csv_r1_open.write("\t\t\t%s\t\t%s/%s\n" % (r1, indir, r1))
+	abs_csv_open.close()
+	abs_csv_r1_open.close()
 
 if __name__ == "__main__":
 	main()
