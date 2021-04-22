@@ -3,7 +3,7 @@
 infile=$1
 outdir=$2
 sed -i "s/\t/,/g" $infile
-rm -f $outdir/*tmp
+rm -f $outdir/${infilename}_tmp
 infilename=$(ls $infile |awk -F "/" '{print $NF}')
 tmp=$outdir/${infilename}_tmp
 
@@ -23,4 +23,12 @@ ossdir=$(ossutil ls  $fq |grep "${prefix}_R1_001.fastq.gz" |awk -F "_R1_001.fast
 echo "${sample},${ossdir}" >> $tmp
 fi
 done
+if [ -f "/data/users/wuliuyu/wuliuyu/python/kefu_fastp_merge_csv_info_v2.py" ];then
 python /data/users/wuliuyu/wuliuyu/python/kefu_fastp_merge_csv_info_v2.py -i $tmp -o $outdir
+fi
+if [ -f "/thinker/nfs5/public/wuliuyu/wuliuyu/python/kefu_fastp_merge_csv_info_v2.py" ];then
+python /thinker/nfs5/public/wuliuyu/wuliuyu/python/kefu_fastp_merge_csv_info_v2.py -i $tmp -o $outdir
+fi
+if [ -f "/haplox/users/wuliuyu/wuliuyu/python/kefu_fastp_merge_csv_info_v2.py" ];then
+python /haplox/users/wuliuyu/wuliuyu/python/kefu_fastp_merge_csv_info_v2.py -i $tmp -o $outdir
+fi
