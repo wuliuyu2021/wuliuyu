@@ -50,7 +50,7 @@ def info_maker():
 	if os.path.exists(outfile):
 		os.remove(outfile)
 	ds=get_files(options)
-	with open(outfile, 'wr') as f:
+	with open(outfile, 'w') as f:
 		spbol=";"
 		for sample,path in ds.items():
 			if spbol in path:
