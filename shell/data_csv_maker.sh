@@ -3,8 +3,8 @@
 infile=$1
 outdir=$2
 sed -i "s/\t/,/g" $infile
-rm -f $outdir/${infilename}_tmp
 infilename=$(ls $infile |awk -F "/" '{print $NF}')
+rm -f $outdir/${infilename}_tmp
 tmp=$outdir/${infilename}_tmp
 
 for info in `cat $infile`
