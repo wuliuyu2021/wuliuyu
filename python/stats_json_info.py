@@ -49,7 +49,7 @@ def info_write(indir, outdir):
 			YieldQ30R2=sampleinfo["ReadMetrics"][-1]["YieldQ30"]
 			Yield=float(YieldR1+YieldR2) / 1000**3
 			YieldQ30=float(YieldQ30R1+YieldQ30R2) /float(YieldR1+YieldR2)
-			NumberReads=folat(sampleinfo["NumberReads"]) / 1000**2
+			NumberReads=float(sampleinfo["NumberReads"]) / 1000**2
 			index=sampleinfo["IndexMetrics"]["IndexSequence"]
 			outcsv_open.write("%s\t%s\t%s\t%s\t%s\t%.4f\t%.2f\n" % (RunId,
 				LaneNumber,
