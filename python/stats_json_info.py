@@ -30,8 +30,8 @@ def info_write(indir, outdir):
 	for sj in sjs:
 		f=open(sj)
 		data=json.load(f)
-		for sample in data["ConversionResults"]["DemuxResults"]["SampleName"]:
-			print(sample)
+		#for sample in data["ConversionResults"]["DemuxResults"]["SampleName"]:
+		print(data["ConversionResults"]["DemuxResults"]["SampleName"])
 
 def main():
 	args = getCommands()
