@@ -32,7 +32,7 @@ def info_write(indir, outdir):
 		data=json.load(f)
 		LaneNumber=data["ReadInfosForLanes"][0]["LaneNumber"]
 		RunId=data["RunId"]
-		SampleName=data["ConversionResults"]
+		SampleName=data["ConversionResults"][0]["DemuxResults"][0]["SampleName"]:
 		
 		#for sample in data["ConversionResults"]["DemuxResults"]["SampleName"]:
 		print(LaneNumber)
