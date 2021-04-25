@@ -32,7 +32,8 @@ def info_write(indir, outdir):
 		data=json.load(f)
 		#data["ConversionResults"]["DemuxResults"]["LaneNumber"]
 		#for sample in data["ConversionResults"]["DemuxResults"]["SampleName"]:
-		print(data[0])
+		print(data["Flowcell"])
+		print(data["ConversionResults"])
 
 def main():
 	args = getCommands()
