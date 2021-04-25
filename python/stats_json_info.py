@@ -60,12 +60,12 @@ def info_write(indir, outdir):
 					Yield,
 					YieldQ30))
 			else:
-				outcsv_open.write("%s\t%s\t%s\t%s\t%s\t0\t%.2f\n" % (RunId,
+				outcsv_open.write("%s\t%s\t%s\t%s\t%s\t%d\t0\n" % (RunId,
 					LaneNumber,
 					samplename.split("_")[0],
 					index,
 					samplename.split("_")[2],
-					YieldQ30))
+					Yield))
 	outcsv_open.close()
 
 
