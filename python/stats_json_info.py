@@ -47,17 +47,25 @@ def info_write(indir, outdir):
 			YieldR2=sampleinfo["ReadMetrics"][-1]["Yield"]
 			YieldQ30R1=sampleinfo["ReadMetrics"][0]["YieldQ30"]
 			YieldQ30R2=sampleinfo["ReadMetrics"][-1]["YieldQ30"]
-			Yield=float(YieldR1+YieldR2) / 1000**3
+			Yield=float(YieldR1+YieldR2) 
 			YieldQ30=float(YieldQ30R1+YieldQ30R2) /float(YieldR1+YieldR2)
-			NumberReads=float(sampleinfo["NumberReads"]) / 1000**2
+			NumberReads=float(sampleinfo["NumberReads"]) 
 			index=sampleinfo["IndexMetrics"][0]["IndexSequence"]
-			outcsv_open.write("%s\t%s\t%s\t%s\t%s\t%.4f\t%.2f\n" % (RunId,
-				LaneNumber,
-				samplename.split("_")[0],
-				index,
-				samplename.split("_")[2],
-				Yield,
-				YieldQ30))
+			if Yield != 0:
+				outcsv_open.write("%s\t%s\t%s\t%s\t%s\t%d\t%.2f\n" % (RunId,
+					LaneNumber,
+					samplename.split("_")[0],
+					index,
+					samplename.split("_")[2],
+					Yield,
+					YieldQ30))
+			else:
+				outcsv_open.write("%s\t%s\t%s\t%s\t%s\t0\t%.2f\n" % (RunId,
+					LaneNumber,
+					samplename.split("_")[0],
+					index,
+					samplename.split("_")[2],
+					YieldQ30))
 	outcsv_open.close()
 
 
