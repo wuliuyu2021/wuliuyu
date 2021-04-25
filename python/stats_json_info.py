@@ -32,12 +32,12 @@ def info_write(indir, outdir):
 		data=json.load(f)
 		LaneNumber=data["ReadInfosForLanes"][0]["LaneNumber"]
 		RunId=data["RunId"]
-		SampleName=data["ConversionResults"][0]["DemuxResults"][0]["SampleName"]
+		Sampleinfo=data["ConversionResults"][0]["DemuxResults"]
 		
 		#for sample in data["ConversionResults"]["DemuxResults"]["SampleName"]:
 		print(LaneNumber)
 		print(RunId)
-		print(SampleName)
+		print(Sampleinfo)
 
 def main():
 	args = getCommands()
