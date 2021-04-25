@@ -26,6 +26,7 @@ def get_jsons(indir):
 	return sjs
 
 def info_write(indir, outdir):
+	dn={}
 	sjs=get_jsons(indir)
 	for sj in sjs:
 		f=open(sj)
@@ -33,11 +34,13 @@ def info_write(indir, outdir):
 		LaneNumber=data["ReadInfosForLanes"][0]["LaneNumber"]
 		RunId=data["RunId"]
 		Sampleinfo=data["ConversionResults"][0]["DemuxResults"]
-		
 		#for sample in data["ConversionResults"]["DemuxResults"]["SampleName"]:
 		print(LaneNumber)
 		print(RunId)
-		print(Sampleinfo)
+		for sample in Sampleinfo:
+			print(sample)
+
+
 
 def main():
 	args = getCommands()
