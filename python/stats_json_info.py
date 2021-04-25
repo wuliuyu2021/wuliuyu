@@ -30,10 +30,14 @@ def info_write(indir, outdir):
 	for sj in sjs:
 		f=open(sj)
 		data=json.load(f)
-		#data["ConversionResults"]["DemuxResults"]["LaneNumber"]
+		LaneNumber=data["ReadInfosForLanes"]["LaneNumber"]
+		RunId=data["RunId"]
+		sample=data["ConversionResults"]["DemuxResults"]["SampleName"]
+		
 		#for sample in data["ConversionResults"]["DemuxResults"]["SampleName"]:
-		print(data["Flowcell"])
-		print(data["ConversionResults"])
+		print(LaneNumber)
+		print(RunId)
+		print(sample)
 
 def main():
 	args = getCommands()
