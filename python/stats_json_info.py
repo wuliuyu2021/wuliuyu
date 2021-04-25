@@ -28,14 +28,15 @@ def get_jsons(indir):
 def info_write(indir, outdir):
 	sjs=get_jsons(indir)
 	for sj in sjs:
-		data=json.load(sj)
+		f=open(sj)
+		data=json.load(f)
 		sample_name=data["ConversionResults"]["DemuxResults"]["SampleName"]
 		print(sample_name)
 
 def main():
 	args = getCommands()
 	indir, outdir=args.indir, args.outdir
-	
+
 	info_write(indir, outdir)
 	
 
