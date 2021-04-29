@@ -25,7 +25,7 @@ def fastp(outdir, indir, sr1):
 	if os.path.exists('/thinker/storage/users/hanjie/tools/fastp/fastp'):
 		os.system('/thinker/storage/users/hanjie/tools/fastp/fastp -i %s -I %s  -j %s -h %s --dont_overwrite' % (rf1, rf2, jf, hf))
 	if os.path.exists('/usr/local/bin/fastp'):
-		os.system('/usr/local/bin/fastp -i %s -I %s  -j %s -h %s' % (rf1, rf2, jf, hf))
+		os.system('/usr/local/bin/fastp -i %s -I %s  -j %s -h %s --dont_overwrite' % (rf1, rf2, jf, hf))
 
 def fastp_multi(args):
 	outdir=args[0]
