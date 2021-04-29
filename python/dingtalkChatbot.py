@@ -17,6 +17,8 @@ if sys.argv[2] == 'wly':
 	at_mobiles = ["13732927526"]
 if sys.argv[2] == 'yqx':
 	at_mobiles = ["18070596187"]
+if sys.argv[2] == 'yzx':
+	at_mobiles = ["18379867231"]
 #print(at_mobiles)
 text_pre=sys.argv[1]
 '''if  "," in text_pre and "/n"  in text_pre:
