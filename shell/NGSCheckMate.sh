@@ -10,7 +10,7 @@ for vcfd in `ls -d $vcfdir/*`;
 
 do
 echo $vcfd
-sample = $(echo $vcfd |awk -F "/" '{print $NF}')
+sample=$(echo $vcfd |awk -F "/" '{print $NF}')
 echo $sample
 sample_vcf=${vcfd}/${sample}.vcf
 echo $sample_vcf >> $outdir/list
