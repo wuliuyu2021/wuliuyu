@@ -6,7 +6,7 @@ rm -f $outdir/list
 if [ ! -d $outdir/ngscheckmate ];then
 mkdir -p $outdir/ngscheckmate
 fi
-for vcfd in `ls -d $vcfdir/*`
+for vcfd in `ls -d $vcfdir/*`;
 
 do
 sample = $(echo $vcfd |awk -F"/" '{print $NF}')
