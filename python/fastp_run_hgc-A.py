@@ -21,9 +21,9 @@ def fastp(outdir, indir, sr1):
 	jf = os.path.join(outdir, "%s.json" % sid)
 	hf = os.path.join(outdir, "%s.html" % sid)
 	if os.path.exists('/thinker/nfs2/longrw/mygit/fastp/fastp'):
-		os.system('/thinker/nfs2/longrw/mygit/fastp/fastp -i %s -I %s  -j %s -h %s' % (rf1, rf2, jf, hf))
+		os.system('/thinker/nfs2/longrw/mygit/fastp/fastp -i %s -I %s  -j %s -h %s --dont_overwrite' % (rf1, rf2, jf, hf))
 	if os.path.exists('/thinker/storage/users/hanjie/tools/fastp/fastp'):
-		os.system('/thinker/storage/users/hanjie/tools/fastp/fastp -i %s -I %s  -j %s -h %s' % (rf1, rf2, jf, hf))
+		os.system('/thinker/storage/users/hanjie/tools/fastp/fastp -i %s -I %s  -j %s -h %s --dont_overwrite' % (rf1, rf2, jf, hf))
 	if os.path.exists('/usr/local/bin/fastp'):
 		os.system('/usr/local/bin/fastp -i %s -I %s  -j %s -h %s' % (rf1, rf2, jf, hf))
 
