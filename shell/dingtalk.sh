@@ -6,10 +6,10 @@ if [ BG > 40 ];then
 
 echo "echo "gm55a-1 /home ram unusual!""
 python3 /thinker/nfs5/public/wuliuyu/wuliuyu/python/dingtalkChatbot.py gm55a-1\ home\ ram\ larger\ than\ 100G! wly
-sleep 1min
+sleep 1m
 else
 
 echo "gm55a-1 /home ram normal!"
-sleep 1min
+sleep 1m
 fi
 done
