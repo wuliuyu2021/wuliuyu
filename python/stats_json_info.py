@@ -30,7 +30,7 @@ def info_write(indir, outdir):
 	sjs=get_jsons(indir)
 	outcsv=os.path.join(outdir, "sample_stats.xls")
 	outcsv_open=open(outcsv,"w")
-	head="RunId\tLaneNumber\tOrd_ID\tIndex\tSample_or_Lib\tRaw_Yield\tRaw_Reads_Num\tRaw_Q30(%)\n"
+	head="RunId\tLaneNumber\tOrd_ID\tIndex\tSample_or_Lib\tRaw_Yield(G)\tRaw_Reads_Num(M)\tRaw_Q30(%)\n"
 	outcsv_open.write(head)
 	for sj in sjs:
 		f=open(indir+"/"+sj)
@@ -52,22 +52,22 @@ def info_write(indir, outdir):
 			NumberReads=float(sampleinfo["NumberReads"]) 
 			index=sampleinfo["IndexMetrics"][0]["IndexSequence"]
 			if Yield != 0:
-				outcsv_open.write("%s\t%s\t%s\t%s\t%s\t%d\t%d\t%.2f\n" % (RunId,
+				outcsv_open.write("%s\t%s\t%s\t%s\t%s\t%.4f\t%.4f\t%.2f\n" % (RunId,
 					LaneNumber,
 					samplename.split("_")[0],
 					index,
 					samplename.split("_")[2],
-					Yield,
-					NumberReads,
+					float(Yield)/1000**3,
+					float(NumberReads)/1000**2,
 					(float(YieldQ30R1+YieldQ30R2) /float(YieldR1+YieldR2))))
 			else:
-				outcsv_open.write("%s\t%s\t%s\t%s\t%s\t%d\t%d\t0\n" % (RunId,
+				outcsv_open.write("%s\t%s\t%s\t%s\t%s\t%.4f\t%.4f\t0\n" % (RunId,
 					LaneNumber,
 					samplename.split("_")[0],
 					index,
 					samplename.split("_")[2],
-					Yield,
-					NumberReads))
+					float(Yield)/1000**3,
+					float(NumberReads)/1000**2))
 	outcsv_open.close()
 
 
