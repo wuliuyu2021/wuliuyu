@@ -33,7 +33,7 @@ def info_write(indir, outdir):
 	head="RunId\tLaneNumber\tOrd_ID\tIndex\tSample_or_Lib\tRaw_Yield\tRaw_Reads_Num\tRaw_Q30(%)\n"
 	outcsv_open.write(head)
 	for sj in sjs:
-		f=open(sj)
+		f=open(indir+"/"+sj)
 		data=json.load(f)
 		LaneNumber=data["ReadInfosForLanes"][0]["LaneNumber"]
 		RunId=data["RunId"]
