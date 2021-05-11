@@ -45,10 +45,10 @@ def out_write(des, ann, outdir):
 		lst=line.strip().split("\t")
 		gene=lst[0]
 		if gene in dp.keys():
-			outfile_open.write("%s\t%s\t%s\n" % (gene,"\t".join(lst[1:14]),dp[gene]))
+			outfile_open.write("%s\t%s\t%s\n" % (gene,"\t".join(lst[1:13]),dp[gene]))
 			
 		else:
-			outfile_open.write("%s\tNA\n" % "\t".join(lst[:14]))
+			outfile_open.write("%s\tNA\n" % "\t".join(lst[:13]))
 	outfile_open.close()
 
 def main():
