@@ -20,20 +20,19 @@ def getCommands():
 	return args
 
 def descript_file_info(des):
-	dp=[]
+	dp={}
 	with open(des, "r") as f:
 		for line in f.readlines()[1:]:
 			
 			lst=line.strip().split("\t")
 			
-			try:
-				if len(lst) < 2:
-					dp[lst[0]]="NA"
-				else:
-					dp[lst[0]]=lst[1]
-			except:
-				print("%s %s wrong!!!" %(lst[0],lst[1]))
-
+			
+			if len(lst) < 2:
+				dp[lst[0]]="NA"
+			else:
+				dp[lst[0]]=lst[1]
+			
+	print(dp)
 	return dp
 
 def out_write(des, ann, outdir):
