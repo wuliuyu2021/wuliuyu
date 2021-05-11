@@ -24,7 +24,10 @@ def descript_file_info(des):
 	for line in open(des).readline()[1:]:
 		lst=line.strip().split("\t")
 		
-		dp[lst[0]]=lst[1]
+		try:
+			dp[lst[0]]=lst[1]
+		except:
+			print("%s %s wrong!!!" %(lst[0],lst[1]))
 
 	return dp
 
