@@ -21,13 +21,14 @@ def getCommands():
 
 def descript_file_info(des):
 	dp=[]
-	for line in open(des, "r").readline()[1:]:
-		lst=line.strip('\n').split("\t")
-		print(lst)
-		try:
-			dp[lst[0]]=lst[1]
-		except:
-			print("%s %s wrong!!!" %(lst[0],lst[1]))
+	with open(des, "r") as f:
+		for line in f.readline()[1:]:
+			lst=line.strip().split("\t")
+			print(lst)
+			try:
+				dp[lst[0]]=lst[1]
+			except:
+				print("%s %s wrong!!!" %(lst[0],lst[1]))
 
 	return dp
 
@@ -38,7 +39,7 @@ def out_write(des, ann, outdir):
 	head="EnsemblID\tGeneName\tGeneID\tchromosome\tstart\tend\tstrand\tBiological_Process\tMolecular_Function\tCellular_Component\tKO\tPathway\tPathwayName\tDescription\n"
 	outfile_open.write(head)
 	for line in open(des, "r").readline()[1:]:
-		lst=line.strip('\n').split("\t")
+		lst=line.strip().split("\t")
 		gene=lst[0]
 		if gene in dp.keys():
 			outfile_open.write("%s\t%s\t%s\n" % (gene,"\t".join(lst[1:14]),dp[gene]))
