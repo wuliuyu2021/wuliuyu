@@ -21,7 +21,7 @@ def getCommands():
 
 def descript_file_info(des):
 	dp=[]
-	for line in open(des):
+	for line in open(des).readline():
 		lst=line.strip().split("\t")
 		if lst[1] == "":
 			lst[1]="NA"
