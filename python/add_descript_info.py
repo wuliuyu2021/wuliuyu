@@ -23,6 +23,7 @@ def descript_file_info(des):
 	dp=[]
 	with open(des, "r") as f:
 		for line in f.readline()[1:]:
+			print(line)
 			lst=line.strip().split("\t")
 			print(lst)
 			try:
