@@ -21,14 +21,16 @@ def getCommands():
 
 def descript_file_info(des):
 	dp=[]
-	print(des)
 	with open(des, "r") as f:
 		for line in f.readlines()[1:]:
-			print(line)
+			
 			lst=line.strip().split("\t")
-			print(lst)
+			
 			try:
-				dp[lst[0]]=lst[1]
+				if len(lst) < 2:
+					dp[lst[0]]="NA"
+				else:
+					dp[lst[0]]=lst[1]
 			except:
 				print("%s %s wrong!!!" %(lst[0],lst[1]))
 
