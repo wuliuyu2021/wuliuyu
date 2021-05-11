@@ -21,6 +21,7 @@ def getCommands():
 
 def descript_file_info(des):
 	dp=[]
+	print(des)
 	with open(des, "r") as f:
 		for line in f.readline()[1:]:
 			print(line)
@@ -51,7 +52,7 @@ def out_write(des, ann, outdir):
 def main():
 	args = getCommands()
 	des = args.descript_file
-	print(des)
+	
 	ann = args.anno_file
 	outdir=args.outdir
 	time1=time.time()
