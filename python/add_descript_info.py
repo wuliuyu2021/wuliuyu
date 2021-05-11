@@ -25,7 +25,9 @@ def descript_file_info(des):
 		lst=line.strip().split("\t")
 		if lst[1] == "":
 			lst[1]="NA"
-		dp[lst[0]]=lst[1]
+			dp[lst[0]]="NA"
+		else:
+			dp[lst[0]]=lst[1]
 
 	return dp
 
@@ -34,6 +36,7 @@ def out_write(des, ann, outdir):
 	outfile_open=open(outfile, "w")
 	dp=descript_file_info(des)
 	head="EnsemblID\tGeneName\tGeneID\tchromosome\tstart\tend\tstrand\tBiological_Process\tMolecular_Function\tCellular_Component\tKO\tPathway\tPathwayName\tDescription\n"
+	outfile_open.write(head)
 	for line in open(des, "r").readline()[1:]:
 		lst=line.strip().split("\t")
 		gene=lst[0]
@@ -42,7 +45,7 @@ def out_write(des, ann, outdir):
 				gene,"\t".join(lst[1:14]),dp[gene]))
 		else:
 			outfile_open.write("%s\tNA\n" % "\t".join(lst[1:14]))
-
+	outfile_open.close()
 
 def main():
 	args = getCommands()
