@@ -46,9 +46,9 @@ def out_write(des, ann, outdir):
 		gene=lst[0]
 		if gene in dp.keys():
 			outfile_open.write("%s\t%s\t%s\n" % (gene,"\t".join(lst[1:14]),dp[gene]))
-			print("\t".join(lst[1:14]))
+			
 		else:
-			outfile_open.write("%s\t'NA'\n" % "\t".join(lst[:14]))
+			outfile_open.write("%s\tNA\n" % "\t".join(lst[:14]))
 	outfile_open.close()
 
 def main():
