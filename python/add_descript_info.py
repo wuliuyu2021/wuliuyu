@@ -50,6 +50,7 @@ def out_write(des, ann, outdir):
 def main():
 	args = getCommands()
 	des = args.descript_file
+	print(des)
 	ann = args.anno_file
 	outdir=args.outdir
 	time1=time.time()
