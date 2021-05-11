@@ -21,7 +21,7 @@ def getCommands():
 
 def descript_file_info(des):
 	dp=[]
-	for line in open(des).readline()[1:]:
+	for line in open(des, "r").readline()[1:]:
 		lst=line.strip().split("\t")
 		print(lst)
 		try:
