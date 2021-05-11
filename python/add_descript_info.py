@@ -41,14 +41,14 @@ def out_write(des, ann, outdir):
 	dp=descript_file_info(des)
 	head="EnsemblID\tGeneName\tGeneID\tchromosome\tstart\tend\tstrand\tBiological_Process\tMolecular_Function\tCellular_Component\tKO\tPathway\tPathwayName\tDescription\n"
 	outfile_open.write(head)
-	for line in open(des, "r").readlines()[1:]:
+	for line in open(ann, "r").readlines()[1:]:
 		lst=line.strip().split("\t")
 		gene=lst[0]
 		if gene in dp.keys():
 			outfile_open.write("%s\t%s\t%s\n" % (gene,"\t".join(lst[1:14]),dp[gene]))
 			print("\t".join(lst[1:14]))
 		else:
-			outfile_open.write("%s\t'NA'\n" % "\t".join(lst[0:14]))
+			outfile_open.write("%s\t'NA'\n" % "\t".join(lst[:14]))
 	outfile_open.close()
 
 def main():
