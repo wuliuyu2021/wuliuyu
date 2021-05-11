@@ -23,11 +23,8 @@ def descript_file_info(des):
 	dp=[]
 	for line in open(des).readline()[1:]:
 		lst=line.strip().split("\t")
-		if lst[1] == "":
-			lst[1]="NA"
-			dp[lst[0]]="NA"
-		else:
-			dp[lst[0]]=lst[1]
+		
+		dp[lst[0]]=lst[1]
 
 	return dp
 
@@ -41,8 +38,7 @@ def out_write(des, ann, outdir):
 		lst=line.strip().split("\t")
 		gene=lst[0]
 		if gene in dp.keys():
-			outfile_open.write("%s\t%s\t%s\n" % (
-				gene,"\t".join(lst[1:14]),dp[gene]))
+			outfile_open.write("%s\t%s\t%s\n" % (gene,"\t".join(lst[1:14]),dp[gene]))
 		else:
 			outfile_open.write("%s\tNA\n" % "\t".join(lst[1:14]))
 	outfile_open.close()
