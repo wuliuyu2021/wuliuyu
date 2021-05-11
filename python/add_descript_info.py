@@ -23,7 +23,7 @@ def descript_file_info(des):
 	dp=[]
 	for line in open(des).readline()[1:]:
 		lst=line.strip().split("\t")
-		
+		print(lst)
 		try:
 			dp[lst[0]]=lst[1]
 		except:
@@ -43,7 +43,7 @@ def out_write(des, ann, outdir):
 		if gene in dp.keys():
 			outfile_open.write("%s\t%s\t%s\n" % (gene,"\t".join(lst[1:14]),dp[gene]))
 		else:
-			outfile_open.write("%s\tNA\n" % "\t".join(lst[1:14]))
+			outfile_open.write("%s\t''\n" % "\t".join(lst[1:14]))
 	outfile_open.close()
 
 def main():
