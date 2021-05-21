@@ -5,10 +5,11 @@ import os
 import sys
 import re
 #sys.argv[1]:All.KEGG_Enrich.xls
-#sys.argv[2]:genepathway,hsa04010
-#sys.argv[3]:outdir
+#sys.argv[2]:pathwayname,hsa04010
+#sys.argv[3]:diff_file,log2FC1.0.Pvalue0.05.txt
+#sys.argv[4]:outdir
 lts=[]
-out=os.path.join("%s/%s.gene.list.xls",(sys.argv[3], os.path.basename(sys.argv[1])))#file name
+out=os.path.join("%s/%s.%s.diff.gene.xls",(sys.argv[4], sys.argv[2], os.path.basename(sys.argv[1])))#file name
 out_open=open(out,"w")
 for line in open(sys.argv[1], "r").readlines()[1:]:#path csv
 
@@ -20,7 +21,11 @@ for line in open(sys.argv[1], "r").readlines()[1:]:#path csv
 		for path in sys.argv[2].split(","):
 			for gene in lst[7].split("/"):
 				lts.append(gene)
-for gene in sorted(set(lts)):
-	out_open.write("%s\n" % gene)
+head_list=open(sys.argv[3], "r").readlines()[0]
+head="\t".join(head_list.split("\t"))
+for line in open(sys.argv[1], "r").readlines()[1:]:
+	lst=line.strip().split("\t")
+	if lst[0] in sorted(set(lts)):
+		out_open.write("%s\n" % "\t".join(lst))
 		
 out_open.close()
