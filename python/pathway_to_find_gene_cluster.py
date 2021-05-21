@@ -16,7 +16,7 @@ for line in open(sys.argv[1], "r").readlines()[1:]:#path csv
 	lst=line.strip().split("\t")
 	if  len(sys.argv[2].split(",")) == 1 and lst[0] == sys.argv[2]:#gene ID
 		for gene in lst[7].split("/"):
-			out_open.write("%s\n" % gene)
+			lts.append(gene)
 	if len(sys.argv[2].split(",")) > 1 and lst[0] in sys.argv[2].split(","):
 		for path in sys.argv[2].split(","):
 			for gene in lst[7].split("/"):
