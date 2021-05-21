@@ -25,7 +25,7 @@ print(lts)
 head_list=open(sys.argv[3], "r").readlines()[0]
 head="\t".join(head_list.split("\t"))
 out_open.write(head)
-for line in open(sys.argv[1], "r").readlines()[1:]:
+for line in open(sys.argv[3], "r").readlines()[1:]:
 	lst=line.strip().split("\t")
 	if lst[0] in sorted(set(lts)):
 		out_open.write("%s\n" % "\t".join(lst))
