@@ -9,7 +9,7 @@ import re
 #sys.argv[3]:diff_file,log2FC1.0.Pvalue0.05.txt
 #sys.argv[4]:outdir
 lts=[]
-out=os.path.join("%s/%s.%s.diff.gene.xls" %(sys.argv[4], sys.argv[2], os.path.basename(sys.argv[1])))#file name
+out=os.path.join("%s/%s.%s.diff.gene.xls" %(sys.argv[4], os.path.basename(sys.argv[1]), sys.argv[2]))#file name
 out_open=open(out,"w")
 for line in open(sys.argv[1], "r").readlines()[1:]:#path csv
 
@@ -21,8 +21,10 @@ for line in open(sys.argv[1], "r").readlines()[1:]:#path csv
 		for path in sys.argv[2].split(","):
 			for gene in lst[7].split("/"):
 				lts.append(gene)
+print(lts)
 head_list=open(sys.argv[3], "r").readlines()[0]
 head="\t".join(head_list.split("\t"))
+out_open.write(head)
 for line in open(sys.argv[1], "r").readlines()[1:]:
 	lst=line.strip().split("\t")
 	if lst[0] in sorted(set(lts)):
