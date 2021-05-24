@@ -17,15 +17,15 @@ code=$(echo $fqcode |awk -F"  " '{print $1}')
 fqR1=$(echo $fqcode |awk -F"  " '{print $2}' |grep "_R1")
 fqR2=$(echo $fqcode |awk -F"  " '{print $2}' |grep "_R2")
 fqR3=$(echo $fqcode |awk -F"  " '{print $2}' |grep "_R3")
-if [[ "$fqR1" != "" ]] && [[ "$fqR2" == "" ]] && [[ "$fqR3" == "" ]] ;then
+if [[ -n "$fqR1" ]] && [[ -z "$fqR2" ]] && [[ -z "$fqR3" ]] ;then
 fq=$(echo $fqcode |awk -F"  " '{print $2}' |awk -F"_" '{print $('$st')"_R1_001.fastq.gz"}')
 echo "$code  $fq" >> $out/${md5name}_new
 echo "$code  $fq"
-elif [[ $fqR1 == "" ]] && [[ $fqR2 != "" ]] && [[ "$fqR3" == "" ]] ;then
+elif [[ -z "$fqR1" ]] && [[ -n "$fqR2" ]] && [[ -z "$fqR3" ]] ;then
 fq=$(echo $fqcode |awk -F"  " '{print $2}' |awk -F"_" '{print $('$st')"_R2_001.fastq.gz"}')
 echo "$code  $fq" >> $out/${md5name}_new
 echo "$code  $fq"
-elif [[ "$fqR1" == "" ]] && [[ "$fqR2" == "" ]] && [[ "$fqR3" != "" ]] ;then
+elif [[ -z "$fqR1" ]] && [[ -z "$fqR2" ]] && [[ -n "$fqR3" ]] ;then
 fq=$(echo $fqcode |awk -F"  " '{print $2}' |awk -F"_" '{print $('$st')"_R3_001.fastq.gz"}')
 echo "$code  $fq" >> $out/${md5name}_new
 echo "$code  $fq"
