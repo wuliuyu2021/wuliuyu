@@ -2,21 +2,28 @@
 
 md5old=$1
 out=$2
-st=$3
 
+rm -f $out/md5_new
 if [ ! -d $out ];then
 mkdir -p $out
 fi
 
 #fq5=$(cat $md5old |awk -F "  " '{print $2}' |awk -F "_" '{print $5}')
-if [ $st == "1" ]; then
-awk -F"_" '{print $1"_"$NF}' $md5old > $out/md5_new
+for fqcode in `cat $md5old`;
+do
+code=$(awk -F"  " '{print $1}' $fqcode)
+fqR1=$(awk -F"  " '{print $2}' $fqcode |grep "_R1")
+fqR2=$(awk -F"  " '{print $2}' $fqcode |grep "_R2")
+fqR3=$(awk -F"  " '{print $2}' $fqcode |grep "_R3")
+if [[ -f $fqR1 ]] && [[ ! -f $fqR2 ]] && [[ ! -f $fqR3 ]] ;then
+fq=$(awk -F"  " '{print $2}' $fqcode |awk -F"_" '{print $('$st')"_R1_001.fastq.gz"}')
+echo "$code  $fq" >> $out/md5_new
+elif [[ ! -f $fqR1 ]] && [[ -f $fqR2 ]] && [[ ! -f $fqR3 ]] ;then
+fq=$(awk -F"  " '{print $2}' $fqcode |awk -F"_" '{print $('$st')"_R2_001.fastq.gz"}')
+echo "$code  $fq" >> $out/md5_new
+elif [[ ! -f $fqR1 ]] && [[ ! -f $fqR2 ]] && [[ -f $fqR3 ]] ;then
+fq=$(awk -F"  " '{print $2}' $fqcode |awk -F"_" '{print $('$st')"_R3_001.fastq.gz"}')
+echo "$code  $fq" >> $out/md5_new
 fi
-if [ $st == "2" ]; then
-awk -F"_" '{print $1"  "$2"_"$NF}' $md5old |awk -F "  " '{print $1"  "$3}' > $out/md5_new
-fi
-if [ $st == "3" ]; then
-awk -F"_" '{print $1"  "$3"_"$(NF-1)"_001.fastq.gz"}' $md5old |awk -F "  " '{print $1"  "$3}' > $out/md5_new
-fi
-cd $out
-sed -i "s/.fastq.gz/_001.fastq.gz/g" md5_new
+
+done
