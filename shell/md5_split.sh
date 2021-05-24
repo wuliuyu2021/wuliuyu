@@ -2,6 +2,8 @@
 
 md5old=$1
 out=$2
+st=$3
+
 md5name=$(ls $md5old |awk -F"/" '{print $NF}')
 rm -f $out/${md5name}_new
 if [ ! -d $out ];then
