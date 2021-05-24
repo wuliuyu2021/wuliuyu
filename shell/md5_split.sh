@@ -9,7 +9,7 @@ rm -f $out/${md5name}_new
 if [ ! -d $out ];then
 mkdir -p $out
 fi
-tmp=$out/${md5name}_new
+tmp=$out/${md5name}_tmp
 sed 's/  /CD==FQ/g' $md5old > $tmp
 for fqcode in `cat $tmp`;
 do
