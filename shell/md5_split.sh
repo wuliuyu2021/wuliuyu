@@ -20,12 +20,15 @@ fqR3=$(echo $fqcode |awk -F"  " '{print $2}' |grep "_R3")
 if [[ -f $fqR1 ]] && [[ ! -f $fqR2 ]] && [[ ! -f $fqR3 ]] ;then
 fq=$(echo $fqcode |awk -F"  " '{print $2}' |awk -F"_" '{print $('$st')"_R1_001.fastq.gz"}')
 echo "$code  $fq" >> $out/${md5name}_new
+echo "$code  $fq"
 elif [[ ! -f $fqR1 ]] && [[ -f $fqR2 ]] && [[ ! -f $fqR3 ]] ;then
 fq=$(echo $fqcode |awk -F"  " '{print $2}' |awk -F"_" '{print $('$st')"_R2_001.fastq.gz"}')
 echo "$code  $fq" >> $out/${md5name}_new
+echo "$code  $fq"
 elif [[ ! -f $fqR1 ]] && [[ ! -f $fqR2 ]] && [[ -f $fqR3 ]] ;then
 fq=$(echo $fqcode |awk -F"  " '{print $2}' |awk -F"_" '{print $('$st')"_R3_001.fastq.gz"}')
 echo "$code  $fq" >> $out/${md5name}_new
+echo "$code  $fq"
 fi
 
 done
