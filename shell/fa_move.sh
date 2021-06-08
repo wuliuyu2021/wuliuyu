@@ -9,4 +9,5 @@ for fa in `ls *fa`;
 do
 awk 'BEGIN{getline;a=$0}{if($0!=""){if(a!=""){print a;a=$0}else{a=$0}}else{a=""}}END{print a}'  $fa > $out/${fa}.new
 mv $out/${fa}.new $out/${fa}
+sed -i '/^\s*$/d' $out/${fa}
 done
