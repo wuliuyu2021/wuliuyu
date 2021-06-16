@@ -18,7 +18,7 @@ index1seq=$(echo $info |awk -F "," '{print $14}')
 index2seq=$(echo $info |awk -F "," '{print $16}')
 poolid=$(echo $info |awk -F "," '{print $25}')
 ossR1=$(ossutil ls $oss_base/${ord}_${qcflag}_${hgc}_${flowcellid} |grep "R1_001.fastq.gz" |awk -F " " '{print $NF}')
-echo "ossR1"
+echo "$ossR1"
 R1=$(sed -i "s/oss:\/\/sz-hapseq//g" $ossR1)
 echo "$head" > $basedir/${FC}_qc.csv
 echo "$R1,$flowcellid,$laneid,$index1seq,$index2seq,$projectid,$clientdemandid,qc-hgc-C,$poolid,$sampleid," >> $basedir/${FC}_qc.csv
