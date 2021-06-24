@@ -1,6 +1,6 @@
 #!/bin/bash
 indir=$1
-outdir=$1
+outdir=$2
 gtf=$3
 
 #human hg38 /thinker/nfs5/public/laigr/data/hg38/GRCh38_Ensembl91/ChromFa/Homo_sapiens.GRCh38.91.dna.primary_assembly.fa
