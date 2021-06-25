@@ -21,7 +21,7 @@ def getCommands():
 	return args
 
 def get_jsons(indir):
-	pattern = re.compile(r"(^Stats)(.+).json$")
+	pattern = re.compile(r"(^Stats)(.+)json$")
 	sjs = sorted(filter(lambda x: re.match(pattern, x), os.listdir(indir)))
 	return sjs
 
