@@ -24,6 +24,8 @@ def fastp(outdir, indir, pid, clean_dir, sr1):
 		os.system('/thinker/nfs2/longrw/mygit/fastp/fastp -i %s -I %s -o %s -O %s  -j %s -h %s -l 150 -n 2 -q 0 -u 40 --disable_adapter_trimming' % (rf1, rf2, gf1, gf2, jf, hf))
 	if os.path.exists('/thinker/storage/users/hanjie/tools/fastp/fastp'):
 		os.system('/thinker/storage/users/hanjie/tools/fastp/fastp -i %s -I %s -o %s -O %s  -j %s -h %s -l 150 -n 2 -q 0 -u 40 --disable_adapter_trimming' % (rf1, rf2, gf1, gf2, jf, hf))
+	if os.path.exists('/usr/local/bin/fastp'):
+		os.system('/usr/local/bin/fastp -i %s -I %s -o %s -O %s  -j %s -h %s -l 150 -n 2 -q 0 -u 40 --disable_adapter_trimming' % (rf1, rf2, gf1, gf2, jf, hf))
 
 def fastp_multi(args):
 	outdir=args[0]
