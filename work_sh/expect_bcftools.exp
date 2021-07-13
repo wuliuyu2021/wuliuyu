@@ -1,0 +1,9 @@
+#!/usr/bin/expect
+
+set timeout 36000
+spawn su novelbio
+expect "Password:"
+send "HaploX2018\r"
+send "ds cp --parallel=20 [lindex $argv 0] [lindex $argv 1] \r"
+send "exit\r"
+expect eof

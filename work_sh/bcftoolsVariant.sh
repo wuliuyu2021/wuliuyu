@@ -2,6 +2,7 @@
 indir=$1
 outdir=$2
 gtf=$3
+samtoolsVariantdir=$4
 
 echo "#human hg38 /thinker/nfs5/public/laigr/data/hg38/GRCh38_Ensembl91/ChromFa/Homo_sapiens.GRCh38.91.dna.primary_assembly.fa"
 echo "#mouse mm10 /thinker/nfs5/public/laigr/data/mm10/10090/GRCm38_93/ChromFa/chrAll.fa"
@@ -17,3 +18,6 @@ echo "/thinker/nfs4/public/liyq/soft/bcftools/bin/bcftools mpileup -d 10000 -q 5
 
 done
 echo "sh $outdir/run_bcftoolsVariant.sh"
+echo "wait" >> $outdir/run_bcftoolsVariant.sh
+echo "expect /thinker/nfs5/public/wuliuyu/wuliuyu/work_sh/expect_bcftools.exp ${outdir}/ $samtoolsVariantdir" >> $outdir/run_bcftoolsVariant.sh
+echo "cmd done"
