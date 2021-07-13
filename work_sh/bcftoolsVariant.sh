@@ -19,5 +19,6 @@ echo "/thinker/nfs4/public/liyq/soft/bcftools/bin/bcftools mpileup -d 10000 -q 5
 done
 echo "sh $outdir/run_bcftoolsVariant.sh"
 echo "wait" >> $outdir/run_bcftoolsVariant.sh
+echo "rm -f $outdir/*bam" >> $outdir/run_bcftoolsVariant.sh
 echo "expect /thinker/nfs5/public/wuliuyu/wuliuyu/work_sh/expect_bcftools.exp ${outdir}/ $samtoolsVariantdir" >> $outdir/run_bcftoolsVariant.sh
 echo "cmd done"
