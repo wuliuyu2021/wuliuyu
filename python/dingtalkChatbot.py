@@ -6,6 +6,7 @@ import sys
 #ll="18707031954"
 #wly="13732927526"
 #yqx="18070596187"
+#hp="19907900057"
 webhook = 'https://oapi.dingtalk.com/robot/send?access_token=9a4ec03d21a840f399e7e92b6e3f9544fff5e4a062f3b6bcd2f52be98065146d'
 webhook2 = "https://oapi.dingtalk.com/robot/send?access_token=2232ce68dc30d6e6b0912574101081ea6c1c1ece9d049d3b3a36c6bd7e2b3044"
 xiaoding = DingtalkChatbot(webhook2)
@@ -19,6 +20,8 @@ if sys.argv[2] == 'yqx':
 	at_mobiles = ["18070596187"]
 if sys.argv[2] == 'yzx':
 	at_mobiles = ["18379867231"]
+if sys.argv[2] == 'hp':
+	at_mobiles = ["19907900057"]
 #print(at_mobiles)
 text_pre=sys.argv[1]
 '''if  "," in text_pre and "/n"  in text_pre:
