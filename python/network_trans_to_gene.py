@@ -5,23 +5,29 @@ import os
 import sys
 import re
 
-dt=[]
-#out=os.path.join("%s/%s.%s.diff.gene.xls" %(sys.argv[4], os.path.basename(sys.argv[1]), sys.argv[2]))#file name
-#out_open=open(out,"w")
-for line in open(sys.argv[1], "r").readlines()[0:]:#path csv
+infile=sys.argv[1]
+indir=sys.argv[2]
+
+dt={}
+for line in open(infile, "r").readlines()[:]:#path csv
 	lst=line.strip().split("\t")
 	lst[0]=dt[lst[1]]
 print(dt)
 pattern = re.compile(r"(.+)(.network.txt)$")
-srs = sorted(filter(lambda x: re.match(pattern, x), os.listdir(sys.argv[1])))
+srs = sorted(filter(lambda x: re.match(pattern, x), os.listdir(indir)))
 for sr in srs:
-
-head_list=open(sys.argv[3], "r").readlines()[0]
-head="\t".join(head_list.split("\t"))
-out_open.write(head)
-for line in open(sys.argv[3], "r").readlines()[1:]:
-	lst=line.strip().split("\t")
-	if lst[0] in sorted(set(lts)):
-		out_open.write("%s\n" % "\t".join(lst))
-		
-out_open.close()
+	file=os.path.join(indir,"%s_result.txt" % os.path.basename(sr))
+	file_open=open(file, "w")
+	head=open(indir+"/"+sr, "r").readlines()[0]
+	file_open.write(head+"\n")
+	for i,element in enumerate(head):
+		x=""
+		if element == "to":
+			x=int(i)
+	for line in open(indir+"/"+sr, "r").readlines()[1:]:
+		lst=line.strip().split("\t")
+		if lst[x] not in dt.keys():
+			file_open.write(line+"\n")
+		else:
+			file_open.write("\t".join(lst[0:x])+"\t"+"\t".join(lst[(x+1):]+"\n")
+	file_open.close()

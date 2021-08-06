@@ -12,5 +12,5 @@ sed -i "s/\"//g" $outdir/transcript_gene.xls
 
 sed -i "/MSTRG./d" $outdir/transcript_gene.xls
 
-python3 /thinker/nfs5/public/qiuyuankang/pythonJiaoBen/tranToGene/prj12.py -i $network_dir -m $outdir/transcript_gene.xls -o $outdir
+python3 /thinker/nfs5/public/wuliuyu/wuliuyu/python/network_trans_to_gene.py -i $network_dir -m $outdir/transcript_gene.xls -o $outdir
 echo "Done"
