@@ -30,13 +30,13 @@ def info_write(indir,outdir):
 		for i,element in enumerate(head):
 			x=""
 			if element == "to":
-				x=int(i)
+				x=i
 		for line in open(indir+"/"+sr, "r").readlines()[1:]:
 			lst=line.strip().split("\t")
-			if lst[x] not in dt.keys():
+			if lst[int(x)] not in dt.keys():
 				file_open.write(line+"\n")
 			else:
-				file_open.write("\t".join(lst[0:x])+"\t"+"\t".join(lst[(x+1):]+"\n"))
+				file_open.write("\t".join(lst[0:int(x)])+"\t"+"\t".join(lst[(int(x)+1):]+"\n"))
 		file_open.close()
 
 def main():
