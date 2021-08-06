@@ -38,10 +38,11 @@ def info_write(indir,outdir):
 				print(x)
 		for line in open(indir+"/"+sr, "r").readlines()[1:]:
 			lst=line.strip().split("\t")
-			if lst[int(x)] not in dt.keys():
+			y=int(x)
+			if lst[y] not in dt.keys():
 				file_open.write(line+"\n")
 			else:
-				file_open.write("\t".join(lst[0:int(x)])+"\t"+"\t".join(lst[(int(x)+1):]+"\n"))
+				file_open.write("\t".join(lst[0:y])+"\t"+"\t".join(lst[(y+1):])+"\n")
 		file_open.close()
 
 def main():
