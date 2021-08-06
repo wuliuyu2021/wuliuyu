@@ -14,8 +14,9 @@ def dict_maker(infile):
 	for line in open(infile, "r").readlines()[:]:#path csv
 		lst=line.strip().split("\t")
 		dt[lst[0]]=lst[1]
-	return dt
 	print(dt)
+	return dt
+	
 
 
 def info_write(indir,outdir):
@@ -31,6 +32,7 @@ def info_write(indir,outdir):
 			x=""
 			if element == "to":
 				x=i
+				print(x)
 		for line in open(indir+"/"+sr, "r").readlines()[1:]:
 			lst=line.strip().split("\t")
 			if lst[int(x)] not in dt.keys():
