@@ -33,7 +33,7 @@ def info_write(indir,outdir):
 			print(i)
 			x=""
 			if element == "to":
-				x=i
+				x=int(i)
 				print(x)
 		for line in open(indir+"/"+sr, "r").readlines()[1:]:
 			lst=line.strip().split("\t")
