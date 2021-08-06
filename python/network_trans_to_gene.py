@@ -24,16 +24,17 @@ def info_write(indir,outdir):
 	pattern = re.compile(r"(.+)(.network.txt)$")
 	srs = sorted(filter(lambda x: re.match(pattern, x), os.listdir(indir)))
 	for sr in srs:
+		dx={}
+		x=""
 		file=os.path.join(outdir,"%s_result.txt" % os.path.basename(sr))
 		file_open=open(file, "w")
 		head=open(indir+"/"+sr, "r").readlines()[0]
 		head_list=open(indir+"/"+sr, "r").readlines()[0].strip().split("\t")
 		file_open.write(head)
 		for i,element in enumerate(head_list):
-			print(i)
-			x=""
-			if element == "to":
-				x=int(i)
+			dx[element]=i
+		if "to" in dx.keys():
+				x=dx["to"]
 				print(x)
 		for line in open(indir+"/"+sr, "r").readlines()[1:]:
 			lst=line.strip().split("\t")
