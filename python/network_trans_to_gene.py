@@ -26,7 +26,7 @@ def info_write(indir,outdir):
 	for sr in srs:
 		file=os.path.join(outdir,"%s_result.txt" % os.path.basename(sr))
 		file_open=open(file, "w")
-		head=open(indir+"/"+sr, "r").readlines()[0]
+		head=open(indir+"/"+sr, "r").readlines()[0].strip().split("\t")
 		file_open.write(head+"\n")
 		for i,element in enumerate(head):
 			print(i)
