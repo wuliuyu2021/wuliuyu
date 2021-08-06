@@ -14,7 +14,7 @@ def dict_maker(infile):
 	for line in open(infile, "r").readlines()[:]:#path csv
 		lst=line.strip().split("\t")
 		dt[lst[0]]=lst[1]
-	print(dt)
+	#print(dt)
 	return dt
 	
 
@@ -29,6 +29,7 @@ def info_write(indir,outdir):
 		head=open(indir+"/"+sr, "r").readlines()[0]
 		file_open.write(head+"\n")
 		for i,element in enumerate(head):
+			print(i)
 			x=""
 			if element == "to":
 				x=i
