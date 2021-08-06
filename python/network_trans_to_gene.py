@@ -7,6 +7,7 @@ import re
 
 infile=sys.argv[1]
 indir=sys.argv[2]
+outdir=sys.argv[3]
 
 dt={}
 for line in open(infile, "r").readlines()[:]:#path csv
@@ -16,7 +17,7 @@ print(dt)
 pattern = re.compile(r"(.+)(.network.txt)$")
 srs = sorted(filter(lambda x: re.match(pattern, x), os.listdir(indir)))
 for sr in srs:
-	file=os.path.join(indir,"%s_result.txt" % os.path.basename(sr))
+	file=os.path.join(outdir,"%s_result.txt" % os.path.basename(sr))
 	file_open=open(file, "w")
 	head=open(indir+"/"+sr, "r").readlines()[0]
 	file_open.write(head+"\n")
