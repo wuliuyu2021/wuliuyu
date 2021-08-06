@@ -13,7 +13,7 @@ def dict_maker(infile):
 	dt={}
 	for line in open(infile, "r").readlines()[:]:#path csv
 		lst=line.strip().split("\t")
-		lst[0]=dt[lst[1]]
+		dt[lst[0]]=lst[1]
 	return dt
 	print(dt)
 
