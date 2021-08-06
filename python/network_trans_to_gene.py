@@ -40,7 +40,7 @@ def info_write(indir,outdir):
 			lst=line.strip().split("\t")
 			y=int(x)
 			if lst[y] not in dt.keys():
-				file_open.write(line+"\n")
+				file_open.write(line)
 			else:
 				file_open.write("\t".join(lst[0:y])+"\t"+"\t".join(lst[(y+1):])+"\n")
 		file_open.close()
