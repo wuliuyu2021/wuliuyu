@@ -36,7 +36,7 @@ def info_write(infile,indir,outdir):
 			if lst[y] not in dt.keys():
 				file_open.write(line)
 			else:
-				file_open.write("\t".join(lst[0:y])+"\t"+lst[y]+"\t"+"\t".join(lst[(y+1):])+"\n")
+				file_open.write("\t".join(lst[0:y])+"\t"+dt[lst[y]]+"\t"+"\t".join(lst[(y+1):])+"\n")
 		file_open.close()
 
 def main():
