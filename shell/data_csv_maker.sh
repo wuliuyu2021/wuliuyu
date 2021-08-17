@@ -45,5 +45,7 @@ fi
 if [ -f "/haplox/users/wuliuyu/wuliuyu/python/kefu_fastp_merge_csv_info_v2.py" ];then
 python /haplox/users/wuliuyu/wuliuyu/python/kefu_fastp_merge_csv_info_v2.py -i $tmp -o $outdir -a $need_adpater
 fi
+else
+echo "Sorry, your parameter is wrong!!!" \
+&& exit 0
 fi
-
