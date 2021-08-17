@@ -2,6 +2,8 @@
 
 infile=$1
 outdir=$2
+need_adpater=$3
+
 sed -i "s/\t/,/g" $infile
 infilename=$(ls $infile |awk -F "/" '{print $NF}')
 rm -f $outdir/${infilename}_tmp
@@ -23,6 +25,7 @@ ossdir=$(ossutil ls  $fq |grep "${prefix}_R1_001.fastq.gz" |awk -F "_R1_001.fast
 echo "${sample},${ossdir}" >> $tmp
 fi
 done
+if [ $need_adpater == "no" ];then
 if [ -f "/data/users/wuliuyu/wuliuyu/python/kefu_fastp_merge_csv_info_v2.py" ];then
 python /data/users/wuliuyu/wuliuyu/python/kefu_fastp_merge_csv_info_v2.py -i $tmp -o $outdir
 fi
@@ -32,3 +35,15 @@ fi
 if [ -f "/haplox/users/wuliuyu/wuliuyu/python/kefu_fastp_merge_csv_info_v2.py" ];then
 python /haplox/users/wuliuyu/wuliuyu/python/kefu_fastp_merge_csv_info_v2.py -i $tmp -o $outdir
 fi
+elif [ $need_adpater == "IDT" ] || [ $need_adpater == "UPM" ] ||[ $need_adpater == "MGI" ];then
+if [ -f "/data/users/wuliuyu/wuliuyu/python/kefu_fastp_merge_csv_info_v2.py" ];then
+python /data/users/wuliuyu/wuliuyu/python/kefu_fastp_merge_csv_info_v2.py -i $tmp -o $outdir -a $need_adpater
+fi
+if [ -f "/thinker/nfs5/public/wuliuyu/wuliuyu/python/kefu_fastp_merge_csv_info_v2.py" ];then
+python /thinker/nfs5/public/wuliuyu/wuliuyu/python/kefu_fastp_merge_csv_info_v2.py -i $tmp -o $outdir -a $need_adpater
+fi
+if [ -f "/haplox/users/wuliuyu/wuliuyu/python/kefu_fastp_merge_csv_info_v2.py" ];then
+python /haplox/users/wuliuyu/wuliuyu/python/kefu_fastp_merge_csv_info_v2.py -i $tmp -o $outdir -a $need_adpater
+fi
+fi
+

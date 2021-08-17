@@ -14,7 +14,7 @@ def parse_cmd():
 	parser = OptionParser(usage=usage, version=version)
 	parser.add_option("-i","--infile",dest="infile",default=None,help="info csv")
 	parser.add_option("-o","--outdir",dest="outdir",default=None,help="the outfile path")
-	#parser.add_option("-e","--outfile",dest="outfile",default=None,help="input ccc")
+	parser.add_option("-a","--adapter",dest="adapter",default=None,help="input the adapter type:IDT/UPM/MGI")
 	#parser.add_option("-d","--ddd",dest="ddd",default=None,help="input ddd")
 	
 	return parser.parse_args()
@@ -54,9 +54,15 @@ def info_maker():
 		spbol=";"
 		for sample,path in ds.items():
 			if spbol in path:
-				f.write("%s_R1_001.fastq.gz,%s_R2_001.fastq.gz,%s\n" % (path.replace(";","_R1_001.fastq.gz;"), path.replace(";","_R2_001.fastq.gz;"), sample))		
-			else:
-				f.write("%s_R1_001.fastq.gz,%s_R2_001.fastq.gz,%s\n" % (path, path, sample))
+				if options.adapter:
+					f.write("%s_R1_001.fastq.gz,%s_R2_001.fastq.gz,%s,%s\n" % (path.replace(";","_R1_001.fastq.gz;"), path.replace(";","_R2_001.fastq.gz;"), sample,options.adapter))
+				else:
+					f.write("%s_R1_001.fastq.gz,%s_R2_001.fastq.gz,%s\n" % (path.replace(";","_R1_001.fastq.gz;"), path.replace(";","_R2_001.fastq.gz;"), sample))		
+			if spbol not in path:
+				if options.adapter:
+					f.write("%s_R1_001.fastq.gz,%s_R2_001.fastq.gz,%s,%s\n" % (path, path, sample,options.adapter))
+				else:
+					f.write("%s_R1_001.fastq.gz,%s_R2_001.fastq.gz,%s\n" % (path, path, sample))
 				
 		f.close()
 
