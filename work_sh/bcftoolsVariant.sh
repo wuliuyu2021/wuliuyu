@@ -14,7 +14,7 @@ sampledir=$(echo $sorted_rmdup_bam |awk -F "/" '{print $NF}' |awk -F ".sorted.rm
 if [ ! -d $sampledir ];then
 mkdir -p $outdir/$sampledir
 fi
-echo "/thinker/nfs4/public/liyq/soft/bcftools/bin/bcftools mpileup -d 10000 -q 5 -Q 13 -C 50 -m 2 -F 0.002 -f $gtf -a \"DP,AD,ADF,ADR,SP,AD,ADF,ADR\" $sorted_rmdup_bam | /thinker/nfs4/public/liyq/soft/bcftools/bin/bcftools call -O v -v -c -o $outdir/$sampledir/${sampledir}.vcf && /thinker/nfs4/public/liyq/soft/bcftools/bin/bcftools filter -O v -s FLTER -i '%QUAL > 20 && DP > 4 && MQ > 30' $outdir/${sampledir}/${sampledir}.vcf > $outdir/${sampledir}/${sampledir}.tmp.vcf && perl /thinker/nfs4/public/liyq/temp/wuliuyu/SamtoolsVariant/PASS_snp_indel.pl $outdir/${sampledir}/${sampledir}.tmp.vcf $outdir/${sampledir}/${sampledir}.filit.vcf $outdir/${sampledir}/${sampledir}_snp.vcf $outdir/${sampledir}/${sampledir}_indel.vcf &" >> $outdir/run_bcftoolsVariant.sh
+echo "/thinker/nfs4/public/liyq/soft/bcftools/bin/bcftools mpileup -d 10000 -q 5 -Q 13 -C 50 -m 2 -F 0.002 -f $gtf -a \"DP,AD,ADF,ADR,SP,AD,ADF,ADR\" $sorted_rmdup_bam | /thinker/nfs4/public/liyq/soft/bcftools/bin/bcftools call -O v -v -c -o $outdir/$sampledir/${sampledir}.vcf && /thinker/nfs4/public/liyq/soft/bcftools/bin/bcftools filter -O v -s FLTER -i '%QUAL > 20 && INFO/DP > 4 && MQ > 30' $outdir/${sampledir}/${sampledir}.vcf > $outdir/${sampledir}/${sampledir}.tmp.vcf && perl /thinker/nfs4/public/liyq/temp/wuliuyu/SamtoolsVariant/PASS_snp_indel.pl $outdir/${sampledir}/${sampledir}.tmp.vcf $outdir/${sampledir}/${sampledir}.filit.vcf $outdir/${sampledir}/${sampledir}_snp.vcf $outdir/${sampledir}/${sampledir}_indel.vcf &" >> $outdir/run_bcftoolsVariant.sh
 
 done
 echo "sh $outdir/run_bcftoolsVariant.sh"

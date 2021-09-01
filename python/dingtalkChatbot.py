@@ -3,7 +3,7 @@
 from dingtalkchatbot.chatbot import DingtalkChatbot
 import sys
 #zj="18702215856"
-#ll="18707031954"
+#fxq="15579320613"
 #wly="13732927526"
 #yqx="18070596187"
 #hp="19907900057"
@@ -12,8 +12,8 @@ webhook2 = "https://oapi.dingtalk.com/robot/send?access_token=2232ce68dc30d6e6b0
 xiaoding = DingtalkChatbot(webhook2)
 if sys.argv[2] == 'zj':
 	at_mobiles = ["18702215856"]
-if sys.argv[2] == 'll':
-	at_mobiles = ["18707031954"]
+if sys.argv[2] == 'fxq':
+	at_mobiles = ["15579320613"]
 if sys.argv[2] == 'wly':
 	at_mobiles = ["13732927526"]
 if sys.argv[2] == 'yqx':
