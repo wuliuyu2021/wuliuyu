@@ -79,7 +79,7 @@ def info_maker():
 						f.write("%s_R1_001.fastq.gz,%s_R2_001.fastq.gz,%s\n" % (path, path, sample))
 			else:
 				print("Wrong, %s can not find the values in dictionary, please check!" % sample_pre)
-	 f.close()
+	f.close()
 
 def main():
 	info_maker()
