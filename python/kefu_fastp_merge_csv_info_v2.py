@@ -25,7 +25,7 @@ def dict_maker(options):
 		for line in open(options.dictcsv, 'r'):
 			lst = re.split('[,\t]',line.strip())
 			ds[lst[0]]=lst[1]
-			if lst[1].find("-") != -1 or lst[1].isdigit() == True:
+			if lst[1].find("-") != -1 or lst[1][0].isdigit() == True:
 				print("%s %s group were illegal" % (lst[0], lst[1]))
 	return ds
 
