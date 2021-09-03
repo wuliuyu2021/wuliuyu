@@ -13,11 +13,21 @@ def parse_cmd():
 	version="%prog 1.0"
 	parser = OptionParser(usage=usage, version=version)
 	parser.add_option("-i","--infile",dest="infile",default=None,help="info csv")
+	parser.add_option("-t","--dictcsv",dest="dictcsv",default=None,help="input dictionary csv")
 	parser.add_option("-o","--outdir",dest="outdir",default=None,help="the outfile path")
 	parser.add_option("-a","--adapter",dest="adapter",default=None,help="input the adapter type:IDT/UPM/MGI")
-	#parser.add_option("-d","--ddd",dest="ddd",default=None,help="input ddd")
 	
 	return parser.parse_args()
+
+def dict_maker(options):
+	ds={}
+	if options.dictcsv:
+		for line in open(options.dictcsv, 'r'):
+			lst = re.split('[,\t]',line.strip())
+			ds[lst[0]]=lst[1]
+			if lst[1].find("-") != -1 or lst[1].isdigit() == True
+				print("%s %s group were illegal" % (lst[0], lst[1]))
+	return ds
 
 def get_files(options):
 	d={}
@@ -27,6 +37,7 @@ def get_files(options):
 	if options.infile:
 		for line in open(options.infile, 'r'):
 			lst = re.split('[,\t]',line.strip())
+			#if lst[0] in ds.keys():
 			con="%s=%s" % (lst[0], lst[1])
 			lts.append(lst[0])
 			d[lst[1].replace("oss://sz-","/")] = lst[0]
@@ -50,21 +61,25 @@ def info_maker():
 	if os.path.exists(outfile):
 		os.remove(outfile)
 	ds=get_files(options)
+	dst=dict_maker(options)
 	with open(outfile, 'w') as f:
 		spbol=";"
-		for sample,path in ds.items():
-			if spbol in path:
-				if options.adapter:
-					f.write("%s_R1_001.fastq.gz,%s_R2_001.fastq.gz,%s,%s\n" % (path.replace(";","_R1_001.fastq.gz;"), path.replace(";","_R2_001.fastq.gz;"), sample,options.adapter))
-				else:
-					f.write("%s_R1_001.fastq.gz,%s_R2_001.fastq.gz,%s\n" % (path.replace(";","_R1_001.fastq.gz;"), path.replace(";","_R2_001.fastq.gz;"), sample))		
-			if spbol not in path:
-				if options.adapter:
-					f.write("%s_R1_001.fastq.gz,%s_R2_001.fastq.gz,%s,%s\n" % (path, path, sample,options.adapter))
-				else:
-					f.write("%s_R1_001.fastq.gz,%s_R2_001.fastq.gz,%s\n" % (path, path, sample))
-				
-		f.close()
+		for sample_pre,path in ds.items():
+			if sample_pre in dst.keys():
+				sample = dst[sample_pre]
+				if spbol in path:
+					if options.adapter:
+						f.write("%s_R1_001.fastq.gz,%s_R2_001.fastq.gz,%s,%s\n" % (path.replace(";","_R1_001.fastq.gz;"), path.replace(";","_R2_001.fastq.gz;"), sample,options.adapter))
+					else:
+						f.write("%s_R1_001.fastq.gz,%s_R2_001.fastq.gz,%s\n" % (path.replace(";","_R1_001.fastq.gz;"), path.replace(";","_R2_001.fastq.gz;"), sample))		
+				if spbol not in path:
+					if options.adapter:
+						f.write("%s_R1_001.fastq.gz,%s_R2_001.fastq.gz,%s,%s\n" % (path, path, sample,options.adapter))
+					else:
+						f.write("%s_R1_001.fastq.gz,%s_R2_001.fastq.gz,%s\n" % (path, path, sample))
+			else:
+				print("Wrong, %s can not find the values in dictionary, please check!" % sample_pre)
+	 f.close()
 
 def main():
 	info_maker()
