@@ -7,7 +7,7 @@ from multiprocessing import Pool
 def sample_contact(seqcsv):
 	cons={}
 	for line in open(seqcsv):
-		lst = line.strip().split(",")	
+		lst = re.split('[,\t]',line.strip())	
 		cons[lst[0]]=int(lst[2])
 	print(cons)
 	return cons
