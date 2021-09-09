@@ -23,24 +23,47 @@ def rename(rawdir1, csv):
 	dn=seqcsv(csv)
 	for sr1_1 in srs1:
 		sr1_2 = sr1_1.replace("_R1", "_R2")
-		
-		if sr1_1.split('_')[0] in dn.keys() :
+		sr1_3 = sr1_1.replace("_R1", "_R3")
+		if os.path.exists(rawdir1+"/"+sr1_2) and not os.path.exists(rawdir1+"/"+sr1_3)：
+			if sr1_1.split('_')[0] in dn.keys() :
 			#print('%s = %s' % (sr1_1.split('_')[2], sr2_1.split('_')[2]))
-			os.system('mv %s/%s %s/%s_%s' % (rawdir1, sr1_1, rawdir1, dn[sr1_1.split('_')[0]], '_'.join(sr1_1.split('_')[1:])))
-			print('%s moves to %s_%s' % (sr1_1, dn[sr1_1.split('_')[0]], '_'.join(sr1_1.split('_')[1:])))
-			os.system('mv %s/%s %s/%s_%s' % (rawdir1, sr1_2, rawdir1, dn[sr1_2.split('_')[0]], '_'.join(sr1_2.split('_')[1:])))
-			print('%s moves to %s_%s' % (sr1_2, dn[sr1_2.split('_')[0]], '_'.join(sr1_2.split('_')[1:])))
+				os.system('mv %s/%s %s/%s_%s' % (rawdir1, sr1_1, rawdir1, dn[sr1_1.split('_')[0]], '_'.join(sr1_1.split('_')[1:])))
+				print('%s moves to %s_%s' % (sr1_1, dn[sr1_1.split('_')[0]], '_'.join(sr1_1.split('_')[1:])))
+				os.system('mv %s/%s %s/%s_%s' % (rawdir1, sr1_2, rawdir1, dn[sr1_2.split('_')[0]], '_'.join(sr1_2.split('_')[1:])))
+				print('%s moves to %s_%s' % (sr1_2, dn[sr1_2.split('_')[0]], '_'.join(sr1_2.split('_')[1:])))
 
-		elif sr1_1.split('_')[2]  in dn.keys() :
-			os.system('mv %s/%s %s/%s_%s' % (rawdir1, sr1_1, rawdir1, dn[sr1_1.split('_')[2]], '_'.join(sr1_1.split('_')[3:])))
-			print("%s moves to %s_%s" % (sr1_1, dn[sr1_1.split('_')[2]], '_'.join(sr1_1.split('_')[3:])))
-			os.system('mv %s/%s %s/%s_%s' % (rawdir1, sr1_2, rawdir1, dn[sr1_2.split('_')[2]], '_'.join(sr1_2.split('_')[3:])))
-			print("%s moves to %s_%s" % (sr1_2, dn[sr1_2.split('_')[2]], '_'.join(sr1_2.split('_')[3:])))
+			elif sr1_1.split('_')[2]  in dn.keys() :
+				os.system('mv %s/%s %s/%s_%s' % (rawdir1, sr1_1, rawdir1, dn[sr1_1.split('_')[2]], '_'.join(sr1_1.split('_')[3:])))
+				print("%s moves to %s_%s" % (sr1_1, dn[sr1_1.split('_')[2]], '_'.join(sr1_1.split('_')[3:])))
+				os.system('mv %s/%s %s/%s_%s' % (rawdir1, sr1_2, rawdir1, dn[sr1_2.split('_')[2]], '_'.join(sr1_2.split('_')[3:])))
+				print("%s moves to %s_%s" % (sr1_2, dn[sr1_2.split('_')[2]], '_'.join(sr1_2.split('_')[3:])))
 
-		elif sr1_1.split('_')[0] not in dn.keys() or sr1_1.split('_')[2] not in dn.keys():
-			print("%s: No need to change the name!!!" % sr1_1)
-			print("%s: No need to change the name!!!" % sr1_2)
+			elif sr1_1.split('_')[0] not in dn.keys() or sr1_1.split('_')[2] not in dn.keys():
+				print("%s: No need to change the name!!!" % sr1_1)
+				print("%s: No need to change the name!!!" % sr1_2)
 
+		if os.path.exists(rawdir1+"/"+sr1_2) and os.path.exists(rawdir1+"/"+sr1_3)：
+			if sr1_1.split('_')[0] in dn.keys() :
+			#print('%s = %s' % (sr1_1.split('_')[2], sr2_1.split('_')[2]))
+				os.system('mv %s/%s %s/%s_%s' % (rawdir1, sr1_1, rawdir1, dn[sr1_1.split('_')[0]], '_'.join(sr1_1.split('_')[1:])))
+				print('%s moves to %s_%s' % (sr1_1, dn[sr1_1.split('_')[0]], '_'.join(sr1_1.split('_')[1:])))
+				os.system('mv %s/%s %s/%s_%s' % (rawdir1, sr1_2, rawdir1, dn[sr1_2.split('_')[0]], '_'.join(sr1_2.split('_')[1:])))
+				print('%s moves to %s_%s' % (sr1_2, dn[sr1_2.split('_')[0]], '_'.join(sr1_2.split('_')[1:])))
+				os.system('mv %s/%s %s/%s_%s' % (rawdir1, sr1_3, rawdir1, dn[sr1_3.split('_')[0]], '_'.join(sr1_3.split('_')[1:])))
+				print('%s moves to %s_%s' % (sr1_3, dn[sr1_3.split('_')[0]], '_'.join(sr1_3.split('_')[1:])))
+
+			elif sr1_1.split('_')[2]  in dn.keys() :
+				os.system('mv %s/%s %s/%s_%s' % (rawdir1, sr1_1, rawdir1, dn[sr1_1.split('_')[2]], '_'.join(sr1_1.split('_')[3:])))
+				print("%s moves to %s_%s" % (sr1_1, dn[sr1_1.split('_')[2]], '_'.join(sr1_1.split('_')[3:])))
+				os.system('mv %s/%s %s/%s_%s' % (rawdir1, sr1_2, rawdir1, dn[sr1_2.split('_')[2]], '_'.join(sr1_2.split('_')[3:])))
+				print("%s moves to %s_%s" % (sr1_2, dn[sr1_2.split('_')[2]], '_'.join(sr1_2.split('_')[3:])))
+				os.system('mv %s/%s %s/%s_%s' % (rawdir1, sr1_3, rawdir1, dn[sr1_3.split('_')[2]], '_'.join(sr1_3.split('_')[3:])))
+				print("%s moves to %s_%s" % (sr1_3, dn[sr1_3.split('_')[2]], '_'.join(sr1_3.split('_')[3:])))
+
+			elif sr1_1.split('_')[0] not in dn.keys() or sr1_1.split('_')[2] not in dn.keys():
+				print("%s: No need to change the name!!!" % sr1_1)
+				print("%s: No need to change the name!!!" % sr1_2)
+				print("%s: No need to change the name!!!" % sr1_3)
 
 def main():
 	rawdir1=sys.argv[1]
