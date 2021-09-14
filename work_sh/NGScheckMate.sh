@@ -11,7 +11,7 @@ ls $indir/*/*snp.vcf > $outdir/list
 fi
 
 if [ $type == "fastq" ];then
-for fq in `ls *_R1_001.fastq.gz`;
+for fq in `ls $indir/*_R1_001.fastq.gz`;
 do
 sam_name=$(echo $fq |awk -F "/" '{print $NF}' |awk -F "_R1_001.fastq.gz" '{print $1}')
 R2=$(echo $fq |awk -F "_R1_001.fastq.gz" '{print $1}')_R2_001.fastq.gz
