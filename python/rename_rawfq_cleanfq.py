@@ -50,22 +50,49 @@ def main():
 	os.chdir(indir)
 	for sr1 in sr1s:
 		sr2 = sr1.replace("_R1_001", "_R2_001")
-		if sr1.split('_')[2].startswith("HGC") and sr1.split('_')[2] in dn.keys():
-			fr=sr1.split('_')[2]
-			ft=dn[fr]
-			sr1_new=sr1.replace('%s' % fr, '%s' % ft)
-			os.system('mv %s %s' % (sr1, sr1_new))
-			print('%s moves to %s'% (sr1, sr1_new))
-		elif sr1.split('_')[2].startswith("HGC") and sr1.split('_')[2] not in dn.keys():
-			print('HGC: %s not in Seqcsv, Please Check!!!' % sr1.split('_')[2])
-		if sr2.split('_')[2].startswith("HGC") and sr2.split('_')[2] in dn.keys():
-			fr=sr2.split('_')[2]
-			ft=dn[fr]
-			sr2_new=sr2.replace('%s' % fr, '%s' % ft)
-			os.system('mv %s %s' % (sr2, sr2_new))
-			print('%s moves to %s'% (sr2, sr2_new))
-		elif sr2.split('_')[2].startswith("HGC") and sr2.split('_')[2] not in dn.keys():
-			print('HGC: %s not in Seqcsv, Please Check!!!' % sr2.split('_')[2])
+		sr3 = sr1.replace("_R1_001", "_R3_001")
+		if os.path.exists(indir+"/"+sr2) and not os.path.exists(indir+"/"+sr3):
+			if sr1.split('_')[2].startswith("HGC") and sr1.split('_')[2] in dn.keys():
+				fr=sr1.split('_')[2]
+				ft=dn[fr]
+				sr1_new=sr1.replace('%s' % fr, '%s' % ft)
+				os.system('mv %s %s' % (sr1, sr1_new))
+				print('%s moves to %s'% (sr1, sr1_new))
+			elif sr1.split('_')[2].startswith("HGC") and sr1.split('_')[2] not in dn.keys():
+				print('HGC: %s not in Seqcsv, Please Check!!!' % sr1.split('_')[2])
+			if sr2.split('_')[2].startswith("HGC") and sr2.split('_')[2] in dn.keys():
+				fr=sr2.split('_')[2]
+				ft=dn[fr]
+				sr2_new=sr2.replace('%s' % fr, '%s' % ft)
+				os.system('mv %s %s' % (sr2, sr2_new))
+				print('%s moves to %s'% (sr2, sr2_new))
+			elif sr2.split('_')[2].startswith("HGC") and sr2.split('_')[2] not in dn.keys():
+				print('HGC: %s not in Seqcsv, Please Check!!!' % sr2.split('_')[2])
+		if os.path.exists(indir+"/"+sr2) and os.path.exists(indir+"/"+sr3):
+			if sr1.split('_')[2].startswith("HGC") and sr1.split('_')[2] in dn.keys():
+				fr=sr1.split('_')[2]
+				ft=dn[fr]
+				sr1_new=sr1.replace('%s' % fr, '%s' % ft)
+				os.system('mv %s %s' % (sr1, sr1_new))
+				print('%s moves to %s'% (sr1, sr1_new))
+			elif sr1.split('_')[2].startswith("HGC") and sr1.split('_')[2] not in dn.keys():
+				print('HGC: %s not in Seqcsv, Please Check!!!' % sr1.split('_')[2])
+			if sr2.split('_')[2].startswith("HGC") and sr2.split('_')[2] in dn.keys():
+				fr=sr2.split('_')[2]
+				ft=dn[fr]
+				sr2_new=sr2.replace('%s' % fr, '%s' % ft)
+				os.system('mv %s %s' % (sr2, sr2_new))
+				print('%s moves to %s'% (sr2, sr2_new))
+			elif sr2.split('_')[2].startswith("HGC") and sr2.split('_')[2] not in dn.keys():
+				print('HGC: %s not in Seqcsv, Please Check!!!' % sr2.split('_')[2])
+			if sr3.split('_')[2].startswith("HGC") and sr3.split('_')[2] in dn.keys():
+				fr=sr3.split('_')[2]
+				ft=dn[fr]
+				sr3_new=sr3.replace('%s' % fr, '%s' % ft)
+				os.system('mv %s %s' % (sr3, sr3_new))
+				print('%s moves to %s'% (sr3, sr3_new))
+			elif sr3.split('_')[2].startswith("HGC") and sr3.split('_')[2] not in dn.keys():
+				print('HGC: %s not in Seqcsv, Please Check!!!' % sr3.split('_')[2])
 
 if __name__ == '__main__':
 	main()
