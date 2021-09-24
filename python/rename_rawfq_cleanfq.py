@@ -37,8 +37,8 @@ def main():
 	pID = sys.argv[3]
 	time="20%s" % fc.split('_')[0][0:4]
 	seqcsv_sr="/thinker/nfs2/longrw/runPipelineInfo/%s/%s/sequence_%s.csv" % (time, fc, fc)
-	seqcsv_sz1="/data/users/hapseq/runPipelineInfo/%s/%s/sequence_%s.csv" % (time, fc, fc)
-	seqcsv_sz2="/data/users/longrw/runPipelineInfo/%s/%s/sequence_%s.csv" % (time, fc, fc)
+	seqcsv_sz1="/data/users/hapseq/runPipelineInfo/%s/%s/00_cmd/sequence_%s.csv" % (time, fc, fc)
+	seqcsv_sz2="/data/users/longrw/runPipelineInfo/%s/%s/00_cmd/sequence_%s.csv" % (time, fc, fc)
 	if os.path.exists(seqcsv_sr):
 		seqcsv = seqcsv_sr
 	if os.path.exists(seqcsv_sz1):
