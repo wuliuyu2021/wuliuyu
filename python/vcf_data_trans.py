@@ -21,5 +21,4 @@ for line in open(csv, "r", encoding='gbk').readlines()[0:]:
 		outopen.write(",".join(lst[0:])+"\n")
 outopen.close()
 
-os.system("mv %s/%s %s/%s_old" % (out, csv, out, os.path.basename(csv)))
 os.system("mv %s %s/%s" % (outfile, out, os.path.basename(csv)))
