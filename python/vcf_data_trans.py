@@ -15,9 +15,9 @@ outopen=open(outfile, "w")
 for line in open(csv, "r", encoding='gbk').readlines()[0:]:
 	lst=line.strip().split(",")
 	if lst[27].find("vcf") != -1:
-		print("%s: %s-%s-%s" % (lst[0],lst[1],lst[16],lst[18]))
-		if lst[2].find(str(lst[16])) != -1 and lst[2].find(str(lst[18])) != -1:
-			continue
+		print("There is vcf sample: %s" % lst[0])
+		if lst[2].find("%s-%s" % (str(lst[16]), str(lst[18]))) = 1:
+			outopen.write(",".join(lst[0:])+"\n")
 		else:	
 			outopen.write("%s,%s-%s-%s,%s\n" % (lst[0],lst[1],lst[16],lst[18],",".join(lst[2:])))
 	else:
@@ -25,3 +25,4 @@ for line in open(csv, "r", encoding='gbk').readlines()[0:]:
 outopen.close()
 
 os.system("iconv -f utf-8 -t gbk %s -o %s/%s" % (outfile, out, os.path.basename(csv)))
+os.system("rm -f %s" % outfile)
