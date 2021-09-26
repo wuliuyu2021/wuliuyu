@@ -110,7 +110,7 @@ def sendlinkcfg(username, password, sender, receiverlst, cclst, projectid, fname
 
 def sendlink(projectid, fname, receiver):
     username = 'datadelivery@haplox.com'
-    password = 'Srsz2020!'
+    password = 'rZkivHHGW9DAEUzQ'
     sender = 'datadelivery@haplox.com'
     receiverlst = ['project@haplox.com', 'longrw@haplox.com', 'wuliuyu@haplox.com', 'yangzx@haplox.com']
     if receiver:
