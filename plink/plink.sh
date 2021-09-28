@@ -26,3 +26,5 @@ less $sr/all.vcf.gz |sed 's/\s\.\/\.:\.:\./\t0\/0:\.:\./g' | awk '{if($1~/^#CHRO
 cd $sr
 /thinker/nfs5/public/tools/plink_soft/plink --const-fid --vcf $sr/all.vcf --make-bed -out ./plink
 /thinker/nfs5/public/tools/plink_soft/plink --bfile ./plink --genome
+
+perl /thinker/nfs5/public/wuliuyu/wuliuyu/plink/plink_heatmap.pl ./plink.genome ./
