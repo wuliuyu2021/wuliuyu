@@ -23,5 +23,5 @@ ls $sd/*_snp.vcf.gz | tr "\n" " " > $sr/info.csv
 
 less $sr/all.vcf.gz |sed 's/\s\.\/\.:\.:\./\t0\/0:\.:\./g' > $sr/all.vcf 
 
-/thinker/nfs5/public/tools/plink_soft/plink --aec --vcf $sr/all.vcf --make-bed -out $sr/plink 
+/thinker/nfs5/public/tools/plink_soft/plink --const-fid --vcf $sr/all.vcf --make-bed -out $sr/plink 
 /thinker/nfs5/public/tools/plink_soft/plink --bfile $sr/plink --genome
