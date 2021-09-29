@@ -20,12 +20,14 @@ if [ $num == 1 ];then
 s1=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $1}')
 s2=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $2}')
 prefix2=$(echo $s1"."$s2)
+echo $prefix2
 fi
 if [ $num == 2 ];then
 s1=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $1}')
 s2=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $2}')
 s3=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $3}')
 prefix2=$(echo $s1"."$s2"."$s3)
+echo $prefix2
 fi
 if [ $num == 3 ];then
 s1=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $1}')
@@ -33,6 +35,7 @@ s2=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $2}')
 s3=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $3}')
 s4=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $4}')
 prefix2=$(echo $s1"."$s2"."$s3"."$s4)
+echo $prefix2
 fi
 if [ $num == 4 ];then
 s1=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $1}')
@@ -41,6 +44,7 @@ s3=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $3}')
 s4=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $4}')
 s5=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $5}')
 prefix2=$(echo $s1"."$s2"."$s3"."$s4"."$s5)
+echo $prefix2
 fi
 sed -i "s/${prefix1}/${prefix2}/g" $snp
 bgzip $snp
