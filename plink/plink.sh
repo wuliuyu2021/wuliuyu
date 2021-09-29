@@ -15,6 +15,7 @@ cd $sd
 for snp in `ls *vcf`;
 do
 prefix1=$(echo $snp |awk -F ".snp.vcf" '{print $1}')
+echo $prefix1
 num=$(echo $snp |awk -F"_" '{print NF}')
 if [ $num == 1 ];then
 s1=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $1}')
