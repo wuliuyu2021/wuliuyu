@@ -9,19 +9,42 @@ sr=$outdir/plink/result
 
 mkdir -p $sd
 mkdir -p $sr
-
-for snp in `ls $snp_dir/*/*/*_snp.vcf`;
-do
-cp $snp $sd/
-sample=$(echo $snp |awk -F "/" '{print $NF}')
-prefix1=$(echo $snp |awk -F "/" '{print $NF}' |awk -F "_snp.vcf" '{print $1}')
-rename -v _snp .snp $sd/$sample
-rename -v _ . $sd/$sample
-prefix2=$(echo $sd/$sample |awk -F "/" '{print $NF}' |awk -F ".snp.vcf" '{print $1}')
-sed -i "s/${prefix1}/${prefix2}/g" $sd/$sample
+cp $snp_dir/*/*/*_snp.vcf $sd/
+rename _snp .snp $sd/*vcf
 cd $sd
-bgzip $sample
-/thinker/nfs5/public/wuliuyu/Hapcolud_docker/bcftoolsVariant/bcftools-1.12/bcftools index $sd/${sample}.gz
+for snp in `ls *vcf`;
+do
+prefix1=$(echo $snp |awk -F ".snp.vcf" '{print $1}')
+num=$(echo $snp |awk -F"_" '{print NF}')
+if [ $num == 1 ];then
+s1=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $1}')
+s2=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $2}')
+prefix2=$(echo $s1"."$s2)
+fi
+if [ $num == 2 ];then
+s1=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $1}')
+s2=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $2}')
+s3=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $3}')
+prefix2=$(echo $s1"."$s2"."$s3)
+fi
+if [ $num == 3 ];then
+s1=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $1}')
+s2=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $2}')
+s3=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $3}')
+s4=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $4}')
+prefix2=$(echo $s1"."$s2"."$s3"."$s4)
+fi
+if [ $num == 4 ];then
+s1=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $1}')
+s2=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $2}')
+s3=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $3}')
+s4=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $4}')
+s5=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $5}')
+prefix2=$(echo $s1"."$s2"."$s3"."$s4"."$s5)
+fi
+sed -i "s/${prefix1}/${prefix2}/g" $snp
+bgzip $snp
+/thinker/nfs5/public/wuliuyu/Hapcolud_docker/bcftoolsVariant/bcftools-1.12/bcftools index ${prefix1}.snp.vcf.gz
 done
 
 ls $sd/*snp.vcf.gz | tr "\n" " " > $sr/info.csv
