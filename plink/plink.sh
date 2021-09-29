@@ -20,6 +20,7 @@ num=$(echo $snp |awk -F"_" '{print NF}')
 if [ $num == 1 ];then
 s1=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $1}')
 s2=$(echo $snp |awk -F".snp.vcf" '{print $1}' |awk -F "_" '{print $2}')
+echo $s2
 prefix2=$(echo $s1"."$s2)
 echo $prefix2
 fi
