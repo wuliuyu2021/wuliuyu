@@ -41,16 +41,17 @@ def main():
                     if read[0] == '151':
                         read[0] = '1'
                     samplesheet_csv.append(read)
-            with open(target_dir + ("%s_%s" % (batch,sample_sheet_name.split('/')[-1])), "w") as w:
+            with open(target_dir + "/"+("%s_%s" % (batch,sample_sheet_name.split('/')[-1])), "w") as w:
                 writer = csv.writer(w)
                 writer.writerows(samplesheet_csv)
 
-            new_sample_sheet_name = target_dir + sample_sheet_name.split('/')[-1]
+            new_sample_sheet_name = target_dir + "/"+("%s_%s" % (batch,sample_sheet_name.split('/')[-1]))
 
         #======================bcl2fastq===================
             #if os.path.isfile('{S3}{S1}/{S2}/Data/Intensities/BaseCalls/L001/0160.bcl.bgzf'.format(S1=machine,S2=batch,S3=data_dir)) \#550平台目录名
             if os.path.isdir('{S1}/Data/Intensities/BaseCalls/L001/{S2}'.format(S1=data_dir,S2=mode_dir[mode][0])) \
-                and os.path.isfile(new_sample_sheet_name):   #检查是否存在BCL,samplesheet
+                and os.path.isfile(new_sample_sheet_name):
+                print("Single BCL files are ready!!!")#检查是否存在BCL,samplesheet
                 if os.path.isdir(output_dir) == 0:
                     os.system("mkdir -p %s" % output_dir) #创建输出文件夹
                 print('bcl2fastq -R {S1} --sample-sheet {S4} -o {S5}/ \
