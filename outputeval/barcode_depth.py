@@ -29,11 +29,11 @@ def main():
             batch = info[0]     #批次号
             mode = info[1]      #bcl2fastq模式
             sample_sheet_name = info[2]
-            mode=os.path.basename(sample_sheet_name).split(".csv")[0].split("SampleSheet_")[-1]
+            mode2=os.path.basename(sample_sheet_name).split(".csv")[0].split("SampleSheet_")[-1]
             data_dir = info[3]  #bcl目录
             raw_dir = info[4] #拆分输出目录
             lane_num = info[5]
-            output_dir = raw_dir + batch + '_' + mode + '_barcode'
+            output_dir = raw_dir + batch + '_' + mode2 + '_barcode'
 #======================更改samplesheet===============            
             samplesheet_csv = []
             with open(sample_sheet_name,'r') as f:  #将samplesheet的reads从151改成1
