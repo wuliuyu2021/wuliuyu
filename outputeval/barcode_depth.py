@@ -52,7 +52,7 @@ def main():
             if os.path.isdir('{S1}/Data/Intensities/BaseCalls/L001/{S2}'.format(S1=data_dir,S2=mode_dir[mode][0])) \
                 and os.path.isfile(new_sample_sheet_name):   #检查是否存在BCL,samplesheet
                 if os.path.isdir(output_dir) == 0:
-                    os.mkdir(output_dir) #创建输出文件夹
+                    os.system("mkdir -p %s" % output_dir) #创建输出文件夹
                 print('bcl2fastq -R {S1} --sample-sheet {S4} -o {S5}/ \
                 --stats-dir {S5}/html/ --reports-dir {S5}/html/ --interop-dir={S5}/Interop_html/ \
                 {S3} > {S5}/bcl2fastq.txt'.format(S1=data_dir,S3=mode_dir[mode][1],S4=new_sample_sheet_name,S5=output_dir))
