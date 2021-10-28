@@ -69,12 +69,12 @@ def main():
                     data = json.load(f)
                     for lane in range(len(data['ConversionResults'])):
                         output_csv.append([data['ConversionResults'][lane]['LaneNumber']])  #lane数
-                        tmp_sample = []
-                        tmp_reads = []
+                        #tmp_sample = []
+                        #tmp_reads = []
                         for sample in range(len(data['ConversionResults'][lane]['DemuxResults'])):
-                            tmp_sample.append(data['ConversionResults'][lane]['DemuxResults'][sample]['SampleId'])
-                            tmp_reads.append(int(data['ConversionResults'][lane]['DemuxResults'][sample]['NumberReads']) * 300 // 1000000)
-                        output_csv.append(tmp_sample+","+tmp_reads+"\n")             #样本名
+                            tmp_sample = data['ConversionResults'][lane]['DemuxResults'][sample]['SampleId']
+                            tmp_reads = (int(data['ConversionResults'][lane]['DemuxResults'][sample]['NumberReads']) * 300 // 1000000)
+                            output_csv.append([tmp_sample,tmp_reads]) 
                         #output_csv.append(tmp_reads)              #预测数据量
                 with open(raw_dir + ("%s_%s" % (batch,sample_sheet_name.split('/')[-1])) + '-barcode.csv','w') as w:
                     writer = csv.writer(w)
