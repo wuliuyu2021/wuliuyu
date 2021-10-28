@@ -73,9 +73,9 @@ def main():
                         for sample in range(len(data['ConversionResults'][lane]['DemuxResults'])):
                             tmp_sample.append(data['ConversionResults'][lane]['DemuxResults'][sample]['SampleId'])
                             tmp_reads.append(int(data['ConversionResults'][lane]['DemuxResults'][sample]['NumberReads']) * 300 // 1000000)
-                        output_csv.append(tmp_sample)             #样本名
-                        output_csv.append(tmp_reads)              #预测数据量
-                with open(raw_dir + sample_sheet_name.split('/')[-1] + '-barcode.csv','w') as w:
+                        output_csv.append(tmp_sample+","+tmp_reads+"\n")             #样本名
+                        #output_csv.append(tmp_reads)              #预测数据量
+                with open(raw_dir + ("%s_%s" % (batch,sample_sheet_name.split('/')[-1])) + '-barcode.csv','w') as w:
                     writer = csv.writer(w)
                     writer.writerows(output_csv)
                     
