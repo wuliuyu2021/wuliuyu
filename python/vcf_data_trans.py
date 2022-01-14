@@ -6,10 +6,14 @@ import os, re, sys
 csv=sys.argv[1]
 out=sys.argv[2]
 
+seqfc=os.path.basename(csv).split(".csv")[0].split("sequence_")[-1]
+outfc=os.path.basename(out)
+if seqfc != outfc:
+	print("Both fc were not equal, seqfc:%s != outfc:%s, Please Check!!!" % (seqfc, outfc))
+	os.exit(0)
+
 outfile=os.path.join(out, "%s_tmp" % os.path.basename(csv))
-#fcid=os.path.basename(csv).split(".csv")[0].split("sequence_")[-1]
-#if os.path.exists(outfile):
-#	os.remove(outfile)
+
 outopen=open(outfile, "w")
 
 for line in open(csv, "r", encoding='gbk').readlines()[0:]:
