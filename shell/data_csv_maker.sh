@@ -10,22 +10,33 @@ infilename=$(ls $infile |awk -F "/" '{print $NF}')
 rm -f $outdir/${infilename}_tmp
 tmp=$outdir/${infilename}_tmp
 
-for info in `cat $infile`
+for info in `cat $infile`;
 
 do
 fq=$(echo $info |awk -F "," '{print $2}')
 sample=$(echo $info |awk -F "," '{print $1}')
+ossinfo=$(echo $info |awk -F "," '{print $2}')
 prefix=$(echo $info |awk -F "/" '{print $NF}')
-ifno=$(ossutil ls  $fq |grep "${prefix}_R1_001.fastq.gz" )
-
-if [ "$ifno" == "" ];then
-ossdir=$(ossutil ls  $fq |tail -n 4 |head -n 1 |awk -F "_R1_001.fastq.gz" '{print $1}' |awk -F "oss" '{print "oss"$2}' )
+flag=$(ossutil ls $ossinfo  |grep "${prefix}" |grep "_R1_001.fastq.gz" |awk -F " " '{print $NF}')
+for file in ${flag[@]};
+do
+last16=$(echo $file |awk 'BEGIN{FS="'$prefix'"}{print $NF}'|awk -F "" '{print $(NF-15)$(NF-14)$(NF-13)$(NF-12)$(NF-11)$(NF-10)$(NF-9)$(NF-8)$(NF-7)$(NF-6)$(NF-5)$(NF-4)$(NF-3)$(NF-2)$(NF-1)$NF}')
+length16=$(echo $file |awk 'BEGIN{FS="'$prefix'"}{print $NF}'|awk -F "" '{print length($0)}')
+echo "$last16"
+echo "$length16"
+if [ $length16 == 16 ] && [ $last16 == "_R1_001.fastq.gz" ]; then
+R1=$(ossutil ls $(echo $file |awk -F "_R1_001.fastq.gz" '{print $1}')_R1_001.fastq.gz)
+R2=$(ossutil ls $(echo $file |awk -F "_R1_001.fastq.gz" '{print $1}')_R2_001.fastq.gz)
+if [ -n $R1 ] && [ -n $R2 ];then
+ossdir=$(echo $file |awk -F "_R1_001.fastq.gz" '{print $1}')
 echo "${sample},${ossdir}" >> $tmp
 else
-ossdir=$(ossutil ls  $fq |grep "${prefix}_R1_001.fastq.gz" |awk -F "_R1_001.fastq.gz" '{print $1}' |awk -F "oss" '{print "oss"$2}' )
-echo "${sample},${ossdir}" >> $tmp
+echo "$R1 or $R2 is not exsits!!!" 
+fi
 fi
 done
+done
+
 if [ $need_adpater == "no" ];then
 if [ -f "/data/users/wuliuyu/wuliuyu/python/kefu_fastp_merge_csv_info_v2.py" ];then
 python /data/users/wuliuyu/wuliuyu/python/kefu_fastp_merge_csv_info_v2.py -i $tmp -t $dictcsv -o $outdir
