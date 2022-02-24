@@ -1,4 +1,6 @@
 #!/bin/bash
+ehco "使用事项：本脚本使用oss数据以/分割的样本名为目录的单层或底层目录"
+ehco "不适用于以相同样本名为目录的多层目录，且每层目录都有相同样本数据"
 
 infile=$1
 dictcsv=$2
@@ -18,20 +20,19 @@ sample=$(echo $info |awk -F "," '{print $1}')
 ossinfo=$(echo $info |awk -F "," '{print $2}')
 prefix=$(echo $info |awk -F "/" '{print $NF}')
 flag=$(ossutil ls $ossinfo  |grep "${prefix}" |grep "_R1_001.fastq.gz" |awk -F " " '{print $NF}')
+flagR2=$(ossutil ls $ossinfo  |grep "${prefix}" |grep "_R2_001.fastq.gz" |awk -F " " '{print $NF}')
 for file in ${flag[@]};
 do
 last16=$(echo $file |awk 'BEGIN{FS="'$prefix'"}{print $NF}'|awk -F "" '{print $(NF-15)$(NF-14)$(NF-13)$(NF-12)$(NF-11)$(NF-10)$(NF-9)$(NF-8)$(NF-7)$(NF-6)$(NF-5)$(NF-4)$(NF-3)$(NF-2)$(NF-1)$NF}')
 length16=$(echo $file |awk 'BEGIN{FS="'$prefix'"}{print $NF}'|awk -F "" '{print length($0)}')
-echo "$last16"
-echo "$length16"
+#echo "$last16"
+#echo "$length16"
 if [ $length16 == 16 ] && [ $last16 == "_R1_001.fastq.gz" ]; then
-R1=$(ossutil ls $(echo $file |awk -F "_R1_001.fastq.gz" '{print $1}')_R1_001.fastq.gz)
-R2=$(ossutil ls $(echo $file |awk -F "_R1_001.fastq.gz" '{print $1}')_R2_001.fastq.gz)
-if [ -n $R1 ] && [ -n $R2 ];then
+if [ -n "$flag" ] && [ -n "$flagR2" ];then
 ossdir=$(echo $file |awk -F "_R1_001.fastq.gz" '{print $1}')
 echo "${sample},${ossdir}" >> $tmp
 else
-echo "$R1 or $R2 is not exsits!!!" 
+echo "$flag or $flagR2 is not exsits!!!" 
 fi
 fi
 done
