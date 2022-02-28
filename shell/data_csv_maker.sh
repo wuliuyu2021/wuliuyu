@@ -28,12 +28,15 @@ length16=$(echo $file |awk 'BEGIN{FS="'$prefix'"}{print $NF}'|awk -F "" '{print 
 #echo "$last16"
 #echo "$length16"
 if [ $length16 == 16 ] && [ $last16 == "_R1_001.fastq.gz" ]; then
+flam=$(ossutil ls $file  |grep "${prefix}" |grep "_R1_001.fastq.gz" |awk -F " " '{print $NF}')
 if [ -n "$flag" ] && [ -n "$flagR2" ];then
-ossdir=$(echo $flag |awk -F "_R1_001.fastq.gz" '{print $1}')
+ossdir=$(echo $flam |awk -F "_R1_001.fastq.gz" '{print $1}')
 echo "${sample},${ossdir}" >> $tmp
 else
 echo "$flag or $flagR2 is not exsits!!!" 
 fi
+else
+echo "$sample,$flam"
 fi
 done
 done
