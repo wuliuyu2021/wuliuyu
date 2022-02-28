@@ -34,7 +34,6 @@ echo "${sample},${ossdir}" >> $tmp
 else
 echo "$flag or $flagR2 is not exsits!!!" 
 fi
-else
 fi
 done
 done
