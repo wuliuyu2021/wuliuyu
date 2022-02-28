@@ -29,11 +29,12 @@ length16=$(echo $file |awk 'BEGIN{FS="'$prefix'"}{print $NF}'|awk -F "" '{print 
 #echo "$length16"
 if [ $length16 == 16 ] && [ $last16 == "_R1_001.fastq.gz" ]; then
 if [ -n "$flag" ] && [ -n "$flagR2" ];then
-ossdir=$(echo $file |awk -F "_R1_001.fastq.gz" '{print $1}')
+ossdir=$(echo $flag |awk -F "_R1_001.fastq.gz" '{print $1}')
 echo "${sample},${ossdir}" >> $tmp
 else
 echo "$flag or $flagR2 is not exsits!!!" 
 fi
+else
 fi
 done
 done
