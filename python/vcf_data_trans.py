@@ -36,6 +36,7 @@ for line in open(csv, "r", encoding='gbk').readlines()[0:]:
 				outopen.write("%s,%s-%s-%s,%s\n" % (lst[0],lst[1],lst[16],lst[18],",".join(lst[2:])))
 		if lst[16] == "":
 			print("Warning, %s:sampletype is null" % lst[0])
+			outopen.write(",".join(lst[0:])+"\n")
 	else:
 		outopen.write(",".join(lst[0:])+"\n")
 outopen.close()
