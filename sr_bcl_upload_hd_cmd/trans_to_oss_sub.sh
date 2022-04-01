@@ -21,7 +21,7 @@ ossutil cp -ru oss://sz-hapseq/rawseq/$time/$fc/InterOp.tar ${outdir}/InterOp.ta
 echo "$fc bcl upload complete."
 exit 0
 else
-ossutil cp -ru oss://sz-hapseq/rawseq/$time/$fc/Data/Intensities/BaseCalls/L00${laneid}/ ${outdir}
+ossutil cp -ru oss://sz-hapseq/rawseq/$time/$fc/Data/Intensities/BaseCalls/L00${laneid}/ ${outdir}/Data/Intensities/BaseCalls/L00${laneid}/
 #
 echo "wait 15m"
 sleep 15m
