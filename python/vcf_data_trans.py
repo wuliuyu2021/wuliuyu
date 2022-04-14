@@ -41,5 +41,5 @@ for line in open(csv, "r", encoding='gbk').readlines()[0:]:
 		outopen.write(",".join(lst[0:])+"\n")
 outopen.close()
 
-os.system("iconv -f utf-8 -t gbk %s -o %s/%s" % (outfile, out, os.path.basename(csv)))
+os.system("iconv -f utf-8 -t gbk %s -o %s/00_cmd/seqinfo_gbk_vcf.csv" % (outfile, out))
 os.system("rm -f %s" % outfile)
