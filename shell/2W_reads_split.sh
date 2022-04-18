@@ -32,7 +32,7 @@ less $indir/$fq |head -n 80000 > $outdir/${prefix4}.fastq
 fi
 fi
 if [ $flag2 == ".fq.gz" ];then
-prefix=$(echo $fq |awk -F "" '{print $1}' )
+prefix=$(echo $fq |awk -F ".filtered.1" '{print $1}' )
 less $indir/$fq |head -n 80000 > $outdir/${prefix}.fastq
 fi
 done
