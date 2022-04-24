@@ -11,6 +11,7 @@ cd $indir
 ossutil cp -ru $report oss://sz-hapdeliver/生信科研部_all_data/科服项目数据释放/$ossdir/
 ossutil cp -ru $result oss://sz-hapdeliver/生信科研部_all_data/科服项目数据释放/$ossdir/
 #echo "Report URL"
+echo " "
 echo "Hi all, "
 reportsign=$(ossutil -e oss-cn-shenzhen.aliyuncs.com sign oss://sz-hapdeliver/生信科研部_all_data/科服项目数据释放/$ossdir/$report  --timeout 1296000 |head -n1)
 #flag="oss://sz-hapdeliver/生信科研部_all_data/科服项目数据释放/$ossdir/"
