@@ -52,7 +52,7 @@ def info_write(indir, outdir):
 			#YieldQ30=float(YieldQ30R1+YieldQ30R2) /float(YieldR1+YieldR2)
 			NumberReads=float(sampleinfo["NumberReads"]) 
 			index=sampleinfo["IndexMetrics"][0]["IndexSequence"]
-			if Yield != 0 and samplename.split("_")[2] != "":
+			if Yield != 0 and len(re.findall(re1,samplename)) > 2:
 				outcsv_open.write("%s\t%s\t%s\t%s\t%s\t%.4f\t%.4f\t%.2f\toss://sz-hapseq/rawfq/20%s%s%s%s/%s/%s\n" % (RunId,
 					LaneNumber,
 					samplename.split("_")[0],
@@ -67,7 +67,7 @@ def info_write(indir, outdir):
 					RunId[3],
 					RunId,
 					samplename))
-			if Yield == 0 and samplename.split("_")[2] != "":
+			if Yield == 0 and len(re.findall(re1,samplename)) > 2:
 				outcsv_open.write("%s\t%s\t%s\t%s\t%s\t%.4f\t%.4f\t0\toss://sz-hapseq/rawfq/20%s%s%s%s/%s/%s\n" % (RunId,
 					LaneNumber,
 					samplename.split("_")[0],
