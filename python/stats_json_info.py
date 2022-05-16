@@ -32,6 +32,7 @@ def info_write(indir, outdir):
 	outcsv_open=open(outcsv,"w")
 	head="RunId\tLaneNumber\tOrd_ID\tIndex\tSample_or_Lib\tRaw_Yield(G)\tRaw_Reads_Num(M)\tRaw_Q30(%)\tData_path\n"
 	outcsv_open.write(head)
+	re1=re.compile("(_)")
 	for sj in sjs:
 		f=open(indir+"/"+sj)
 		data=json.load(f)
@@ -80,7 +81,7 @@ def info_write(indir, outdir):
 					RunId[3],
 					RunId,
 					samplename))
-			if Yield != 0 and samplename.split("_")[2] == "":
+			if Yield != 0 and re.findall(re1,samplename) == "":
 				outcsv_open.write("%s\t%s\t%s\t%s\t%s\t%.4f\t%.4f\t%.2f\toss://sz-hapseq/rawfq/20%s%s%s%s/%s/%s\n" % (RunId,
 					LaneNumber,
 					samplename,
@@ -95,7 +96,7 @@ def info_write(indir, outdir):
 					RunId[3],
 					RunId,
 					samplename))
-			if Yield == 0 and samplename.split("_")[2] == "":
+			if Yield == 0 and re.findall(re1,samplename) == "":
 				outcsv_open.write("%s\t%s\t%s\t%s\t%s\t%.4f\t%.4f\t0\toss://sz-hapseq/rawfq/20%s%s%s%s/%s/%s\n" % (RunId,
 					LaneNumber,
 					samplename,
