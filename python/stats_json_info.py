@@ -81,7 +81,7 @@ def info_write(indir, outdir):
 					RunId[3],
 					RunId,
 					samplename))
-			if Yield != 0 and re.findall(re1,samplename) == "":
+			if Yield != 0 and len(re.findall(re1,samplename)) == 0:
 				outcsv_open.write("%s\t%s\t%s\t%s\t%s\t%.4f\t%.4f\t%.2f\toss://sz-hapseq/rawfq/20%s%s%s%s/%s/%s\n" % (RunId,
 					LaneNumber,
 					samplename,
@@ -96,7 +96,7 @@ def info_write(indir, outdir):
 					RunId[3],
 					RunId,
 					samplename))
-			if Yield == 0 and re.findall(re1,samplename) == "":
+			if Yield == 0 and len(re.findall(re1,samplename)) == 0:
 				outcsv_open.write("%s\t%s\t%s\t%s\t%s\t%.4f\t%.4f\t0\toss://sz-hapseq/rawfq/20%s%s%s%s/%s/%s\n" % (RunId,
 					LaneNumber,
 					samplename,
