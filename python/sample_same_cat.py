@@ -55,7 +55,16 @@ def catdirs(rawdir1, rawdir2):
 						os.system('cat %s/%s >> %s/%s' % (rawdir1, ir1_1, rawdir2, ir2_1))
 						print('%s/%s merged with %s/%s' % (rawdir1, ir1_1, rawdir2, ir2_1))
 						i=i+1
-
+		sr1_3 = sr1_1.replace("_R1_001", "_R3_001")
+		if os.path.exists(rawdir1+"/"+sr1_3):
+			for sr2_1 in srs2:
+				sr2_3 = sr2_1.replace("_R1_001", "_R3_001")
+				if os.path.exists(rawdir1+"/"+sr2_3):
+					if ('%s' % sr1_1.split('_')[0]) == ('%s' % sr2_1.split('_')[0]):
+						#print('%s = %s' % (sr1_1.split('_')[2], sr2_1.split('_')[2]))
+						os.system('cat %s/%s >> %s/%s' % (rawdir1, sr1_3, rawdir2, sr2_3))
+						print('%s/%s merged with %s/%s' % (rawdir1, sr1_3, rawdir2, sr2_3))
+						i=i+1
 	print(i)
 
 

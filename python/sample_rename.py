@@ -24,6 +24,8 @@ def rename(rawdir1, csv):
 	for sr1_1 in srs1:
 		sr1_2 = sr1_1.replace("_R1", "_R2")
 		sr1_3 = sr1_1.replace("_R1", "_R3")
+		ir1_1 = sr1_1.replace("_R1", "_I1")
+		ir1_2 = sr1_1.replace("_R1", "_I2")
 		if os.path.exists(rawdir1+"/"+sr1_2) and not os.path.exists(rawdir1+"/"+sr1_3):
 			if sr1_1.split('_')[0] in dn.keys():
 				os.system('mv %s/%s %s/%s_%s' % (rawdir1, sr1_1, rawdir1, dn[sr1_1.split('_')[0]], '_'.join(sr1_1.split('_')[1:])))
@@ -62,6 +64,35 @@ def rename(rawdir1, csv):
 				print("%s: No need to change the name!!!" % sr1_1)
 				print("%s: No need to change the name!!!" % sr1_2)
 				print("%s: No need to change the name!!!" % sr1_3)
+
+		if os.path.exists(rawdir1+"/"+ir1_1) and os.path.exists(rawdir1+"/"+ir1_2):
+			if ir1_1.split('_')[0] in dn.keys():
+				os.system('mv %s/%s %s/%s_%s' % (rawdir1, ir1_1, rawdir1, dn[ir1_1.split('_')[0]], '_'.join(ir1_1.split('_')[1:])))
+				print('%s moves to %s_%s' % (ir1_1, dn[ir1_1.split('_')[0]], '_'.join(ir1_1.split('_')[1:])))
+				os.system('mv %s/%s %s/%s_%s' % (rawdir1, ir1_2, rawdir1, dn[ir1_2.split('_')[0]], '_'.join(ir1_2.split('_')[1:])))
+				print('%s moves to %s_%s' % (ir1_2, dn[ir1_2.split('_')[0]], '_'.join(ir1_2.split('_')[1:])))
+
+			elif ir1_1.split('_')[2]  in dn.keys():
+				os.system('mv %s/%s %s/%s_%s' % (rawdir1, ir1_1, rawdir1, dn[ir1_1.split('_')[2]], '_'.join(ir1_1.split('_')[3:])))
+				print("%s moves to %s_%s" % (ir1_1, dn[ir1_1.split('_')[2]], '_'.join(ir1_1.split('_')[3:])))
+				os.system('mv %s/%s %s/%s_%s' % (rawdir1, ir1_2, rawdir1, dn[ir1_2.split('_')[2]], '_'.join(ir1_2.split('_')[3:])))
+				print("%s moves to %s_%s" % (ir1_2, dn[ir1_2.split('_')[2]], '_'.join(ir1_2.split('_')[3:])))
+
+			elif ir1_1.split('_')[0] not in dn.keys() or ir1_1.split('_')[2] not in dn.keys():
+				print("%s: No need to change the name!!!" % ir1_1)
+				print("%s: No need to change the name!!!" % ir1_2)
+		
+		if os.path.exists(rawdir1+"/"+ir1_1) and not os.path.exists(rawdir1+"/"+ir1_2):
+			if ir1_1.split('_')[0] in dn.keys():
+				os.system('mv %s/%s %s/%s_%s' % (rawdir1, ir1_1, rawdir1, dn[ir1_1.split('_')[0]], '_'.join(ir1_1.split('_')[1:])))
+				print('%s moves to %s_%s' % (ir1_1, dn[ir1_1.split('_')[0]], '_'.join(ir1_1.split('_')[1:])))
+
+			elif ir1_1.split('_')[2]  in dn.keys():
+				os.system('mv %s/%s %s/%s_%s' % (rawdir1, ir1_1, rawdir1, dn[ir1_1.split('_')[2]], '_'.join(ir1_1.split('_')[3:])))
+				print("%s moves to %s_%s" % (ir1_1, dn[ir1_1.split('_')[2]], '_'.join(ir1_1.split('_')[3:])))
+
+			elif ir1_1.split('_')[0] not in dn.keys() or ir1_1.split('_')[2] not in dn.keys():
+				print("%s: No need to change the name!!!" % ir1_1)
 
 def main():
 	rawdir1=sys.argv[1]
