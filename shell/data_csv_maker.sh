@@ -44,9 +44,9 @@ done
 rawwc=$(less $infile |wc -l )
 tmpwc=$(less $tmp |wc -l )
 if [ "$rawwc" == "$tmpwc" ]; then
-echo "${infile} 行数：$rawwc 等于 ${tmp} 行数：$tmpwc !"
+echo "${infile}: ${rawwc}行 等于 ${tmp}: ${tmpwc}行!"
 else 
-echo -e "\e[41m ${infile} 行数：$rawwc 不等于 ${tmp} 行数：$tmpwc, 请检查oss路径下是否存在多个前缀开始的数据 \e[0m" && exit 0
+echo -e "\e[41m ${infile}: ${rawwc}行 不等于 ${tmp}: ${tmpwc}行, 请检查oss路径下是否存在多个前缀开始的数据 \e[0m" && exit 0
 fi
 
 if [ $need_adpater == "no" ];then
