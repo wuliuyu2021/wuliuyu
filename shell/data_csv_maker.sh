@@ -59,7 +59,7 @@ done
 rawwc=$(less $infile |wc -l )
 tmpwc=$(less $tmp |wc -l )
 if [ "$rawwc" == "$tmpwc" ]; then
-echo "${infile}: ${rawwc}行 等于 ${tmp}: ${tmpwc}行!"
+echo -e "\e[44m ${infile}: ${rawwc}行 等于 ${tmp}: ${tmpwc}行! \e[0m"
 else 
 echo -e "\e[41m ${infile}: ${rawwc}行 不等于 ${tmp}: ${tmpwc}行, 请检查oss路径下是否存在多个前缀开始的数据或无效的oss路径 \e[0m" && exit 0
 fi
