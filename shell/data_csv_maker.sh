@@ -21,12 +21,12 @@ ossinfo=$(echo $info |awk -F "," '{print $2}')
 prefix=$(echo $info |awk -F "/" '{print $NF}')
 flag=$(ossutil ls $ossinfo  |grep "${prefix}" |grep "_R1_001.fastq.gz" |awk -F " " '{print $NF}')
 flagR2=$(ossutil ls $ossinfo  |grep "${prefix}" |grep "_R2_001.fastq.gz" |awk -F " " '{print $NF}')
-for file in ${flag[@]};
-do
+flagwc=$(ossutil ls $ossinfo  |grep "${prefix}" |grep "_R1_001.fastq.gz" |awk -F " " '{print $NF}' |wc -l)
+if [ "flagwc" == 1 ];then
+#for file in ${flag[@]};
+#do
+file=$flag
 last16=$(echo $file |awk 'BEGIN{FS="'$prefix'"}{print $NF}'|awk -F "" '{print $(NF-15)$(NF-14)$(NF-13)$(NF-12)$(NF-11)$(NF-10)$(NF-9)$(NF-8)$(NF-7)$(NF-6)$(NF-5)$(NF-4)$(NF-3)$(NF-2)$(NF-1)$NF}')
-#length16=$(echo $file |awk 'BEGIN{FS="'$prefix'"}{print $NF}'|awk -F "" '{print length($0)}')
-#echo "$last16"
-#echo "$length16"
 if [ $last16 == "_R1_001.fastq.gz" ]; then
 flam=$(ossutil ls $file  |grep "${prefix}" |grep "_R1_001.fastq.gz" |awk -F " " '{print $NF}')
 if [ -n "$flag" ] && [ -n "$flagR2" ];then
@@ -38,7 +38,22 @@ fi
 else
 echo "$sample,$flam is not in data.csv, please check!!!"
 fi
-done
+#done
+elif [ "flagwc" > 1 ];then
+file=$(echo $flag |tail -n1)
+last16=$(echo $file |awk 'BEGIN{FS="'$prefix'"}{print $NF}'|awk -F "" '{print $(NF-15)$(NF-14)$(NF-13)$(NF-12)$(NF-11)$(NF-10)$(NF-9)$(NF-8)$(NF-7)$(NF-6)$(NF-5)$(NF-4)$(NF-3)$(NF-2)$(NF-1)$NF}')
+if [ $last16 == "_R1_001.fastq.gz" ]; then
+flam=$(ossutil ls $file  |grep "${prefix}" |grep "_R1_001.fastq.gz" |awk -F " " '{print $NF}')
+if [ -n "$flag" ] && [ -n "$flagR2" ];then
+ossdir=$(echo $flam |awk -F "_R1_001.fastq.gz" '{print $1}')
+echo "${sample},${ossdir}" >> $tmp
+else
+echo "$flag or $flagR2 is not exsits!!!" 
+fi
+else
+echo "$sample,$flam is not in data.csv, please check!!!"
+fi
+fi
 done
 #验证rawcsv和tmpcsv行数是否一致;
 rawwc=$(less $infile |wc -l )
@@ -46,7 +61,7 @@ tmpwc=$(less $tmp |wc -l )
 if [ "$rawwc" == "$tmpwc" ]; then
 echo "${infile}: ${rawwc}行 等于 ${tmp}: ${tmpwc}行!"
 else 
-echo -e "\e[41m ${infile}: ${rawwc}行 不等于 ${tmp}: ${tmpwc}行, 请检查oss路径下是否存在多个前缀开始的数据 \e[0m" && exit 0
+echo -e "\e[41m ${infile}: ${rawwc}行 不等于 ${tmp}: ${tmpwc}行, 请检查oss路径下是否存在多个前缀开始的数据或无效的oss路径 \e[0m" && exit 0
 fi
 
 if [ $need_adpater == "no" ];then
