@@ -20,7 +20,6 @@ sample=$(echo $info |awk -F "," '{print $1}')
 ossinfo=$(echo $info |awk -F "," '{print $2}')
 prefix=$(echo $info |awk -F "/" '{print $NF}')
 flag=$(ossutil ls $ossinfo  |grep "${prefix}" |grep "_R1_001.fastq.gz" |awk -F " " '{print $NF}')
-flagR2=$(ossutil ls $ossinfo  |grep "${prefix}" |grep "_R2_001.fastq.gz" |awk -F " " '{print $NF}')
 flagwc=$(ossutil ls $ossinfo  |grep "${prefix}" |grep "_R1_001.fastq.gz" |awk -F " " '{print $NF}' |wc -l)
 if [ "$flagwc" -eq 1 ];then
 #for file in ${flag[@]};
@@ -29,27 +28,29 @@ file=$flag
 last16=$(echo $file |awk 'BEGIN{FS="'$prefix'"}{print $NF}'|awk -F "" '{print $(NF-15)$(NF-14)$(NF-13)$(NF-12)$(NF-11)$(NF-10)$(NF-9)$(NF-8)$(NF-7)$(NF-6)$(NF-5)$(NF-4)$(NF-3)$(NF-2)$(NF-1)$NF}')
 if [ $last16 == "_R1_001.fastq.gz" ]; then
 flam=$(ossutil ls $file  |grep "${prefix}" |grep "_R1_001.fastq.gz" |awk -F " " '{print $NF}')
-if [ -n "$flag" ] && [ -n "$flagR2" ];then
+file2=$(echo $file |sed "s/_R1_001.fastq.gz/_R2_001.fastq.gz/")
+if [ -n "$file" ] && [ -n "$file2" ];then
 ossdir=$(echo $flam |awk -F "_R1_001.fastq.gz" '{print $1}')
 echo "${sample},${ossdir}" >> $tmp
 else
-echo "$flag or $flagR2 is not exsits!!!" 
+echo "$file or $file2 is not exsits!!!" 
 fi
 else
 echo "$sample,$flam is not in data.csv, please check!!!"
 fi
 #done
 elif [ "$flagwc" -gt 1 ];then
-file=$(echo $flag |tail -n1)
+file=$(echo ${flag[-1]})
 echo "file:$file"
 last16=$(echo $file |awk 'BEGIN{FS="'$prefix'"}{print $NF}'|awk -F "" '{print $(NF-15)$(NF-14)$(NF-13)$(NF-12)$(NF-11)$(NF-10)$(NF-9)$(NF-8)$(NF-7)$(NF-6)$(NF-5)$(NF-4)$(NF-3)$(NF-2)$(NF-1)$NF}')
 if [ $last16 == "_R1_001.fastq.gz" ]; then
 flam=$(ossutil ls $file  |grep "${prefix}" |grep "_R1_001.fastq.gz" |awk -F " " '{print $NF}')
-if [ -n "$flag" ] && [ -n "$flagR2" ];then
+file2=$(echo $file |sed "s/_R1_001.fastq.gz/_R2_001.fastq.gz/")
+if [ -n "$file" ] && [ -n "$file2" ];then
 ossdir=$(echo $flam |awk -F "_R1_001.fastq.gz" '{print $1}')
 echo "${sample},${ossdir}" >> $tmp
 else
-echo "$flag or $flagR2 is not exsits!!!" 
+echo "$file or $file2 is not exsits!!!" 
 fi
 else
 echo "$sample,$flam is not in data.csv, please check!!!"
