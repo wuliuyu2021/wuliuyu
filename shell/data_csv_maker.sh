@@ -44,9 +44,9 @@ done
 rawwc=$(less $infile |wc -l )
 tmpwc=$(less $tmp |wc -l )
 if [ "$rawwc" == "$tmpwc" ]; then
-echo "${infile}行数：$rawwc 等于 ${tmp}行数：$tmpwc !"
+echo "${infile} 行数：$rawwc 等于 ${tmp} 行数：$tmpwc !"
 else 
-echo "${infile}行数：$rawwc 不等于 ${tmp}行数：$tmpwc, 请检查oss路径下是否多个前缀开始的数据" && exit 0
+echo -e "\e[41m ${infile} 行数：$rawwc 不等于 ${tmp} 行数：$tmpwc, 请检查oss路径下是否存在多个前缀开始的数据 \e[0m" && exit 0
 fi
 
 if [ $need_adpater == "no" ];then
@@ -70,6 +70,6 @@ if [ -f "/haplox/users/wuliuyu/wuliuyu/python/kefu_fastp_merge_csv_info_v2.py" ]
 python /haplox/users/wuliuyu/wuliuyu/python/kefu_fastp_merge_csv_info_v2.py -i $tmp -t $dictcsv -o $outdir -a $need_adpater
 fi
 else
-echo "Sorry, your parameter is wrong!!!" \
+echo -e "\e[41m Sorry, your parameter is wrong!!! \e[0m" \
 && exit 0
 fi
