@@ -41,12 +41,12 @@ fi
 done
 done
 #验证rawcsv和tmpcsv行数是否一致;
-rawwc=$(wc -l $infile)
-tmpwc=$(wc -l $tmp)
+rawwc=$(less $infile |wc -l )
+tmpwc=$(less $tmp |wc -l )
 if [ "$rawwc" == "$tmpwc" ]; then
-echo "行数: $rawwc == $tmpwc !"
+echo "${infile}行数：$rawwc 等于 ${tmp}行数：$tmpwc !"
 else 
-echo "行数: $rawwc != $tmpwc, 请检查oss路径下是否多个前缀开始的数据" && exit 0
+echo "${infile}行数：$rawwc 不等于 ${tmp}行数：$tmpwc, 请检查oss路径下是否多个前缀开始的数据" && exit 0
 fi
 
 if [ $need_adpater == "no" ];then
