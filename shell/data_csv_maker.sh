@@ -45,7 +45,8 @@ rawwc=$(wc -l $infile)
 tmpwc=$(wc -l $tmp)
 if [ "$rawwc" == "$tmpwc" ]; then
 echo "行数: $rawwc == $tmpwc !"
-else "行数: $rawwc != $tmpwc, 请检查oss路径下是否多个前缀开始的数据" && exit 0
+else 
+echo "行数: $rawwc != $tmpwc, 请检查oss路径下是否多个前缀开始的数据" && exit 0
 fi
 
 if [ $need_adpater == "no" ];then
