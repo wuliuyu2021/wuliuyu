@@ -28,16 +28,16 @@ def rename(rawdir1, csv):
 		ir1_2 = sr1_1.replace("_R1", "_I2")
 		if os.path.exists(rawdir1+"/"+sr1_2) and not os.path.exists(rawdir1+"/"+sr1_3):
 			if sr1_1.split('_')[0] in dn.keys():
-				os.system('mv %s/%s %s/%s_%s' % (rawdir1, sr1_1, rawdir1, dn[sr1_1.split('_')[0]], '_'.join(sr1_1.split('_')[1:])))
-				print('%s moves to %s_%s' % (sr1_1, dn[sr1_1.split('_')[0]], '_'.join(sr1_1.split('_')[1:])))
-				os.system('mv %s/%s %s/%s_%s' % (rawdir1, sr1_2, rawdir1, dn[sr1_2.split('_')[0]], '_'.join(sr1_2.split('_')[1:])))
-				print('%s moves to %s_%s' % (sr1_2, dn[sr1_2.split('_')[0]], '_'.join(sr1_2.split('_')[1:])))
+				os.system('mv %s/%s %s/%s_R1_001.fastq.gz' % (rawdir1, sr1_1, rawdir1, dn[sr1_1.split('_')[0]]))
+				print('%s moves to %s_R1_001.fastq.gz' % (sr1_1, dn[sr1_1.split('_')[0]]))
+				os.system('mv %s/%s %s/%s_R2_001.fastq.gz' % (rawdir1, sr1_2, rawdir1, dn[sr1_2.split('_')[0]]))
+				print('%s moves to %s_R2_001.fastq.gz' % (sr1_2, dn[sr1_2.split('_')[0]]))
 
 			elif sr1_1.split('_')[2]  in dn.keys():
-				os.system('mv %s/%s %s/%s_%s' % (rawdir1, sr1_1, rawdir1, dn[sr1_1.split('_')[2]], '_'.join(sr1_1.split('_')[3:])))
-				print("%s moves to %s_%s" % (sr1_1, dn[sr1_1.split('_')[2]], '_'.join(sr1_1.split('_')[3:])))
-				os.system('mv %s/%s %s/%s_%s' % (rawdir1, sr1_2, rawdir1, dn[sr1_2.split('_')[2]], '_'.join(sr1_2.split('_')[3:])))
-				print("%s moves to %s_%s" % (sr1_2, dn[sr1_2.split('_')[2]], '_'.join(sr1_2.split('_')[3:])))
+				os.system('mv %s/%s %s/%s_R1_001.fastq.gz' % (rawdir1, sr1_1, rawdir1, dn[sr1_1.split('_')[2]]))
+				print("%s moves to %s_R1_001.fastq.gz" % (sr1_1, dn[sr1_1.split('_')[2]]))
+				os.system('mv %s/%s %s/%s_R2_001.fastq.gz' % (rawdir1, sr1_2, rawdir1, dn[sr1_2.split('_')[2]]))
+				print("%s moves to %s_R2_001.fastq.gz" % (sr1_2, dn[sr1_2.split('_')[2]]))
 
 			elif sr1_1.split('_')[0] not in dn.keys() or sr1_1.split('_')[2] not in dn.keys():
 				print("%s: No need to change the name!!!" % sr1_1)
@@ -45,20 +45,20 @@ def rename(rawdir1, csv):
 
 		if os.path.exists(rawdir1+"/"+sr1_2) and os.path.exists(rawdir1+"/"+sr1_3):
 			if sr1_1.split('_')[0] in dn.keys() :
-				os.system('mv %s/%s %s/%s_%s' % (rawdir1, sr1_1, rawdir1, dn[sr1_1.split('_')[0]], '_'.join(sr1_1.split('_')[1:])))
-				print('%s moves to %s_%s' % (sr1_1, dn[sr1_1.split('_')[0]], '_'.join(sr1_1.split('_')[1:])))
-				os.system('mv %s/%s %s/%s_%s' % (rawdir1, sr1_2, rawdir1, dn[sr1_2.split('_')[0]], '_'.join(sr1_2.split('_')[1:])))
-				print('%s moves to %s_%s' % (sr1_2, dn[sr1_2.split('_')[0]], '_'.join(sr1_2.split('_')[1:])))
-				os.system('mv %s/%s %s/%s_%s' % (rawdir1, sr1_3, rawdir1, dn[sr1_3.split('_')[0]], '_'.join(sr1_3.split('_')[1:])))
-				print('%s moves to %s_%s' % (sr1_3, dn[sr1_3.split('_')[0]], '_'.join(sr1_3.split('_')[1:])))
+				os.system('mv %s/%s %s/%s_R1_001.fastq.gz' % (rawdir1, sr1_1, rawdir1, dn[sr1_1.split('_')[0]]))
+				print('%s moves to %s_R1_001.fastq.gz' % (sr1_1, dn[sr1_1.split('_')[0]]))
+				os.system('mv %s/%s %s/%s_R2_001.fastq.gz' % (rawdir1, sr1_2, rawdir1, dn[sr1_2.split('_')[0]]))
+				print('%s moves to %s_R2_001.fastq.gz' % (sr1_2, dn[sr1_2.split('_')[0]]))
+				os.system('mv %s/%s %s/%s_%s' % (rawdir1, sr1_3, rawdir1, dn[sr1_3.split('_')[0]]))
+				print('%s moves to %s_%s' % (sr1_3, dn[sr1_3.split('_')[0]]))
 
 			elif sr1_1.split('_')[2]  in dn.keys() :
-				os.system('mv %s/%s %s/%s_%s' % (rawdir1, sr1_1, rawdir1, dn[sr1_1.split('_')[2]], '_'.join(sr1_1.split('_')[3:])))
-				print("%s moves to %s_%s" % (sr1_1, dn[sr1_1.split('_')[2]], '_'.join(sr1_1.split('_')[3:])))
-				os.system('mv %s/%s %s/%s_%s' % (rawdir1, sr1_2, rawdir1, dn[sr1_2.split('_')[2]], '_'.join(sr1_2.split('_')[3:])))
-				print("%s moves to %s_%s" % (sr1_2, dn[sr1_2.split('_')[2]], '_'.join(sr1_2.split('_')[3:])))
-				os.system('mv %s/%s %s/%s_%s' % (rawdir1, sr1_3, rawdir1, dn[sr1_3.split('_')[2]], '_'.join(sr1_3.split('_')[3:])))
-				print("%s moves to %s_%s" % (sr1_3, dn[sr1_3.split('_')[2]], '_'.join(sr1_3.split('_')[3:])))
+				os.system('mv %s/%s %s/%s_R1_001.fastq.gz' % (rawdir1, sr1_1, rawdir1, dn[sr1_1.split('_')[2]]))
+				print("%s moves to %s_R1_001.fastq.gz" % (sr1_1, dn[sr1_1.split('_')[2]]))
+				os.system('mv %s/%s %s/%s_R2_001.fastq.gz' % (rawdir1, sr1_2, rawdir1, dn[sr1_2.split('_')[2]]))
+				print("%s moves to %s_R2_001.fastq.gz" % (sr1_2, dn[sr1_2.split('_')[2]]))
+				os.system('mv %s/%s %s/%s_R3_001.fastq.gz' % (rawdir1, sr1_3, rawdir1, dn[sr1_3.split('_')[2]]))
+				print("%s moves to %s_R3_001.fastq.gz" % (sr1_3, dn[sr1_3.split('_')[2]]))
 
 			elif sr1_1.split('_')[0] not in dn.keys() or sr1_1.split('_')[2] not in dn.keys():
 				print("%s: No need to change the name!!!" % sr1_1)
@@ -67,16 +67,16 @@ def rename(rawdir1, csv):
 
 		if os.path.exists(rawdir1+"/"+ir1_1) and os.path.exists(rawdir1+"/"+ir1_2):
 			if ir1_1.split('_')[0] in dn.keys():
-				os.system('mv %s/%s %s/%s_%s' % (rawdir1, ir1_1, rawdir1, dn[ir1_1.split('_')[0]], '_'.join(ir1_1.split('_')[1:])))
-				print('%s moves to %s_%s' % (ir1_1, dn[ir1_1.split('_')[0]], '_'.join(ir1_1.split('_')[1:])))
-				os.system('mv %s/%s %s/%s_%s' % (rawdir1, ir1_2, rawdir1, dn[ir1_2.split('_')[0]], '_'.join(ir1_2.split('_')[1:])))
-				print('%s moves to %s_%s' % (ir1_2, dn[ir1_2.split('_')[0]], '_'.join(ir1_2.split('_')[1:])))
+				os.system('mv %s/%s %s/%s_I1_001.fastq.gz' % (rawdir1, ir1_1, rawdir1, dn[ir1_1.split('_')[0]]))
+				print('%s moves to %s_I1_001.fastq.gz' % (ir1_1, dn[ir1_1.split('_')[0]]))
+				os.system('mv %s/%s %s/%s_I2_001.fastq.gz' % (rawdir1, ir1_2, rawdir1, dn[ir1_2.split('_')[0]]))
+				print('%s moves to %s_I2_001.fastq.gz' % (ir1_2, dn[ir1_2.split('_')[0]]))
 
-			elif ir1_1.split('_')[2]  in dn.keys():
-				os.system('mv %s/%s %s/%s_%s' % (rawdir1, ir1_1, rawdir1, dn[ir1_1.split('_')[2]], '_'.join(ir1_1.split('_')[3:])))
-				print("%s moves to %s_%s" % (ir1_1, dn[ir1_1.split('_')[2]], '_'.join(ir1_1.split('_')[3:])))
-				os.system('mv %s/%s %s/%s_%s' % (rawdir1, ir1_2, rawdir1, dn[ir1_2.split('_')[2]], '_'.join(ir1_2.split('_')[3:])))
-				print("%s moves to %s_%s" % (ir1_2, dn[ir1_2.split('_')[2]], '_'.join(ir1_2.split('_')[3:])))
+			elif ir1_1.split('_')[2] in dn.keys():
+				os.system('mv %s/%s %s/%s_I1_001.fastq.gz' % (rawdir1, ir1_1, rawdir1, dn[ir1_1.split('_')[2]]))
+				print("%s moves to %s_I1_001.fastq.gz" % (ir1_1, dn[ir1_1.split('_')[2]]))
+				os.system('mv %s/%s %s/%s_I2_001.fastq.gz' % (rawdir1, ir1_2, rawdir1, dn[ir1_2.split('_')[2]]))
+				print("%s moves to %s_I2_001.fastq.gz" % (ir1_2, dn[ir1_2.split('_')[2]]))
 
 			elif ir1_1.split('_')[0] not in dn.keys() or ir1_1.split('_')[2] not in dn.keys():
 				print("%s: No need to change the name!!!" % ir1_1)
@@ -84,12 +84,12 @@ def rename(rawdir1, csv):
 		
 		if os.path.exists(rawdir1+"/"+ir1_1) and not os.path.exists(rawdir1+"/"+ir1_2):
 			if ir1_1.split('_')[0] in dn.keys():
-				os.system('mv %s/%s %s/%s_%s' % (rawdir1, ir1_1, rawdir1, dn[ir1_1.split('_')[0]], '_'.join(ir1_1.split('_')[1:])))
-				print('%s moves to %s_%s' % (ir1_1, dn[ir1_1.split('_')[0]], '_'.join(ir1_1.split('_')[1:])))
+				os.system('mv %s/%s %s/%s_I1_001.fastq.gz' % (rawdir1, ir1_1, rawdir1, dn[ir1_1.split('_')[0]]))
+				print('%s moves to %s_I1_001.fastq.gz' % (ir1_1, dn[ir1_1.split('_')[0]]))
 
 			elif ir1_1.split('_')[2]  in dn.keys():
-				os.system('mv %s/%s %s/%s_%s' % (rawdir1, ir1_1, rawdir1, dn[ir1_1.split('_')[2]], '_'.join(ir1_1.split('_')[3:])))
-				print("%s moves to %s_%s" % (ir1_1, dn[ir1_1.split('_')[2]], '_'.join(ir1_1.split('_')[3:])))
+				os.system('mv %s/%s %s/%s_I1_001.fastq.gz' % (rawdir1, ir1_1, rawdir1, dn[ir1_1.split('_')[2]]))
+				print("%s moves to %s_I1_001.fastq.gz" % (ir1_1, dn[ir1_1.split('_')[2]]))
 
 			elif ir1_1.split('_')[0] not in dn.keys() or ir1_1.split('_')[2] not in dn.keys():
 				print("%s: No need to change the name!!!" % ir1_1)
