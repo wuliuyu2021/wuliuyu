@@ -62,9 +62,9 @@ done
 rawwc=$(less $infile |wc -l )
 tmpwc=$(less $tmp |wc -l )
 if [ "$rawwc" == "$tmpwc" ]; then
-echo -e "\033[44m;1m ${infile}: ${rawwc}行 等于 ${tmp}: ${tmpwc}行! \033[0m"
+echo -e "\033[44;1m ${infile}: ${rawwc}行 等于 ${tmp}: ${tmpwc}行!\033[0m"
 else 
-echo -e "\033[41m;1m ${infile}: ${rawwc}行 不等于 ${tmp}: ${tmpwc}行, 请检查oss路径下是否存在多个前缀开始的数据或无效的oss路径! \033[0m" && exit 0
+echo -e "\033[41;1m ${infile}: ${rawwc}行 不等于 ${tmp}: ${tmpwc}行, 请检查oss路径下是否存在多个前缀开始的数据或无效的oss路径! \033[0m" && exit 0
 fi
 
 if [ $need_adpater == "no" ];then
@@ -88,6 +88,6 @@ if [ -f "/haplox/users/wuliuyu/wuliuyu/python/kefu_fastp_merge_csv_info_v2.py" ]
 python /haplox/users/wuliuyu/wuliuyu/python/kefu_fastp_merge_csv_info_v2.py -i $tmp -t $dictcsv -o $outdir -a $need_adpater
 fi
 else
-echo -e "\033[41m;1m Sorry, your parameter is wrong!!! \033[0m" \
+echo -e "\033[41;1m Sorry, your parameter is wrong!!! \033[0m" \
 && exit 0
 fi
