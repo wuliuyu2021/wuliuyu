@@ -9,7 +9,7 @@ Hapyun_account=$6 #Hapyun账号选择
 time=$(date "+%Y%m%d" | awk -F "" '{print $3$4$5$6$7$8}')
 hms=$(date "+%Y%m%d_%H%M%S" | awk -F "" '{print $3$4$5$6$7$8$9$10$11$12$13$14$15}')
 
-sh /data/users/wuliuyu/wuliuyu/shell/data_csv_maker.sh $csv $yinshe $outdir no
+sh /thinker/nfs5/public/wuliuyu/wuliuyu/shell/data_csv_maker.sh $csv $yinshe $outdir no
 
 if [ -e $outdir/data.csv ];then
 instance=$(cat $outdir/data.csv |wc -l) #Hapyun执行工具或流的并发数
