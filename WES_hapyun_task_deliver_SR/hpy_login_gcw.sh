@@ -1,5 +1,5 @@
 #!/usr/expect/bin/expect
-spawn /thinker/nfs5/public/wuliuyu/wuliuyu/WES_hapyun_task_deliver_SR/hpycli.py login
+spawn python2 /thinker/nfs5/public/wuliuyu/wuliuyu/WES_hapyun_task_deliver_SR/hpycli.py login
 expect "*Username*"
 send "gancw@haplox.com\r"
 sleep 2
