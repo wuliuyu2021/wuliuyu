@@ -13,8 +13,6 @@ sh /data/users/wuliuyu/wuliuyu/shell/data_csv_maker.sh $csv $yinshe $outdir no
 
 if [ -e $outdir/data.csv ];then
 instance=$(cat $outdir/data.csv |wc -l) #Hapyun执行工具或流的并发数
-ossutil cp -u $outdir/data.csv oss://sz-hapdeliver/Data_from_SR/Hapyun_task_csv/$time/${contact}_${hms}.csv
-echo -e "\033[43;1moss表:\033[0m oss://sz-hapdeliver/Data_from_SR/Hapyun_task_csv/$time/${contact}_${hms}.csv"
 echo -e "\033[45;1mHayun并发数:\033[0m $instance"
 echo -e "\033[45;1m项目编号:\033[0m $contact"
 else
@@ -22,15 +20,20 @@ echo -e "\033[41;1mNo csv file:\033[0m $outdir/data.csv, please check!!!" && exi
 fi
 
 #Hapyun csv make
-csvfile=$(echo "oss://sz-hapdeliver/Data_from_SR/Hapyun_task_csv/$time/${contact}_${hms}.csv")
 instance=$(cat $outdir/data.csv |wc -l)
 conID=$contact
 sample=${contact}_${hms}
 if [ "$Hapyun_account" == "ll" ];then
 zhanghao="/thinker/nfs5/public/wuliuyu/wuliuyu/WES_hapyun_task_deliver_SR/hpy_login_ll.sh"
+ossutil cp -u $outdir/data.csv oss://sz-hapbin/users/liangshu/wes/Depth_Cover/${contact}_${hms}.csv
+echo -e "\033[43;1moss表:\033[0m oss://sz-hapbin/users/liangshu/wes/Depth_Cover/${contact}_${hms}.csv"
+csvfile=$(echo "oss://sz-hapbin/users/liangshu/wes/Depth_Cover/${contact}_${hms}.csv")
 fi
 if [ "$Hapyun_account" == "gcw" ];then
 zhanghao="/thinker/nfs5/public/wuliuyu/wuliuyu/WES_hapyun_task_deliver_SR/hpy_login_gcw.sh"
+ossutil cp -u $outdir/data.csv oss://sz-hapbin/users/ganchuanwei/wes/Depth_Cover/${contact}_${hms}.csv
+echo -e "\033[43;1moss表:\033[0m oss://sz-hapbin/users/ganchuanwei/wes/Depth_Cover/${contact}_${hms}.csv"
+csvfile=$(echo "oss://sz-hapbin/users/ganchuanwei/wes/Depth_Cover/${contact}_${hms}.csv")
 fi
 
 echo -e "\033[40;1m需要切分,注意工作流选择\033[0m"
@@ -38,7 +41,7 @@ ossutil cp -f $outdir/data.csv oss://sz-hapdeliver/Data_from_SR/Hapyun_task_csv/
 echo "data,instance_count,bed,sample" > $outdir/${contact}_${time}.csv
 echo "$csvfile,$instance,$bed,$sample" >> $outdir/${contact}_${time}.csv
 expect $zhanghao
-echo "python /thinker/nfs5/public/wuliuyu/wuliuyu/WES_hapyun_task_deliver_SR/hpycli.py batch -t /thinker/nfs5/public/wuliuyu/wuliuyu/WES_hapyun_task_deliver_SR/wes_depth_tpl.json -c $outdir/${contact}_${time}.csv"
-python /thinker/nfs5/public/wuliuyu/wuliuyu/WES_hapyun_task_deliver_SR/hpycli.py batch -t /thinker/nfs5/public/wuliuyu/wuliuyu/WES_hapyun_task_deliver_SR/wes_depth_tpl.json -c $outdir/${contact}_${time}.csv
+echo "python2 /thinker/nfs5/public/wuliuyu/wuliuyu/WES_hapyun_task_deliver_SR/hpycli.py batch -t /thinker/nfs5/public/wuliuyu/wuliuyu/WES_hapyun_task_deliver_SR/wes_depth_tpl.json -c $outdir/${contact}_${time}.csv"
+python2 /thinker/nfs5/public/wuliuyu/wuliuyu/WES_hapyun_task_deliver_SR/hpycli.py batch -t /thinker/nfs5/public/wuliuyu/wuliuyu/WES_hapyun_task_deliver_SR/wes_depth_tpl.json -c $outdir/${contact}_${time}.csv
 echo -e "\033[42;1mDone!\033[0m"
 
