@@ -227,9 +227,9 @@
             }
         },
         "description": "",
-        "name": "wes_depth_<$sample>"
+        "name": "KF_<$sample>_wes_depth"
     },
-    "task_name": "wes_depth_<$sample>",
+    "task_name": "KF_<$sample>_wes_depth",
     "workflow_name": "wes_depth",
     "workflow_version": 1
 }

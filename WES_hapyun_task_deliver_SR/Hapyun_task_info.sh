@@ -4,12 +4,13 @@ yinshe=$2 #字典对应表
 outdir=$3 #data.csv生成路径
 bed=$4 #安捷伦V6: /hapbin/databases/KF_Database/genome/BedFile/Exon_V6_r2_Regions_XY.bed,IDT: /hapbin/databases/KF_Database/genome/BedFile/IDT/xgen-exome-research-panel-target_XY.bed
 contact=$5 #项目编号
-Hapyun_account=$6 #Hapyun账号选择
+adpater=$6 #接头选择
+Hapyun_account=$7 #Hapyun账号选择
 
 time=$(date "+%Y%m%d" | awk -F "" '{print $3$4$5$6$7$8}')
 hms=$(date "+%Y%m%d_%H%M%S" | awk -F "" '{print $3$4$5$6$7$8$9$10$11$12$13$14$15}')
 
-sh /thinker/nfs5/public/wuliuyu/wuliuyu/shell/data_csv_maker.sh $csv $yinshe $outdir no
+sh /thinker/nfs5/public/wuliuyu/wuliuyu/shell/data_csv_maker.sh $csv $yinshe $outdir $adpater
 
 if [ -e $outdir/data.csv ];then
 instance=$(cat $outdir/data.csv |wc -l) #Hapyun执行工具或流的并发数
