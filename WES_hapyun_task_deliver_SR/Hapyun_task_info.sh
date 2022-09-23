@@ -25,19 +25,16 @@ conID=$contact
 sample=${contact}_${hms}
 if [ "$Hapyun_account" == "ll" ];then
 zhanghao="/thinker/nfs5/public/wuliuyu/wuliuyu/WES_hapyun_task_deliver_SR/hpy_login_ll.sh"
-ossutil cp -u $outdir/data.csv oss://sz-hapbin/users/liangshu/wes/Depth_Cover/${contact}_${hms}.csv
+ossutil cp -f $outdir/data.csv oss://sz-hapbin/users/liangshu/wes/Depth_Cover/${contact}_${hms}.csv
 echo -e "\033[43;1moss表:\033[0m oss://sz-hapbin/users/liangshu/wes/Depth_Cover/${contact}_${hms}.csv"
 csvfile=$(echo "oss://sz-hapbin/users/liangshu/wes/Depth_Cover/${contact}_${hms}.csv")
 fi
 if [ "$Hapyun_account" == "gcw" ];then
 zhanghao="/thinker/nfs5/public/wuliuyu/wuliuyu/WES_hapyun_task_deliver_SR/hpy_login_gcw.sh"
-ossutil cp -u $outdir/data.csv oss://sz-hapbin/users/ganchuanwei/wes/Depth_Cover/${contact}_${hms}.csv
+ossutil cp -f $outdir/data.csv oss://sz-hapbin/users/ganchuanwei/wes/Depth_Cover/${contact}_${hms}.csv
 echo -e "\033[43;1moss表:\033[0m oss://sz-hapbin/users/ganchuanwei/wes/Depth_Cover/${contact}_${hms}.csv"
 csvfile=$(echo "oss://sz-hapbin/users/ganchuanwei/wes/Depth_Cover/${contact}_${hms}.csv")
 fi
-
-echo -e "\033[40;1m需要切分,注意工作流选择\033[0m"
-ossutil cp -f $outdir/data.csv oss://sz-hapdeliver/Data_from_SR/Hapyun_task_csv/$time/${contact}_${hms}.csv
 echo "data,instance_count,bed,sample" > $outdir/${contact}_${time}.csv
 echo "$csvfile,$instance,$bed,$sample" >> $outdir/${contact}_${time}.csv
 expect $zhanghao
