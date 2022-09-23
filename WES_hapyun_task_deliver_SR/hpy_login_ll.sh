@@ -1,4 +1,4 @@
-#!/usr/bin/expect
+#!/usr/expect/bin/expect
 spawn /thinker/nfs5/public/wuliuyu/wuliuyu/WES_hapyun_task_deliver_SR/hpycli.py login
 expect "*Username*"
 send "liangshu@haplox.com\r"
