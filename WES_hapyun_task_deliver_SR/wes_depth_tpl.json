@@ -1,0 +1,235 @@
+{
+    "emergency": false,
+    "name": "wes_depth",
+    "parameters": {
+        "Conditions": {
+            "schedule": ""
+        },
+        "Inputs": {
+            "loaddata_node_1": {
+                "alias": "data",
+                "category": "loaddata",
+                "data": [
+                    {
+                        "enid": null,
+                        "name": "<$data>",
+                        "property": {
+                            "block_file": {
+                                "block_name": null,
+                                "is_block": false,
+                                "split_format": "default"
+                            }
+                        }
+                    }
+                ],
+                "formats": [],
+                "maxitems": 1,
+                "minitems": 1,
+                "required": true,
+                "type": "file"
+            }
+        },
+        "Outputs": {},
+        "Parameters": {
+            "merge_fastp_UPM_MGI_da_node_3": {
+                "alias": "merge_fastp",
+                "parameters": {
+                    "instance_count": {
+                        "hint": "number of sample",
+                        "required": true,
+                        "type": "integer",
+                        "value": <$instance_count>,
+                        "variable": true
+                    }
+                }
+            },
+            "wes_bwa_gatk_UPM_KF_da_node_4": {
+                "alias": "bwa",
+                "parameters": {
+                    "bed": {
+                        "hint": "WESplusV2: /hapbin/users/wuliuyu/wes_bed/WESplusV2/WESplusV2_capture_extend100_merge.bed",
+                        "required": true,
+                        "type": "string",
+                        "value": "<$bed>",
+                        "variable": true
+                    },
+                    "dbsnp": {
+                        "hint": "/hapbin/databases/hg19/dbsnp_138.hg19.vcf",
+                        "required": true,
+                        "type": "string",
+                        "value": "/hapbin/databases/hg19/dbsnp_138.hg19.vcf",
+                        "variable": false
+                    },
+                    "fasta": {
+                        "hint": "/hapbin/databases/ucsc.hg19/ucsc.hg19.fasta",
+                        "required": true,
+                        "type": "string",
+                        "value": "/hapbin/databases/ucsc.hg19/ucsc.hg19.fasta",
+                        "variable": false
+                    },
+                    "instance_count": {
+                        "hint": "number of sample",
+                        "required": true,
+                        "type": "integer",
+                        "value": <$instance_count>,
+                        "variable": true
+                    },
+                    "known_1000G_indels": {
+                        "hint": "/hapbin/databases/hg19/1000G_phase1.indels.hg19.sites.vcf",
+                        "required": true,
+                        "type": "string",
+                        "value": "/hapbin/databases/hg19/1000G_phase1.indels.hg19.sites.vcf",
+                        "variable": false
+                    },
+                    "known_Mills_indels": {
+                        "hint": "/hapbin/databases/hg19/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf",
+                        "required": true,
+                        "type": "string",
+                        "value": "/hapbin/databases/hg19/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf",
+                        "variable": true
+                    },
+                    "license": {
+                        "hint": "bj or sz",
+                        "required": true,
+                        "type": "string",
+                        "value": "sz",
+                        "variable": false
+                    }
+                }
+            },
+            "wes_depth_count_node_8": {
+                "alias": "wes_depth_count",
+                "parameters": {
+                    "instance_count": {
+                        "hint": "1",
+                        "required": true,
+                        "type": "integer",
+                        "value": 1,
+                        "variable": false
+                    }
+                }
+            },
+            "wes_depth_count_rm_node_6": {
+                "alias": "wes_depth_count_rm",
+                "parameters": {
+                    "instance_count": {
+                        "hint": "1",
+                        "required": true,
+                        "type": "integer",
+                        "value": 1,
+                        "variable": false
+                    }
+                }
+            },
+            "wes_ger_snp_indel_annovar_vaf_node_9": {
+                "alias": "wes_ger_snp_indel_annovar_vaf",
+                "parameters": {
+                    "bed": {
+                        "hint": "",
+                        "required": true,
+                        "type": "string",
+                        "value": "<$bed>",
+                        "variable": true
+                    },
+                    "dbsnp": {
+                        "hint": "",
+                        "required": true,
+                        "type": "string",
+                        "value": "/hapbin/databases/hg19/dbsnp_138.hg19.vcf",
+                        "variable": false
+                    },
+                    "fasta": {
+                        "hint": "",
+                        "required": true,
+                        "type": "string",
+                        "value": "/hapbin/databases/ucsc.hg19/ucsc.hg19.fasta",
+                        "variable": false
+                    },
+                    "instance_count": {
+                        "hint": "number of sample",
+                        "required": true,
+                        "type": "integer",
+                        "value": <$instance_count>,
+                        "variable": true
+                    },
+                    "license": {
+                        "hint": "sz or bj",
+                        "required": true,
+                        "type": "string",
+                        "value": "sz",
+                        "variable": false
+                    }
+                }
+            },
+            "wes_germline_chr_depth_parameter_node_7": {
+                "alias": "wes_germline_chr_depth_parameter",
+                "parameters": {
+                    "bed": {
+                        "hint": "/hapbin/databases/KF_Database/genome/BedFile/Exon_V6_r2_Regions_XY.bed",
+                        "required": true,
+                        "type": "string",
+                        "value": "<$bed>",
+                        "variable": true
+                    },
+                    "instance_count": {
+                        "hint": "number of sample",
+                        "required": true,
+                        "type": "integer",
+                        "value": <$instance_count>,
+                        "variable": true
+                    }
+                }
+            },
+            "wesplus_chrdepth_duped_node_5": {
+                "alias": "wes_chrdepth_duped",
+                "parameters": {
+                    "bed": {
+                        "hint": "/hapbin/databases/KF_Database/genome/BedFile/Exon_V6_r2_Regions_XY.bed; WESplusV2:/hapbin/users/wuliuyu/wes_bed/WESplusV2/WESplusV2_primary_merge.bed",
+                        "required": true,
+                        "type": "string",
+                        "value": "<$bed>",
+                        "variable": true
+                    },
+                    "instance_count": {
+                        "hint": "number of sample",
+                        "required": true,
+                        "type": "integer",
+                        "value": <$instance_count>,
+                        "variable": true
+                    }
+                }
+            },
+            "wesplus_plink_node_10": {
+                "alias": "wesplus_plink",
+                "parameters": {
+                    "instance_count": {
+                        "hint": "1",
+                        "required": true,
+                        "type": "string",
+                        "value": "1",
+                        "variable": false
+                    }
+                }
+            }
+        },
+        "Property": {
+            "CDN": {
+                "required": true
+            },
+            "reference_task": [
+                {
+                    "id": null
+                }
+            ],
+            "water_mark": {
+                "required": true,
+                "style": null
+            }
+        },
+        "description": "",
+        "name": "wes_depth_<$sample>"
+    },
+    "task_name": "wes_depth_<$sample>",
+    "workflow_name": "wes_depth",
+    "workflow_version": 1
+}
