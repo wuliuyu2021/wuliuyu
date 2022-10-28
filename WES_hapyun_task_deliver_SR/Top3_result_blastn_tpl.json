@@ -1,0 +1,79 @@
+{
+    "emergency": false,
+    "name": "Top3_result_blastn",
+    "parameters": {
+        "Conditions": {
+            "schedule": ""
+        },
+        "Inputs": {
+            "loaddata_node_1": {
+                "alias": "csv",
+                "category": "loaddata",
+                "data": [
+                    {
+                        "enid": null,
+                        "name": "<$csv>",
+                        "property": {
+                            "block_file": {
+                                "block_name": null,
+                                "is_block": false,
+                                "split_format": "default"
+                            }
+                        }
+                    }
+                ],
+                "formats": [],
+                "maxitems": 1,
+                "minitems": 1,
+                "required": true,
+                "type": "file"
+            }
+        },
+        "Outputs": {},
+        "Parameters": {
+            "Blastn_node_2": {
+                "alias": "Blastn",
+                "parameters": {
+                    "instance_count": {
+                        "hint": "",
+                        "required": true,
+                        "type": "integer",
+                        "value": <$instance_count>,
+                        "variable": true
+                    }
+                }
+            },
+            "top3_blastn_result_node_3": {
+                "alias": "top3_blastn_result",
+                "parameters": {
+                    "instance_count": {
+                        "hint": "",
+                        "required": true,
+                        "type": "integer",
+                        "value": 1,
+                        "variable": false
+                    }
+                }
+            }
+        },
+        "Property": {
+            "CDN": {
+                "required": true
+            },
+            "reference_task": [
+                {
+                    "id": null
+                }
+            ],
+            "water_mark": {
+                "required": true,
+                "style": null
+            }
+        },
+        "description": "",
+        "name": "Top3_result_blastn_<$sample>"
+    },
+    "task_name": "Top3_result_blastn_<$sample>",
+    "workflow_name": "Top3_result_blastn",
+    "workflow_version": 1
+}
