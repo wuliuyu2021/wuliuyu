@@ -41,17 +41,17 @@ def get_files(options):
 			con="%s=%s" % (lst[0], lst[1])
 			lts.append(lst[0])
 			d[lst[1].replace("oss://sz-","/")] = lst[0]
-	print(d)
+	#print(d)
 	slts=Counter(lts)
 	dn=sorted(Counter(lts).items(), key=lambda item:item[1], reverse=True)
-	print(dn)
+	#print(dn)
 	for k,v in dn:
 
 		if int(v) >0:
 			d3=[k1 for k1,v1 in d.items() if v1==k]
 			dt[k]=";".join(d3)
 		
-	print(dt)
+	#print(dt)
 	return dt
 
 def info_maker():
