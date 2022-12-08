@@ -78,7 +78,7 @@ def info_maker():
 					else:
 						f.write("%s_R1_001.fastq.gz,%s_R2_001.fastq.gz,%s\n" % (path, path, sample))
 			else:
-				print("\033[31;1mWrong, %s can not find the values in dictionary, please check!\033[0m" % sample_pre)
+				print("\033[1;31;40mWrong, %s,%s can not find the values in dictionary, please check!\033[0m" % (sample_pre,path))
 	f.close()
 
 def main():
