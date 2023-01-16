@@ -8,6 +8,6 @@
     "EHU1": "datadelivery@haplox.com",
     "EHP1_1": "Srsz2020!",
 	"EHP1":"rZkivHHGW9DAEUzQ",
-    "QctabReceiverList": ["project@haplox.com", "longrw@haplox.com", "wuliuyu@haplox.com", "jxhgclab@haplox.com", "yangzx@haplox.com"],
-    "OssLinkReceiverList": ["project@haplox.com", "longrw@haplox.com", "wuliuyu@haplox.com", "yangzx@haplox.com"]
+    "QctabReceiverList": ["project@haplox.com", "longrw@haplox.com", "wuliuyu@haplox.com", "jxhgclab@haplox.com"],
+    "OssLinkReceiverList": ["project@haplox.com", "longrw@haplox.com", "wuliuyu@haplox.com"]
 }
