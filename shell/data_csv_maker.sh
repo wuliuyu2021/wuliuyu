@@ -26,11 +26,9 @@ if [ "$flagwc" -eq 1 ];then
 #for file in ${flag[@]};
 #do
 file=$flag
-echo "$file"
-echo $flagwc
 last16=$(echo $file |awk 'BEGIN{FS="'$prefix'"}{print $NF}'|awk -F "" '{print $(NF-15)$(NF-14)$(NF-13)$(NF-12)$(NF-11)$(NF-10)$(NF-9)$(NF-8)$(NF-7)$(NF-6)$(NF-5)$(NF-4)$(NF-3)$(NF-2)$(NF-1)$NF}')
 if [ $last16 == "_R1_001.fastq.gz" ]; then
-flam=$(coscli ls -r $file  |grep "${prefix}" |grep "_R1_001.fastq.gz" |awk -F " " '{print $1}')
+flam=$(coscli ls -r $file  |grep "${prefix}" |grep "_R1_001.fastq.gz" |awk -F " " '{print "cos://sz-hapseq/"$1}')
 file2=$(echo $file |sed "s/_R1_001.fastq.gz/_R2_001.fastq.gz/")
 if [ -n "$file" ] && [ -n "$file2" ];then
 ossdir=$(echo $flam |awk -F "_R1_001.fastq.gz" '{print $1}')
@@ -48,7 +46,7 @@ file=$(echo -n $flag |awk -F " " '{print $NF}')
 #echo "file:$file"
 last16=$(echo $file |awk 'BEGIN{FS="'$prefix'"}{print $NF}'|awk -F "" '{print $(NF-15)$(NF-14)$(NF-13)$(NF-12)$(NF-11)$(NF-10)$(NF-9)$(NF-8)$(NF-7)$(NF-6)$(NF-5)$(NF-4)$(NF-3)$(NF-2)$(NF-1)$NF}')
 if [ $last16 == "_R1_001.fastq.gz" ]; then
-flam=$(coscli ls -r $file  |grep "${prefix}" |grep "_R1_001.fastq.gz" |awk -F " " '{print $1}')
+flam=$(coscli ls -r $file  |grep "${prefix}" |grep "_R1_001.fastq.gz" |awk -F " " '{print "cos://sz-hapseq/"$1}')
 file2=$(echo $file |sed "s/_R1_001.fastq.gz/_R2_001.fastq.gz/")
 if [ -n "$file" ] && [ -n "$file2" ];then
 ossdir=$(echo $flam |awk -F "_R1_001.fastq.gz" '{print $1}')
