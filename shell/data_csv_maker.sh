@@ -8,6 +8,7 @@ outdir=$3
 need_adpater=$4
 
 sed -i "s/\t/,/g" $infile
+sed -i "s/oss:/cos:/g" $infile
 infilename=$(ls $infile |awk -F "/" '{print $NF}')
 rm -f $outdir/${infilename}_tmp
 tmp=$outdir/${infilename}_tmp
@@ -19,15 +20,15 @@ fq=$(echo $info |awk -F "," '{print $2}')
 sample=$(echo $info |awk -F "," '{print $1}')
 ossinfo=$(echo $info |awk -F "," '{print $2}')
 prefix=$(echo $info |awk -F "/" '{print $NF}')
-flag=$(ossutil ls $ossinfo  |grep "${prefix}" |grep "_R1_001.fastq.gz" |awk -F " " '{print $NF}')
-flagwc=$(ossutil ls $ossinfo  |grep "${prefix}" |grep "_R1_001.fastq.gz" |awk -F " " '{print $NF}' |wc -l)
+flag=$(coscli ls -r $ossinfo  |grep "${prefix}" |grep "_R1_001.fastq.gz" |awk -F " " '{print $1}')
+flagwc=$(coscli ls -r $ossinfo  |grep "${prefix}" |grep "_R1_001.fastq.gz" |awk -F " " '{print $1}' |wc -l)
 if [ "$flagwc" -eq 1 ];then
 #for file in ${flag[@]};
 #do
 file=$flag
 last16=$(echo $file |awk 'BEGIN{FS="'$prefix'"}{print $NF}'|awk -F "" '{print $(NF-15)$(NF-14)$(NF-13)$(NF-12)$(NF-11)$(NF-10)$(NF-9)$(NF-8)$(NF-7)$(NF-6)$(NF-5)$(NF-4)$(NF-3)$(NF-2)$(NF-1)$NF}')
 if [ $last16 == "_R1_001.fastq.gz" ]; then
-flam=$(ossutil ls $file  |grep "${prefix}" |grep "_R1_001.fastq.gz" |awk -F " " '{print $NF}')
+flam=$(coscli ls -r $file  |grep "${prefix}" |grep "_R1_001.fastq.gz" |awk -F " " '{print $1}')
 file2=$(echo $file |sed "s/_R1_001.fastq.gz/_R2_001.fastq.gz/")
 if [ -n "$file" ] && [ -n "$file2" ];then
 ossdir=$(echo $flam |awk -F "_R1_001.fastq.gz" '{print $1}')
@@ -45,7 +46,7 @@ file=$(echo -n $flag |awk -F " " '{print $NF}')
 #echo "file:$file"
 last16=$(echo $file |awk 'BEGIN{FS="'$prefix'"}{print $NF}'|awk -F "" '{print $(NF-15)$(NF-14)$(NF-13)$(NF-12)$(NF-11)$(NF-10)$(NF-9)$(NF-8)$(NF-7)$(NF-6)$(NF-5)$(NF-4)$(NF-3)$(NF-2)$(NF-1)$NF}')
 if [ $last16 == "_R1_001.fastq.gz" ]; then
-flam=$(ossutil ls $file  |grep "${prefix}" |grep "_R1_001.fastq.gz" |awk -F " " '{print $NF}')
+flam=$(coscli ls -r $file  |grep "${prefix}" |grep "_R1_001.fastq.gz" |awk -F " " '{print $1}')
 file2=$(echo $file |sed "s/_R1_001.fastq.gz/_R2_001.fastq.gz/")
 if [ -n "$file" ] && [ -n "$file2" ];then
 ossdir=$(echo $flam |awk -F "_R1_001.fastq.gz" '{print $1}')

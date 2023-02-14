@@ -40,7 +40,7 @@ def get_files(options):
 			#if lst[0] in ds.keys():
 			con="%s=%s" % (lst[0], lst[1])
 			lts.append(lst[0])
-			d[lst[1].replace("oss://sz-","/")] = lst[0]
+			d[lst[1].replace("cos://sz-","/")] = lst[0]
 	#print(d)
 	slts=Counter(lts)
 	dn=sorted(Counter(lts).items(), key=lambda item:item[1], reverse=True)
