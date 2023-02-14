@@ -20,8 +20,8 @@ fq=$(echo $info |awk -F "," '{print $2}')
 sample=$(echo $info |awk -F "," '{print $1}')
 ossinfo=$(echo $info |awk -F "," '{print $2}')
 prefix=$(echo $info |awk -F "/" '{print $NF}')
-flag=$(coscli ls -r $ossinfo  |grep "${prefix}" |grep "_R1_001.fastq.gz" |awk -F " " '{print $1}')
-flagwc=$(coscli ls -r $ossinfo  |grep "${prefix}" |grep "_R1_001.fastq.gz" |awk -F " " '{print $1}' |wc -l)
+flag=$(coscli ls -r $ossinfo  |grep "${prefix}" |grep "_R1_001.fastq.gz" |awk -F " " '{print "cos://sz-hapseq/"$1}')
+flagwc=$(coscli ls -r $ossinfo  |grep "${prefix}" |grep "_R1_001.fastq.gz" |awk -F " " '{print "cos://sz-hapseq/"$1}' |wc -l)
 if [ "$flagwc" -eq 1 ];then
 #for file in ${flag[@]};
 #do
