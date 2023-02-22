@@ -14,10 +14,12 @@ cd $piddir
 pid=$(pwd | awk -F "/" '{print $NF}')
 #echo $tm
 tar -cf ${pid}.tar *
-coscli cp ${pid}.tar cos://sz-hapdeliver/Kefu_Data_hapdeliver/${tm}/${pid}.tar && coscli signurl cos://sz-hapdeliver/Kefu_Data_hapdeliver/${tm}/${pid}.tar  --time 604800 |grep 'https' |awk -F 'https' '{print "https"$NF}' > ${pid}_link.txt
+#coscli cp ${pid}.tar cos://sz-hapdeliver/Kefu_Data_hapdeliver/${tm}/${pid}.tar && coscli signurl cos://sz-hapdeliver/Kefu_Data_hapdeliver/${tm}/${pid}.tar  --time 604800 |grep 'https' |awk -F 'https' '{print "https"$NF}' > ${pid}_link.txt
 if [ -f /data/users/wuliuyu/wuliuyu/python/sendemail_single_file.py ]; then
+coscli cp ${pid}.tar cos://sz-hapdeliver/Kefu_Data_hapdeliver/${tm}/${pid}.tar -e cos-internal.ap-guangzhou.tencentcos.cn && coscli signurl cos://sz-hapdeliver/Kefu_Data_hapdeliver/${tm}/${pid}.tar  --time 604800 |grep 'https' |awk -F 'https' '{print "https"$NF}' > ${pid}_link.txt
 python /data/users/wuliuyu/wuliuyu/python/sendemail_single_file.py -p ${pid} -f ${pid}_link.txt -r $receiver
 fi
 if [ -f /thinker/nfs5/public/wuliuyu/wuliuyu/python/sendemail_single_file.py ]; then
+coscli cp ${pid}.tar cos://sz-hapdeliver/Kefu_Data_hapdeliver/${tm}/${pid}.tar && coscli signurl cos://sz-hapdeliver/Kefu_Data_hapdeliver/${tm}/${pid}.tar  --time 604800 |grep 'https' |awk -F 'https' '{print "https"$NF}' > ${pid}_link.txt
 python /thinker/nfs5/public/wuliuyu/wuliuyu/python/sendemail_single_file.py -p ${pid} -f ${pid}_link.txt -r $receiver
 fi
