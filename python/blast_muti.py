@@ -17,8 +17,8 @@ def blast(outdir, sample):
 		os.system("sh /thinker/nfs5/public/wuliuyu/wuliuyu/shell/blast_work.sh %s %s" % (outdir, sample))
 		print("sh /thinker/nfs5/public/wuliuyu/wuliuyu/shell/blast_work.sh %s %s" % (outdir, sample))
 	if os.path.exists("/data/users/wuliuyu/wuliuyu/shell/blast_work.sh"):
-		os.system("sh /data/users/wuliuyu/wuliuyu/shell/blast_work.sh %s %s" % (outdir, sample))
-		print("sh  /data/users/wuliuyu/wuliuyu/shell/blast_work.sh %s %s" % (outdir, sample))
+		os.system("sh /data/users/wuliuyu/wuliuyu/shell/blast_work_sz.sh %s %s" % (outdir, sample))
+		print("sh  /data/users/wuliuyu/wuliuyu/shell/blast_work_sz.sh %s %s" % (outdir, sample))
 
 def blast_multi(args):
 	outdir=args[0]
